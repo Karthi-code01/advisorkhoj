@@ -26,6 +26,7 @@ import vector2 from '../assets/Images/Vector (2).png'
 import vector3 from '../assets/Images/Vector (3).png'
 import vector4 from '../assets/Images/Vector (4).png'
 import vector5 from '../assets/Images/Vector (5).png'
+import Footer from "./Footer";
 
 
 
@@ -264,18 +265,19 @@ const FundCard = ({ title, description, readTime }) => (
     </div>
   </div>
 );
-
-const ServiceCard = ({ icon: Icon, title, description, color }) => (
-  <div
-    className={`bg-${color}-50 p-3 sm:p-4 rounded-lg border border-${color}-200 hover:shadow-md transition-shadow`}
-  >
-    <Icon className={`w-6 sm:w-8 h-6 sm:h-8 text-${color}-600 mb-2 sm:mb-3`} />
-    <h3 className="font-semibold text-gray-800 text-sm sm:text-base mb-2">
-      {title}
-    </h3>
-    <p className="text-xs sm:text-sm text-gray-600">{description}</p>
+const VideoCard = ({ title, imageUrl }) => (
+  <div className="bg-yellow-50 p-4 rounded-lg shadow-md">
+    <div className="relative">
+      <img src={imageUrl} alt={title} className="w-full h-48 object-cover rounded-lg" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="text-white text-4xl">▶</span>
+      </div>
+    </div>
+    <p className="mt-2 text-gray-700 text-sm">{title}</p>
+    <p className="text-gray-500 text-xs">○ 5 min video</p>
   </div>
 );
+
 
 const PerformanceTable = () => (
   <div className="bg-white  mt-6 sm:mt-8">
@@ -487,36 +489,35 @@ const App = () => {
 
             <PerformanceTable />
 
-            <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] h-[140px]   mt-6 sm:mt-8 flex flex-col sm:flex-row items-center sm:items-start">
-              {/* Left arrow image */}
-              <div className="flex-shrink-0 mr-4 sm:mr-6 h-full">
-                <img
-                  src={twoArrows}
-                  alt="Double Up Arrow"
-                  className="w-[140px] sm:w-[140px] h-full"
-                />
-              </div>
+           <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-8 flex flex-col sm:flex-row items-center sm:items-start p-4 sm:p-6 rounded-lg">
+  {/* Left arrow image */}
+  <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6 w-full sm:w-[140px]">
+    <img
+      src={twoArrows}
+      alt="Double Up Arrow"
+      className="w-full h-auto object-contain"
+    />
+  </div>
 
-              {/* Text content */}
-              <div className="flex-1 py-8">
-                <h3 className="font-serif font-bold text-[16px] leading-[28px] tracking-normal align-middle text-gray-800 mb-1">
-                  Portfolio Tracking Simplified
-                </h3>
+  {/* Text content */}
+  <div className="flex-1 text-center sm:text-left mb-4 sm:mb-0">
+    <h3 className="font-serif font-bold text-[16px] sm:text-[16px] leading-[28px] tracking-normal text-gray-800 mb-1">
+      Portfolio Tracking Simplified
+    </h3>
 
-                <p className="font-sans font-normal text-[13px] leading-[18px] tracking-normal align-middle text-gray-700">
-                  Track your wealth with the Ultimate Investment Portfolio Tracker
-                </p>
+    <p className="font-sans font-normal text-[13px] sm:text-[13px] leading-[18px] text-gray-700">
+      Track your wealth with the Ultimate Investment Portfolio Tracker
+    </p>
+  </div>
 
-              </div>
+  {/* Button */}
+  <div className="flex-shrink-0">
+    <button className="bg-[#096FFA] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-sm font-sans font-bold text-[11px] sm:text-[11px] leading-[12px] tracking-[1px] hover:bg-blue-700">
+      Track Your Portfolio
+    </button>
+  </div>
+</div>
 
-              {/* Button */}
-              <div className="mt-4 sm:mt-0 sm:ml-6 flex-shrink-0 py-10 px-6">
-                <button className="bg-[#096FFA] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-sm font-sans font-bold text-[11px] leading-[12px] tracking-[1px] align-middle hover:bg-blue-700">
-                  Track Your Portfolio
-                </button>
-
-              </div>
-            </div>
 
 
             <div className="mt-6 sm:mt-8 ">
@@ -843,186 +844,155 @@ const App = () => {
 
           </div>
         </div>
-        
+
       </div>
-      <div className="relative bg-[linear-gradient(114.55deg,#C6DDFB_15.37%,#F7E3D6_75.11%)] rounded-lg p-8 sm:p-12 overflow-hidden">
-  {/* Flower Decoration (left side) */}
-  <img
-    src="/assets/flower.png" // 👉 replace with your flower image path
-    alt="Flower Decoration"
-    className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 w-[100px] opacity-80"
-  />
+      <div className="relative bg-[linear-gradient(271.47deg,#EED5BC_17.79%,#CAE5FF_82.21%)] p-8 sm:p-12 overflow-hidden flex flex-col lg:flex-row items-start lg:items-center mb-8">
+        {/* Flower Decoration (left side) */}
+        <img
+          src={vector2} // replace with flower image path
+          alt="Flower Decoration"
+          className="absolute left-[-28px] top-1/2 transform -translate-y-1/2 w-[70px] opacity-80"
+        />
 
-  {/* Arrow Decoration (top-right) */}
-  <img
-    src="/assets/arrow.png" // 👉 replace with your arrow image path
-    alt="Arrow Decoration"
-    className="absolute top-0 right-0 w-[80px] opacity-90"
-  />
+        {/* Arrow Decoration (top-right) */}
 
-  {/* Content Section */}
-  <div className="relative z-10 max-w-2xl">
-    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-      Simplify Your Investment Decisions, <br />
-      Introducing the Mutual Fund Screener
-    </h2>
-    <button className="bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition">
-      Discover MF Screeners
-    </button>
-  </div>
-</div>
 
-      <footer className="bg-gray-900 text-white pt-12 pb-6">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        {/* Left Content */}
+        <div className="relative z-10 flex-1 max-w-2xl mb-6 lg:mb-0 px-[80px]">
+          <h2 className="font-['Merriweather'] font-bold text-[26px] leading-[36px] text-gray-900 mb-6">
+            Simplify Your Investment Decisions, <br />
+            Introducing the Mutual Fund Screener
+          </h2>
+
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition">
+            Discover MF Screeners
+          </button>
+        </div>
+
+        {/* Right Side Card */}
+        <div className="absolute right-[230px] top-[50px] z-10 bg-white shadow-md p-6 lg:ml-12  h-[237px]w-full lg:w-[350px]">
+          <h3 className="font-['Merriweather'] font-bold text-[16px] leading-[28px] text-gray-900 mb-4">
+            200+ Screening Filters
+          </h3>
+
+          <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <h3 className="font-bold text-lg mb-4">AdvisorKhoj</h3>
-              <div className="flex items-center space-x-4 mb-6">
-                <span className="text-lg font-semibold">Follow Us</span>
-                <Youtube className="w-5 h-5" />
-                <Twitter className="w-5 h-5" />
-                <Linkedin className="w-5 h-5" />
-                <Facebook className="w-5 h-5" />
-              </div>
-              <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 mb-6">
-                Find an Advisor
+              <h4 className="font-['Inter'] font-semibold text-[11px] leading-[20px] text-gray-700 mb-2">
+                Select AMC
+              </h4>
+
+              <ul className="space-y-2">
+                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-800 bg-blue-50 px-2 py-1 rounded">
+                  Top 10 AMCs
+                </li>
+
+                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-700 hover:text-gray-900 cursor-pointer">
+                  Axis Mutual Fund
+                </li>
+
+                <li className="text-gray-400 font-['Inter'] text-[11px]">DSP Mutual Fund</li>
+                <li className="text-gray-400 font-['Inter'] text-[11px]">HDFC Mutual Fund</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-['Inter'] font-semibold text-[11px] leading-[20px] text-gray-700 mb-2">Select Category</h4>
+              <ul className="space-y-2">
+                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-700 hover:text-gray-900 cursor-pointer">Debt Corporate Bond</li>
+                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-800 bg-blue-50 px-2 py-1 rounded">Equity Flexi Cap</li>
+                <li className="font-['Inter'] text-gray-400 text-[11px]">Equity ELSS</li>
+                <li className="text-gray-400 font-['Inter'] text-[11px]">Equity Large Cap</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Arrow corner effect */}
+          <img
+            src={vector4} // replace with arrow image path
+            alt="Arrow Decoration"
+            className="absolute top-[-10px] right-[-10px] w-[114px] h-[114px]  clip-path-polygon"
+          />
+        </div>
+      </div>
+      <div className="container mx-auto p-4">
+        {/* Fund News Section */}
+        <div className="grid grid-cols-12 gap-4 mb-6">
+          {/* Fund News (col-span-7) */}
+          <div className="col-span-12 md:col-span-7 pr-4">
+            <div className="mb-1 flex justify-between items-center">
+              <h2
+                className="text-lg sm:text-xl font-bold tracking-[1px] leading-[19px] text-[#000000]"
+                style={{ fontFamily: "Arial" }}
+              >
+                Fund News
+              </h2>
+
+              <button className="text-base sm:text-lg font-semibold text-[#000000] hover:text-[#444444] flex items-center">
+                MORE <ArrowRight className="w-4 h-4 ml-1" />
               </button>
+            </div>
+            <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <h4 className="font-semibold mb-2">Contact Us</h4>
-                <p className="text-sm text-gray-300 mb-1">
-                  3rd floor, JK Towers, 719/A, 53-2, 46th Cross Rd, 8th Block,
-                </p>
-                <p className="text-sm text-gray-300 mb-1">
-                  Jayanagar, Bengaluru, Karnataka 560082
-                </p>
-                <p className="text-sm text-gray-300">Phone: 099005 11400</p>
+                <p className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+                  style={{ fontFamily: "Merriweather" }}>Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae Asset Multicap Fund NFO</p>
+                <p className="text-gray-500 text-xs">24-Aug-2023</p>
               </div>
-              <div className="mt-4">
-                <button className="bg-green-500 text-white px-4 py-2 rounded mr-2 text-sm">
-                  WhatsApp Us
-                </button>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded text-sm">
-                  Email Us
-                </button>
+              <div>
+                <p className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+                  style={{ fontFamily: "Merriweather" }}>WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund</p>
+                <p className="text-gray-500 text-xs">24-Aug-2023</p>
               </div>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">AMCs</h4>
-              <div className="text-sm text-gray-300 space-y-1">
-                <div>
-                  360 ONE | Aditya Birla Sun Life | Axis | Bajaj | Finserv |
-                  Bandhan | Bank of India | Baroda | BNP | Paribas | Canara |
-                  Robeco | DSP | Edelweiss | Franklin |
-                </div>
-                <div>
-                  Templeton | Groww | HDFC | HSBC | ICICI | Prudential | Invesco
-                  | ITI | JM Financial | Kotak Mahindra | LIC | Mahindra |
-                  Manulife | Mirae Asset | Motilal Oswal | Navi | Nippon India |
-                  NJ | PGIM India | PPFAS | Quant | Quantum | Samco | SBI |
-                  Shriram Sundaram | Tata | Taurus | TRUST | Union | UTI |
-                </div>
-                <div>WhiteOak Capital</div>
-              </div>
-              <h4 className="font-semibold mt-6 mb-4">
-                Top Searched Mutual Funds
-              </h4>
-              <div className="text-sm text-gray-300">
-                <div>
-                  SBI Small Cap Fund | Nippon India Small Cap Fund | SBI
-                  Bluechip Fund | Axis Bluechip Fund | Axis Long Term Equity
-                  Fund | SBI Focused Equity Fund | HDFC Mid-Cap Opportunities
-                  Fund | Axis Midcap Fund | SBI Contra Fund | HDFC Flexi Cap
-                  Fund | Nippon India Growth Fund | SBI Focused 25 Fund | ICICI
-                  Prudential Technology Fund | SBI Magnum Midcap Fund | SBI
-                  Technology Opportunities Fund | HDFC Top 100 Fund | ICICI
-                  Prudential Bluechip Fund | CPSE ETF | SBI Flexicap Fund |
-                  Motilal Oswal NASDAQ 100 ETF | Nippon India Multi Cap Fund |
-                  SBI Long Term Equity Fund | DSP Tax Saver Fund | SBI Magnum
-                  Global Fund
-                </div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Popular Research Tools</h4>
-              <div className="text-sm text-gray-300 space-y-1">
-                <div>
-                  Top Performing Mutual Funds | Mutual Fund Annual Returns |
-                  Benchmark Return | Top Performing Mutual Funds | Mutual Fund
-                  Annual Returns | Benchmark Return | Top Performing Mutual
-                  Funds | Mutual Fund Annual Returns | Benchmark Return
-                </div>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">
-                Investing Ideas in your email
-              </h4>
-              <div className="flex mb-4">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 p-2 rounded-l text-gray-800"
-                />
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700">
-                  Subscribe Now
-                </button>
-              </div>
-              <div className="flex items-center space-x-2 mb-4">
-                <span className="text-sm">Google</span>
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i}>★</span>
-                  ))}
-                </div>
-                <span className="text-sm">4.6</span>
+              <div>
+                <p className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+                  style={{ fontFamily: "Merriweather" }}>Quant Mutual Fund launches Quant Teck Fund</p>
+                <p className="text-gray-500 text-xs">22-Aug-2023</p>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-gray-300">
-            <div>
-              <h5 className="font-semibold mb-3">Quick Links</h5>
-              <div className="space-y-2">
-                <div>Track your Investments</div>
-                <div>My Watchlist</div>
-                <div>My Subscriptions</div>
-              </div>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-3">Resources</h5>
-              <div className="space-y-2">
-                <div>Mutual Fund (AMC) offices</div>
-                <div>R & T (MF) Agent offices</div>
-                <div>Life Insurance Office</div>
-                <div>General Insurance Office</div>
-                <div>Glossary</div>
-                <div>Form Download</div>
-              </div>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-3">Our Offerings</h5>
-              <div className="space-y-2">
-                <div>Mutual Fund Research</div>
-                <div>Tools and Calculators</div>
-                <div>Articles</div>
-                <div>Interviews</div>
-                <div>News</div>
-                <div>Post your Queries</div>
-              </div>
-            </div>
-            <div>
-              <h5 className="font-semibold mb-3">About Us</h5>
-              <div className="space-y-2">
-                <div>About Us</div>
-                <div>Contact Us</div>
-                <div>Meet our Team</div>
-                <div>Careers</div>
-                <div>Newsletters</div>
-                <div>Did You Know</div>
-              </div>
+
+          {/* Advisors Forum (col-span-5) */}
+          <div className="col-span-12 md:col-span-5">
+             <h2 className="text-lg sm:text-xl font-bold tracking-[1px] mb-1 leading-[19px] text-[#000000]"
+                style={{ fontFamily: "Arial" }}>Advisors Forum</h2>
+            <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+
+            <div className="bg-yellow-50 p-4 rounded-lg h-full">
+             
+              <p>Start a discussion or Ask us a question.</p>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                Join the community
+              </button>
             </div>
           </div>
         </div>
-      </footer>
+
+        {/* Learn with us Section */}
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-semibold">Learn with us</h2>
+          <a href="#" className="text-blue-500 text-sm">MORE</a>
+        </div>
+        <div className="grid grid-cols-4 gap-4">
+          <VideoCard
+            title="Learn Investment or improve your skills online"
+            imageUrl="https://via.placeholder.com/200x150"
+          />
+          <VideoCard
+            title="How to Identify the Best Mutual Funds to Invest in?"
+            imageUrl="https://via.placeholder.com/200x150"
+          />
+          <VideoCard
+            title="Know the fund's management style"
+            imageUrl="https://via.placeholder.com/200x150"
+          />
+          <VideoCard
+            title="How to Identify the Best Mutual Funds to Invest in?"
+            imageUrl="https://via.placeholder.com/200x150"
+          />
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 };
