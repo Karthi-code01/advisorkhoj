@@ -19,40 +19,54 @@ import {
   Linkedin,
   Facebook,
 } from "lucide-react";
-import { Calendar, Calculator, PieChart, Globe, Settings, Smartphone } from 'lucide-react';
-import twoArrows from '../assets/Images/Vector (1).png'
+import {
+  Calendar,
+  Calculator,
+  PieChart,
+  Globe,
+  Settings,
+  Smartphone,
+} from "lucide-react";
+import twoArrows from "../assets/Images/Vector (1).png";
 import logo from "../assets/Images/logo.png";
-import aimImage from "../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png"
-import vector2 from '../assets/Images/Vector (2).png'
-import vector3 from '../assets/Images/Vector (3).png'
-import vector4 from '../assets/Images/Vector (4).png'
-import vector5 from '../assets/Images/Vector (5).png'
+import aimImage from "../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
+import vector2 from "../assets/Images/Vector (2).png";
+import vector3 from "../assets/Images/Vector (3).png";
+import vector4 from "../assets/Images/Vector (4).png";
+import vector5 from "../assets/Images/Vector (5).png";
 import Footer from "./Footer";
-import arrow from "../assets/Images/Icon.png"
-import card1 from "../assets/Images/card1.png"
-import card2 from "../assets/Images/card2.png"
-import card3 from "../assets/Images/card3.png"
-import card4 from "../assets/Images/car4.png"
-import flower from "../assets/Images/flower.png"
-import vector11 from '../assets/Images/Vector (11).png'
-import vector12 from '../assets/Images/Vector (12).png'
-import vector13 from '../assets/Images/Vector (13).png'
-import phone from '../assets/Images/smartphone.png'
-import globe from '../assets/Images/globe.png'
-import layout from '../assets/Images/layout.png'
-import bank1 from '../assets/Images/image 7.png'
-import bank2 from '../assets/Images/image 8.png'
-import bank3 from '../assets/Images/image 9.png'
-import bank4 from '../assets/Images/image 10.png'
-import bank5 from '../assets/Images/image 11.png'
-import bank6 from '../assets/Images/image 12.png'
-import bank7 from '../assets/Images/image 13.png'
-import bank8 from '../assets/Images/image 14.png'
-import bank9 from '../assets/Images/image 15.png'
-import bank10 from '../assets/Images/image 16.png'
-import comma from '../assets/Images/“.png'
-
-
+import arrow from "../assets/Images/Icon.png";
+import card1 from "../assets/Images/card1.png";
+import card2 from "../assets/Images/card2.png";
+import card3 from "../assets/Images/card3.png";
+import card4 from "../assets/Images/car4.png";
+import flower from "../assets/Images/flower.png";
+import vector11 from "../assets/Images/Vector (11).png";
+import vector12 from "../assets/Images/Vector (12).png";
+import vector13 from "../assets/Images/Vector (13).png";
+import phone from "../assets/Images/smartphone.png";
+import globe from "../assets/Images/globe.png";
+import layout from "../assets/Images/layout.png";
+import bank1 from "../assets/Images/image 7.png";
+import bank2 from "../assets/Images/image 8.png";
+import bank3 from "../assets/Images/image 9.png";
+import bank4 from "../assets/Images/image 10.png";
+import bank5 from "../assets/Images/image 11.png";
+import bank6 from "../assets/Images/image 12.png";
+import bank7 from "../assets/Images/image 13.png";
+import bank8 from "../assets/Images/image 14.png";
+import bank9 from "../assets/Images/image 15.png";
+import bank10 from "../assets/Images/image 16.png";
+import comma from "../assets/Images/“.png";
+import brand1 from "../assets/Images/ba54b87a00f0ca702bcc03ebbac1bb74ec8d941d.png";
+import brand2 from "../assets/Images/90393d78ceda1c1af1530fd6fa4a85f11c95226b.jpg";
+import brand3 from "../assets/Images/4945e85c4b05341f9f57272e2117814c25ee3458.png";
+import brand4 from "../assets/Images/c097f8caef30a358bb62300f1d9a79643025b68b.png";
+import brand5 from "../assets/Images/6805b5825f219d1fc614e6c3cf97fd8ade2c9e7c.jpg";
+import brand6 from "../assets/Images/a7543c32da9b90c37b71b290b3e64d8ab7be2dfd.png";
+import vector from "../assets/Images/Vector.png"
+import vector1 from '../assets/Images/Vector (01).png'
+import group from '../assets/Images/Group 19.png'
 
 const stockData = [
   {
@@ -121,17 +135,19 @@ const fundData = [
 ];
 const fundNews = [
   {
-    title: "Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae Asset Multicap Fund NFO",
-    date: "24-Aug-2023"
+    title:
+      "Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae Asset Multicap Fund NFO",
+    date: "24-Aug-2023",
   },
   {
-    title: "WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund",
-    date: "24-Aug-2023"
+    title:
+      "WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund",
+    date: "24-Aug-2023",
   },
   {
     title: "Quant Mutual Fund launches Quant Teck Fund",
-    date: "22-Aug-2023"
-  }
+    date: "22-Aug-2023",
+  },
 ];
 
 // Learn with Us Videos Data
@@ -139,29 +155,34 @@ const videos = [
   {
     title: "Learn Investment or Improve your skills Online",
     duration: "5 min video",
-    thumbnail: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=300",
-    category: "LATEST VIDEO"
+    thumbnail:
+      "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=300",
+    category: "LATEST VIDEO",
   },
   {
     title: "How to identify the Best Mutual Funds to invest in?",
     duration: "5 min video",
-    thumbnail: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=300"
+    thumbnail:
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=300",
   },
   {
     title: "Know the fund's management style",
     duration: "5 min video",
-    thumbnail: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300"
+    thumbnail:
+      "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300",
   },
   {
     title: "How to identify the Best Mutual Funds to invest in?",
     duration: "5 min video",
-    thumbnail: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=300"
+    thumbnail:
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=300",
   },
   {
     title: "Know the fund's management style",
     duration: "5 min video",
-    thumbnail: "https://images.pexels.com/photos/3183173/pexels-photo-3183173.jpeg?auto=compress&cs=tinysrgb&w=300"
-  }
+    thumbnail:
+      "https://images.pexels.com/photos/3183173/pexels-photo-3183173.jpeg?auto=compress&cs=tinysrgb&w=300",
+  },
 ];
 
 // Must Visit Tools Data
@@ -173,7 +194,7 @@ const tools = [
     icon: BarChart3,
     action: "View Charts",
     leftDecoration: flower,
-    rightDecoration: card1
+    rightDecoration: card1,
   },
   {
     title: "Calculators for planning your Investments",
@@ -182,7 +203,7 @@ const tools = [
     icon: Calculator,
     action: "View Calculators",
     leftDecoration: flower,
-    rightDecoration: card2
+    rightDecoration: card2,
   },
   {
     title: "Create Free portfolios with AdvisorKhoj",
@@ -191,7 +212,7 @@ const tools = [
     icon: PieChart,
     action: "Create your Portfolio",
     leftDecoration: flower,
-    rightDecoration: card3
+    rightDecoration: card3,
   },
   {
     title: "Find the right funds with Mutual Fund Screener",
@@ -200,8 +221,8 @@ const tools = [
     icon: Search,
     action: "Discover MF Screeners",
     leftDecoration: flower,
-    rightDecoration: card4
-  }
+    rightDecoration: card4,
+  },
 ];
 
 // Performing Funds Data
@@ -213,7 +234,7 @@ const funds = [
     oneYear: "+31.56",
     threeYear: "+31.56",
     fiveYear: "+31.56",
-    tenYear: "+31.56"
+    tenYear: "+31.56",
   },
   {
     name: "Mirae Asset Emerging Bluechip Fund",
@@ -222,7 +243,7 @@ const funds = [
     oneYear: "+31.56",
     threeYear: "+31.56",
     fiveYear: "+31.56",
-    tenYear: "+31.56"
+    tenYear: "+31.56",
   },
   {
     name: "HDFC Large and Mid Cap Fund",
@@ -231,7 +252,7 @@ const funds = [
     oneYear: "+31.56",
     threeYear: "+31.56",
     fiveYear: "+31.56",
-    tenYear: "+31.56"
+    tenYear: "+31.56",
   },
   {
     name: "SBI Large and Midcap Fund",
@@ -240,7 +261,7 @@ const funds = [
     oneYear: "+31.56",
     threeYear: "+31.56",
     fiveYear: "+31.56",
-    tenYear: "+31.56"
+    tenYear: "+31.56",
   },
   {
     name: "ICICI Prudential Large & Mid Cap Fund",
@@ -249,39 +270,42 @@ const funds = [
     oneYear: "+31.56",
     threeYear: "+31.56",
     fiveYear: "+31.56",
-    tenYear: "+31.56"
-  }
+    tenYear: "+31.56",
+  },
 ];
 
 // Queries Data
 const queries = [
   {
-    title: "Nippon India Mutual Fund has launched a new fund offer, Nippon India Innovation Fund.",
-    date: "24-Aug-2023"
+    title:
+      "Nippon India Mutual Fund has launched a new fund offer, Nippon India Innovation Fund.",
+    date: "24-Aug-2023",
   },
   {
     title: "What would be the post tax return on different investments",
-    date: "24-Aug-2023"
+    date: "24-Aug-2023",
   },
   {
-    title: "Which Principal Mutual Fund scheme will be suitable for my retirement corpus",
-    date: "24-Aug-2023"
+    title:
+      "Which Principal Mutual Fund scheme will be suitable for my retirement corpus",
+    date: "24-Aug-2023",
   },
   {
     title: "What is the minimum holding period for availing NCD interest",
-    date: "24-Aug-2023"
-  }
+    date: "24-Aug-2023",
+  },
 ];
 
 // Distributor Services Data
 const services = [
   {
-    title: "Your Gateway to Expertly Crafted Websites for MF Distributors and advisors",
+    title:
+      "Your Gateway to Expertly Crafted Websites for MF Distributors and advisors",
     description: "Professional web solutions",
     icon: vector11,
     icon2: globe,
     action: "Learn More",
-    color: "bg-[#FFFCF1]"
+    color: "bg-[#FFFCF1]",
   },
   {
     title: "Master Your MF Operation. Back-Office Software for Distributors",
@@ -289,7 +313,7 @@ const services = [
     icon: vector12,
     icon2: layout,
     action: "Enquire Now",
-    color: "bg-[#FFFCF1]"
+    color: "bg-[#FFFCF1]",
   },
   {
     title: "Accelerate Your Reach. Mobile App Development for MF Distributors",
@@ -297,8 +321,8 @@ const services = [
     icon: vector13,
     icon2: phone,
     action: "Get in touch",
-    color: "bg-[#FFFCF1]"
-  }
+    color: "bg-[#FFFCF1]",
+  },
 ];
 
 // AMCs Data
@@ -330,45 +354,49 @@ const testimonials = [
   {
     name: "Pradip Chakrabarty",
     role: "AMFI Contributor | Mumbai",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150",
-    quote: "This platform not only simplified the process but also gave me access to invaluable resources and support. I highly recommend it to fellow advisors!"
+    image:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150",
+    quote:
+      "This platform not only simplified the process but also gave me access to invaluable resources and support. I highly recommend it to fellow advisors!",
   },
   {
     name: "Mohit Singh",
     role: "Group Fund House | Mumbai",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150",
-    quote: "The tools and insights provided have made my mutual fund advisory services more efficient and effective than ever before. It's a true game-changer!"
-  }
+    image:
+      "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150",
+    quote:
+      "The tools and insights provided have made my mutual fund advisory services more efficient and effective than ever before. It's a true game-changer!",
+  },
 ];
 
 // Statistics Data
 const stats = [
   {
     number: "40,353",
-    label: "Active Distributors"
+    label: "Active Distributors",
   },
   {
     number: "8,00,000",
-    label: "Monthly Active Views"
+    label: "Monthly Active Views",
   },
   {
     number: "805+",
-    label: "Mutual Fund & Finance Articles"
+    label: "Mutual Fund & Finance Articles",
   },
   {
     number: "62+",
-    label: "Mutual Fund Research Tools"
-  }
+    label: "Mutual Fund Research Tools",
+  },
 ];
 
 // Brand Partners Data
 const brands = [
-  { name: "Bandhan Mutual Fund", logo: "🔴" },
-  { name: "IIFL Mutual Fund", logo: "🟥" },
-  { name: "LIC Mutual Fund", logo: "💛" },
-  { name: "Nippon India Mutual Fund", logo: "🔺" },
-  { name: "Mirae Asset Mutual Fund", logo: "📈" },
-  { name: "HSBC Asset Management", logo: "🏦" }
+  { name: "Bandhan Mutual Fund", logo: brand1 },
+  { name: "IIFL Mutual Fund", logo: brand2 },
+  { name: "LIC Mutual Fund", logo: brand3 },
+  { name: "Nippon India Mutual Fund", logo: brand4 },
+  { name: "Mirae Asset Mutual Fund", logo: brand5 },
+  { name: "HSBC Asset Management", logo: brand6 },
 ];
 
 const StockTicker = () => {
@@ -387,17 +415,15 @@ const StockTicker = () => {
         {stockData.map((stock, index) => (
           <div
             key={index}
-            className={`flex items-center space-x-2 sm:space-x-4 px-2 sm:px-3 py-2 sm:py-3 rounded-full text-xs sm:text-sm ${stock.negative
-              ? "bg-[#FFF4F4] text-red-600"
-              : "bg-[#F5FFEE] text-green-600"
-              }`}
+            className={`flex items-center space-x-2 sm:space-x-4 px-2 sm:px-3 py-2 sm:py-3 rounded-full text-xs sm:text-sm ${
+              stock.negative
+                ? "bg-[#FFF4F4] text-red-600"
+                : "bg-[#F5FFEE] text-green-600"
+            }`}
           >
             <span className="font-semibold text-[#444444]">{stock.symbol}</span>
             <span className="text-[#444444]">{stock.price}</span>
-            <span className="flex items-center">
-
-              {stock.change}
-            </span>
+            <span className="flex items-center">{stock.change}</span>
           </div>
         ))}
       </div>
@@ -428,8 +454,9 @@ const Header = () => {
       </div>
 
       <nav
-        className={`bg-[#163164] py-4 px-4 sm:px-6 ${isMenuOpen ? "block" : "hidden sm:block"
-          }`}
+        className={`bg-[#163164] py-4 px-4 sm:px-6 ${
+          isMenuOpen ? "block" : "hidden sm:block"
+        }`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-8">
@@ -478,11 +505,7 @@ const Header = () => {
 const NewsCard = ({ title, subtitle, readTime, image, isVideo = false }) => (
   <div className="bg-white">
     <div className="relative">
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-[220px] object-cover"
-      />
+      <img src={image} alt={title} className="w-full h-[220px] object-cover" />
       {isVideo && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="bg-[#096FFA] text-white p-3 rounded-full hover:bg-blue-700 cursor-pointer">
@@ -497,17 +520,18 @@ const NewsCard = ({ title, subtitle, readTime, image, isVideo = false }) => (
       </h3>
 
       {subtitle && (
-        <p className="text-xs sm:text-sm text-gray-600 mb-2 py-2">
-          {subtitle}
-        </p>
+        <p className="text-xs sm:text-sm text-gray-600 mb-2 py-2">{subtitle}</p>
       )}
 
       <div className="flex items-center space-x-2  text-xs text-gray-500">
-        <button className={`text-xs sm:text-sm px-3 py-1 rounded-sm transition 
-      ${isVideo
-            ? "bg-[#096FFA] text-white hover:bg-blue-700"
-            : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
-          }`}>
+        <button
+          className={`text-xs sm:text-sm px-3 py-1 rounded-sm transition 
+      ${
+        isVideo
+          ? "bg-[#096FFA] text-white hover:bg-blue-700"
+          : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
+      }`}
+        >
           {isVideo ? "Watch the video" : "Read the story"}
         </button>
         <span className="flex items-center">
@@ -543,7 +567,11 @@ const FundCard = ({ title, description, readTime }) => (
 const VideoCard = ({ title, imageUrl }) => (
   <div className="bg-yellow-50 p-4 rounded-lg shadow-md">
     <div className="relative">
-      <img src={imageUrl} alt={title} className="w-full h-48 object-cover rounded-lg" />
+      <img
+        src={imageUrl}
+        alt={title}
+        className="w-full h-48 object-cover rounded-lg"
+      />
       <div className="absolute inset-0 flex items-center justify-center">
         <span className="text-white text-4xl">▶</span>
       </div>
@@ -552,7 +580,6 @@ const VideoCard = ({ title, imageUrl }) => (
     <p className="text-gray-500 text-xs">○ 5 min video</p>
   </div>
 );
-
 
 const PerformanceTable = () => (
   <div className="bg-white  mt-6 sm:mt-8">
@@ -618,16 +645,10 @@ const PerformanceTable = () => (
 );
 
 const AdvisorCard = ({ name, role, company, image, featured = false }) => (
-  <div
-    className={`  overflow-hidden ${featured ? "sm:col-span-2" : ""}`}
-  >
+  <div className={`  overflow-hidden ${featured ? "sm:col-span-2" : ""}`}>
     {/* Image on top */}
     <div className="w-full h-48 sm:h-56 overflow-hidden">
-      <img
-        src={image}
-        alt={name}
-        className="w-full h-full object-cover"
-      />
+      <img src={image} alt={name} className="w-full h-full object-cover" />
     </div>
 
     {/* Text content */}
@@ -635,15 +656,15 @@ const AdvisorCard = ({ name, role, company, image, featured = false }) => (
       <h3 className="font-merriweather font-bold text-[16px] leading-[28px] tracking-[0%] align-middle text-gray-800 mb-1 sm:text-base">
         {name}
       </h3>
-      <h3 className="font-merriweather font-bold text-[16px] leading-[28px] tracking-[0%] align-middle text-gray-800 mb-1 sm:text-base">{role}</h3>
+      <h3 className="font-merriweather font-bold text-[16px] leading-[28px] tracking-[0%] align-middle text-gray-800 mb-1 sm:text-base">
+        {role}
+      </h3>
       <p className="text-xs sm:text-sm text-gray-500">{company}</p>
 
       {/* Featured description */}
 
-
       {/* Buttons */}
       <div className="flex items-center justify-between mt-3">
-
         <div className="flex space-x-2">
           <button className="bg-white text-[#111111] font-bold text-[11px] leading-[12px] tracking-[1px] align-middle px-3 sm:px-4 py-1 sm:py-2 rounded border border-black">
             View Interview
@@ -659,11 +680,9 @@ const AdvisorCard = ({ name, role, company, image, featured = false }) => (
       </div>
 
       {/* Read time */}
-
     </div>
   </div>
 );
-
 
 const App = () => {
   return (
@@ -756,10 +775,6 @@ const App = () => {
                   />
                 </div>
               </div>
-
-
-
-
             </div>
 
             <PerformanceTable />
@@ -776,31 +791,29 @@ const App = () => {
 
               {/* Text content */}
               <div className="flex-1 text-center sm:text-left mb-4 sm:mb-0">
-                <h3 className="font-serif font-bold text-[16px] sm:text-[16px] leading-[28px] tracking-normal text-gray-800 mb-1">
+                <h3 className="font-serif font-bold text-[16px] sm:text-[16px] pt-8 leading-[28px] tracking-normal text-gray-800 mb-1">
                   Portfolio Tracking Simplified
                 </h3>
 
                 <p className="font-sans font-normal text-[13px] sm:text-[13px] leading-[18px] text-gray-700">
-                  Track your wealth with the Ultimate Investment Portfolio Tracker
+                  Track your wealth with the Ultimate Investment Portfolio
+                  Tracker
                 </p>
               </div>
 
               {/* Button */}
               <div className="flex-shrink-0">
-                <button className="bg-[#096FFA] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-sm font-sans font-bold text-[11px] sm:text-[11px] leading-[12px] tracking-[1px] hover:bg-blue-700">
+                <button className="bg-[#096FFA] text-white px-4 sm:px-6 py-2 mt-10 sm:py-3 rounded-sm font-sans font-bold text-[11px] sm:text-[11px] leading-[12px] tracking-[1px] hover:bg-blue-700">
                   Track Your Portfolio
                 </button>
               </div>
             </div>
-
-
 
             <div className="mt-6 sm:mt-8 ">
               <h2 className="font-sans font-bold text-[16px] leading-[19px] tracking-[1px] align-middle text-gray-800 mb-4">
                 Benchmark Monitor
               </h2>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
-
 
               <div className="flex space-x-3 sm:space-x-4 mb-4">
                 <button className="text-blue-600 border-b-2 border-blue-600 pb-2 whitespace-nowrap font-sans font-bold text-[13px] leading-[21px] tracking-normal align-middle">
@@ -810,7 +823,6 @@ const App = () => {
                 <button className="text-gray-600 hover:text-blue-600 pb-2 whitespace-nowrap font-sans font-bold text-[13px] leading-[21px] tracking-normal align-middle">
                   Short Term
                 </button>
-
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -946,7 +958,6 @@ const App = () => {
                     <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D]">
                       Websites for MF Distributors & Advisors
                     </p>
-
                   </div>
                   <div className="flex items-start space-x-2">
                     <span className="w-6 h-5 rounded-full bg-white mt-1.5"></span>
@@ -971,16 +982,10 @@ const App = () => {
                 <button className="bg-[#163164] text-white px-6 py-2 ms-8 rounded-sm text-[11px] leading-[12px] tracking-[1px] font-arial font-bold hover:bg-[#142F54] transition">
                   Get in touch
                 </button>
-
               </div>
-
-
             </div>
 
-
-
             <div className=" p-6 sm:p-4  overflow-hidden">
-
               <div className=" p-2 h-full flex items-center">
                 <img
                   src={aimImage}
@@ -996,7 +1001,6 @@ const App = () => {
               </h2>
               <div className="w-full h-[1px] bg-[#111111] mb-4"></div>
 
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-4 ">
                 <div>
                   <img
@@ -1004,12 +1008,16 @@ const App = () => {
                     alt="Advisor"
                     className="w-full h-28 sm:h-32 object-cover  mb-2"
                   />
-                  <p className="text-[#D99828] p-2 font-arial font-bold text-[10px] leading-[24px] tracking-[0.6px] uppercase py-1 inline-block">FEATURED ADVISOR</p>
+                  <p className="text-[#D99828] p-2 font-arial font-bold text-[10px] leading-[24px] tracking-[0.6px] uppercase py-1 inline-block">
+                    FEATURED ADVISOR
+                  </p>
                   <h4 className="font-merriweather p-2 font-bold text-[16px] leading-[28px] text-gray-800">
                     Active Funds are still a better choice in India...
                   </h4>
 
-                  <p className="text-xs text-gray-500 p-2">Rajiv Singh | Mumbai</p>
+                  <p className="text-xs text-gray-500 p-2">
+                    Rajiv Singh | Mumbai
+                  </p>
                 </div>
                 <div>
                   <img
@@ -1017,11 +1025,15 @@ const App = () => {
                     alt="Advisor"
                     className="w-full h-28 sm:h-32 object-cover mb-2"
                   />
-                  <p className="text-[#D99828] p-2 font-arial font-bold text-[10px] leading-[24px] tracking-[0.6px] uppercase py-1 inline-block">FEATURED ADVISOR</p>
+                  <p className="text-[#D99828] p-2 font-arial font-bold text-[10px] leading-[24px] tracking-[0.6px] uppercase py-1 inline-block">
+                    FEATURED ADVISOR
+                  </p>
                   <h4 className="font-merriweather p-2 font-bold text-[16px] leading-[28px] text-gray-800">
                     Quant Fund can also be considered for core portfolio
                   </h4>
-                  <p className="text-xs text-gray-500 p-2">Supriya Raj | Mumbai</p>
+                  <p className="text-xs text-gray-500 p-2">
+                    Supriya Raj | Mumbai
+                  </p>
                 </div>
               </div>
             </div>
@@ -1108,18 +1120,15 @@ const App = () => {
                 </div>
               </div>
 
-
               {/* Button */}
-              <div >
+              <div>
                 <button className="bg-[#096FFA] text-white px-5 py-2 sm:px-5 sm:py-3 rounded-md font-semibold hover:bg-blue-700">
                   Find an Advisor
                 </button>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
       <div className="relative bg-[linear-gradient(271.47deg,#EED5BC_17.79%,#CAE5FF_82.21%)] p-6 sm:p-10 lg:p-12 overflow-hidden flex flex-col lg:flex-row items-start lg:items-center mb-8">
         {/* Flower Decoration (left side) */}
@@ -1132,7 +1141,8 @@ const App = () => {
         {/* Left Content */}
         <div className="relative z-10 flex-1 max-w-2xl mb-6 lg:mb-0 px-0 lg:px-[80px] text-center lg:text-left">
           <h2 className="font-['Merriweather'] font-bold text-[20px] sm:text-[22px] lg:text-[26px] leading-[28px] sm:leading-[32px] lg:leading-[36px] text-gray-900 mb-6">
-            Simplify Your Investment Decisions, <br className="hidden sm:block" />
+            Simplify Your Investment Decisions,{" "}
+            <br className="hidden sm:block" />
             Introducing the Mutual Fund Screener
           </h2>
 
@@ -1159,17 +1169,31 @@ const App = () => {
                 <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-700 hover:text-gray-900 cursor-pointer">
                   Axis Mutual Fund
                 </li>
-                <li className="text-gray-400 font-['Inter'] text-[11px]">DSP Mutual Fund</li>
-                <li className="text-gray-400 font-['Inter'] text-[11px]">HDFC Mutual Fund</li>
+                <li className="text-gray-400 font-['Inter'] text-[11px]">
+                  DSP Mutual Fund
+                </li>
+                <li className="text-gray-400 font-['Inter'] text-[11px]">
+                  HDFC Mutual Fund
+                </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-['Inter'] font-semibold text-[11px] leading-[20px] text-gray-700 mb-2">Select Category</h4>
+              <h4 className="font-['Inter'] font-semibold text-[11px] leading-[20px] text-gray-700 mb-2">
+                Select Category
+              </h4>
               <ul className="space-y-2">
-                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-700 hover:text-gray-900 cursor-pointer">Debt Corporate Bond</li>
-                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-800 bg-blue-50 px-2 py-1 rounded">Equity Flexi Cap</li>
-                <li className="text-gray-400 font-['Inter'] text-[11px]">Equity ELSS</li>
-                <li className="text-gray-400 font-['Inter'] text-[11px]">Equity Large Cap</li>
+                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-700 hover:text-gray-900 cursor-pointer">
+                  Debt Corporate Bond
+                </li>
+                <li className="font-['Inter'] font-normal text-[11px] leading-[20px] text-gray-800 bg-blue-50 px-2 py-1 rounded">
+                  Equity Flexi Cap
+                </li>
+                <li className="text-gray-400 font-['Inter'] text-[11px]">
+                  Equity ELSS
+                </li>
+                <li className="text-gray-400 font-['Inter'] text-[11px]">
+                  Equity Large Cap
+                </li>
               </ul>
             </div>
           </div>
@@ -1183,97 +1207,108 @@ const App = () => {
         </div>
       </div>
 
-      <div className="container mx-auto p-4">
-        {/* Fund News Section */}
-        <div className="grid grid-cols-12 gap-12 mb-6">
-          {/* Fund News (col-span-7) */}
-          <div className="col-span-12 md:col-span-7 pr-4">
-            <div className="mb-1 flex justify-between items-center">
+     <div className="mx-auto p-4">
+  {/* Fund News Section */}
+  <div className="grid grid-cols-12  md:gap-12 px-4 sm:px-6 md:px-8 mb-6">
+    {/* Fund News (col-span-7) */}
+    <div className="col-span-12 md:col-span-7 pr-0 md:pr-4">
+      <div className="mb-2 flex justify-between items-center">
+        <h2
+          className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+        >
+          Fund News
+        </h2>
+
+        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+          MORE <ArrowRight className="w-4 h-4 ml-1" />
+        </button>
+      </div>
+      <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div>
+          <p
+            className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+            style={{ fontFamily: "Merriweather" }}
+          >
+            Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae
+            Asset Multicap Fund NFO
+          </p>
+          <p className="text-gray-500 text-xs">24-Aug-2023</p>
+        </div>
+        <div>
+          <p
+            className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+            style={{ fontFamily: "Merriweather" }}
+          >
+            WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund
+          </p>
+          <p className="text-gray-500 text-xs">24-Aug-2023</p>
+        </div>
+        <div>
+          <p
+            className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+            style={{ fontFamily: "Merriweather" }}
+          >
+            Quant Mutual Fund launches Quant Teck Fund
+          </p>
+          <p className="text-gray-500 text-xs">22-Aug-2023</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Advisors Forum (col-span-5) */}
+    <div className="col-span-12 md:col-span-5">
+      <h2
+        className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+      >
+        Advisors Forum
+      </h2>
+      <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+
+      <div className="bg-yellow-50 p-6 rounded-lg flex flex-col md:flex-row items-center justify-between h-auto md:h-[220px]">
+        {/* Left Section - Text + Button */}
+        <div className="flex flex-col md:w-1/2 text-center md:text-left">
+          <p className="font-['Merriweather'] font-bold text-[16px] md:text-[20px] leading-[28px] text-gray-900 mb-4">
+            Start a discussion or Ask us a question.
+          </p>
+
+          <button
+            className="bg-[#096FFA] text-white px-6 py-3 rounded font-['Arial'] font-bold 
+                       text-[11px] md:text-[13px] leading-[12px] tracking-[1px] w-max mx-auto md:mx-0"
+          >
+            Join the community
+          </button>
+        </div>
+
+        {/* Right Section - Single Combined Image */}
+        <div className="relative flex justify-center items-center mt-6 md:mt-0 md:w-1/2">
+          <img
+            src="/profiles-design.png"
+            alt="community profiles"
+            className="w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] h-auto object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div className=" mx-auto px-4 sm:px-8 lg:px-4">
+        <div className="mb-2 px-8">
+          <section className="bg-white">
+            <div className="flex justify-between items-center mb-2">
               <h2
                 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle"
               >
-                Fund News
+                Learn with us
               </h2>
-
-              <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                MORE <ArrowRight className="w-4 h-4 ml-1" />
-              </button>
-            </div>
-            <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <p className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
-                  style={{ fontFamily: "Merriweather" }}>Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae Asset Multicap Fund NFO</p>
-                <p className="text-gray-500 text-xs">24-Aug-2023</p>
-              </div>
-              <div>
-                <p className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
-                  style={{ fontFamily: "Merriweather" }}>WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund</p>
-                <p className="text-gray-500 text-xs">24-Aug-2023</p>
-              </div>
-              <div>
-                <p className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
-                  style={{ fontFamily: "Merriweather" }}>Quant Mutual Fund launches Quant Teck Fund</p>
-                <p className="text-gray-500 text-xs">22-Aug-2023</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Advisors Forum (col-span-5) */}
-          <div className="col-span-12 md:col-span-5">
-            <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle"
-            >Advisors Forum</h2>
-            <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
-
-            <div className="bg-yellow-50 p-4 rounded-lg h-full">
-
-              <p>Start a discussion or Ask us a question.</p>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
-                Join the community
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Learn with us Section */}
-        {/* <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">Learn with us</h2>
-          <a href="#" className="text-blue-500 text-sm">MORE</a>
-        </div> */}
-        {/* <div className="grid grid-cols-4 gap-4">
-          <VideoCard
-            title="Learn Investment or improve your skills online"
-            imageUrl="https://via.placeholder.com/200x150"
-          />
-          <VideoCard
-            title="How to Identify the Best Mutual Funds to Invest in?"
-            imageUrl="https://via.placeholder.com/200x150"
-          />
-          <VideoCard
-            title="Know the fund's management style"
-            imageUrl="https://via.placeholder.com/200x150"
-          />
-          <VideoCard
-            title="How to Identify the Best Mutual Funds to Invest in?"
-            imageUrl="https://via.placeholder.com/200x150"
-          />
-        </div> */}
-      </div>
-      <div className=" mx-auto px-4 sm:px-8 lg:px-4 py-8">
-
-        <div className="mb-2 px-8">
-          <section className="bg-white">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle"
-              >Learn with us</h2>
               <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                 MORE <ArrowRight className="ml-1 h-4 w-4" />
               </button>
-
             </div>
             <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
 
@@ -1305,7 +1340,6 @@ const App = () => {
                     {video.title}
                   </h3>
 
-
                   <div className="pb-3 ps-4 flex items-center text-xs text-gray-500">
                     <Clock className="h-3 w-3 mr-1" />
                     {video.duration}
@@ -1320,9 +1354,12 @@ const App = () => {
         <div className="mb-12 px-8">
           <section className="bg-white">
             <div className="flex justify-between items-center mt-12 mb-2">
-              <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+              <h2
+                className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle"
-              >Must visit on AdvisorKhoj</h2>
+              >
+                Must visit on AdvisorKhoj
+              </h2>
               <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                 MORE <ArrowRight className="ml-1 h-4 w-4" />
               </button>
@@ -1353,7 +1390,6 @@ const App = () => {
                       {tool.title}
                     </h3>
 
-
                     <button
                       className="bg-[#096FFA] mt-4 mb-4 hover:bg-blue-700 ms-3 text-white 
              px-3 py-2 sm:px-4 sm:py-2 rounded 
@@ -1362,13 +1398,10 @@ const App = () => {
                     >
                       {tool.action}
                     </button>
-
                   </div>
                 </div>
               ))}
-
             </div>
-
           </section>
         </div>
 
@@ -1395,10 +1428,10 @@ const App = () => {
                 className="font-[Arial] font-normal text-[14px] leading-[20px] tracking-[0] 
              text-gray-600 align-middle mb-4"
               >
-                Most consistent funds have been chosen based on average rolling returns
-                and consistency with which funds have beaten category average returns.
+                Most consistent funds have been chosen based on average rolling
+                returns and consistency with which funds have beaten category
+                average returns.
               </p>
-
 
               <div className="flex flex-wrap gap-2 mb-2 border-b border[#DCEAEC]">
                 <button
@@ -1416,20 +1449,28 @@ const App = () => {
                   Large Cap
                 </button>
 
-                <button className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle">
+                <button
+                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
+             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
+                >
                   Mid Cap
                 </button>
-                <button className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle">
+                <button
+                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
+             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
+                >
                   ELSS
                 </button>
-                <button className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle">
+                <button
+                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
+             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
+                >
                   Hybrid: Aggressive
                 </button>
-                <button className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle">
+                <button
+                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
+             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
+                >
                   Debt: Low Duration
                 </button>
               </div>
@@ -1445,32 +1486,51 @@ const App = () => {
                         SCHEME NAME
                       </th>
 
-                      <th className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
+                      <th
+                        className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
              tracking-[0] align-middle uppercase"
-                      >AUM (in CR)</th>
-                      <th className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
+                      >
+                        AUM (in CR)
+                      </th>
+                      <th
+                        className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
              tracking-[0] align-middle uppercase"
-                      >LAUNCH DATE</th>
-                      <th className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
+                      >
+                        LAUNCH DATE
+                      </th>
+                      <th
+                        className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
              tracking-[0] align-middle uppercase"
-                      >1Y RTN (%)</th>
-                      <th className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
+                      >
+                        1Y RTN (%)
+                      </th>
+                      <th
+                        className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
              tracking-[0] align-middle uppercase"
-                      >3Y RTN (%)</th>
-                      <th className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
+                      >
+                        3Y RTN (%)
+                      </th>
+                      <th
+                        className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
              tracking-[0] align-middle uppercase"
-                      >5Y RTN (%)</th>
-                      <th className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
+                      >
+                        5Y RTN (%)
+                      </th>
+                      <th
+                        className="text-left py-3 pr-4 font-[Arial] font-bold text-[11px] leading-[13px] 
              tracking-[0] align-middle uppercase"
-                      >10Y RTN (%)</th>
+                      >
+                        10Y RTN (%)
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {funds.map((fund, index) => (
                       <tr
                         key={index}
-                        className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                          }`}
+                        className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
+                          index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                        }`}
                       >
                         <td
                           className="py-3 pr-3 font-[Arial] font-bold text-[12px] leading-[18px] 
@@ -1526,9 +1586,12 @@ const App = () => {
           <div className="lg:col-span-5">
             {/* Queries Section */}
             <section className="bg-white">
-              <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+              <h2
+                className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle mb-2"
-              >Queries</h2>
+              >
+                Queries
+              </h2>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
 
               <div className="space-y-4">
@@ -1559,8 +1622,10 @@ const App = () => {
             {/* Distributor Services Section */}
             <section className="bg-white">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle">
+                <h2
+                  className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                >
                   Mutual Fund Distributor Services
                 </h2>
                 <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
@@ -1602,7 +1667,6 @@ const App = () => {
                         {service.title}
                       </h3>
 
-
                       <p className="text-sm text-gray-600 mb-4">
                         {service.description}
                       </p>
@@ -1614,7 +1678,6 @@ const App = () => {
                       >
                         {service.action}
                       </button>
-
                     </div>
                   );
                 })}
@@ -1622,8 +1685,10 @@ const App = () => {
             </section>
             <section className="bg-white mt-6">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle">
+                <h2
+                  className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                >
                   Hear from the people who love us
                 </h2>
                 <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
@@ -1670,8 +1735,6 @@ const App = () => {
                   </div>
                 ))}
               </div>
-
-
             </section>
           </div>
 
@@ -1679,8 +1742,10 @@ const App = () => {
             {/* Fund Tracker Section */}
             <section className="bg-white border-b border-[#DCEAEC] pb-4">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle">
+                <h2
+                  className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                >
                   Fund Performance Tracker of AMCs
                 </h2>
                 <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
@@ -1706,7 +1771,6 @@ const App = () => {
                       <span className="font-[Arial] font-normal text-[12px] leading-[32px] text-gray-900 align-middle">
                         {amc.name}
                       </span>
-
                     </div>
                   ))}
                 </div>
@@ -1726,7 +1790,6 @@ const App = () => {
                       <span className="font-[Arial] font-normal text-[12px] leading-[32px] text-gray-900 align-middle">
                         {amc.name}
                       </span>
-
                     </div>
                   ))}
                 </div>
@@ -1736,11 +1799,11 @@ const App = () => {
               <div className="grid grid-cols-2 md:grid-cols-2 gap-6 w-full ">
                 {stats.map((stat, index) => (
                   <div key={index} className="">
-                     <img
-                  src={vector4}
-                  alt="Flower Decoration"
-                  className="absolute top-[20px] right-[15px] w-[78px] h-[78] sm:w-16 "
-                />
+                    <img
+                      src={vector4}
+                      alt="Flower Decoration"
+                      className="absolute top-[20px] right-[15px] w-[78px] h-[78] sm:w-16 "
+                    />
                     <div className="font-sans font-bold text-[24px] leading-[28px] text-gray-900 mb-2">
                       {stat.number}
                     </div>
@@ -1748,85 +1811,40 @@ const App = () => {
                     <div className="font-sans font-normal text-[11px] leading-[14px] text-gray-700">
                       {stat.label}
                     </div>
-
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
         </div>
-
-        {/* Testimonials section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 px-8">
-          {/* Testimonials Section */}
-          <div className="lg:col-span-7">
-            {/* <section className="bg-white">
-              <div className="flex justify-between items-center mb-2">
-                <h2 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle">
-                  Hear from the people who love us
-                </h2>
-                <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                  VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
-                </button>
-              </div>
-              <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {testimonials.map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-lg"
-                  >
-                    <div className="flex items-start mb-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full object-cover mr-4"
-                      />
-                      <div>
-                        <h4 className="font-semibold text-gray-900">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      </div>
-                    </div>
-
-                    <p className="text-gray-700 leading-relaxed">
-                      {testimonial.quote}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section> */}
-          </div>
-
-          {/* Statistics Section */}
-          <div className="lg:col-span-5">
-
-          </div>
-        </div>
-
 
         {/* Brand Partners section */}
-        <div className=" ">
+        <div>
           <section className="bg-white">
-            <h2  className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle mb-2 ms-8">Brands we work with</h2>
-              <div className="w-full h-[1px] bg-[#111111] "></div>
+            <h2
+              className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle mb-2 ms-8"
+            >
+              Brands we work with
+            </h2>
+            <div className="w-full h-[1px] bg-[#111111] "></div>
 
-            <div className="flex flex-wrap items-center justify-center md:justify-between gap-8 py-8 bg-[#F8F9F9]">
+            <div className="flex flex-wrap items-center justify-center p-6 md:justify-between gap-8 py-8 bg-[#F8F9F9]">
               {brands.map((brand, index) => (
-                <div key={index} className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
-                  <span className="text-2xl">{brand.logo}</span>
-                  <span className="font-medium text-sm">{brand.name}</span>
+                <div
+                  key={index}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+                >
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="w-[150px] h-[48px] mr-3 object-contain"
+                  />
                 </div>
               ))}
             </div>
           </section>
         </div>
-
       </div>
 
       <Footer />
