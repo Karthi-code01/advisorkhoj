@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         merriweather: ['Merriweather', 'serif'],
+        arial: ['Arial', 'sans-serif'], // ✅ Add Arial here
       },
     },
   },

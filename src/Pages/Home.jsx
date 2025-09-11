@@ -1,34 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Search,
-  Menu,
-  X,
-  Play,
-  Eye,
   MessageCircle,
   Clock,
   ArrowRight,
-  TrendingUp,
-  TrendingDown,
-  Users,
-  Briefcase,
-  Target,
   BarChart3,
-  Youtube,
-  Twitter,
-  Linkedin,
-  Facebook,
 } from "lucide-react";
 import {
-  Calendar,
   Calculator,
   PieChart,
-  Globe,
-  Settings,
-  Smartphone,
 } from "lucide-react";
 import twoArrows from "../assets/Images/Vector (1).png";
-import logo from "../assets/Images/logo.png";
 import aimImage from "../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
 import vector2 from "../assets/Images/Vector (2).png";
 import vector3 from "../assets/Images/Vector (3).png";
@@ -64,9 +46,18 @@ import brand3 from "../assets/Images/4945e85c4b05341f9f57272e2117814c25ee3458.pn
 import brand4 from "../assets/Images/c097f8caef30a358bb62300f1d9a79643025b68b.png";
 import brand5 from "../assets/Images/6805b5825f219d1fc614e6c3cf97fd8ade2c9e7c.jpg";
 import brand6 from "../assets/Images/a7543c32da9b90c37b71b290b3e64d8ab7be2dfd.png";
-import vector from "../assets/Images/Vector.png"
-import vector1 from '../assets/Images/Vector (01).png'
-import group from '../assets/Images/Group 19.png'
+
+import playIcon from '../assets/Images/arrow.png'
+import groupicon from '../assets/Images/advisor forum image.png'
+import image1 from '../assets/Images/62a72e9877f29aeb509fefb4fb9bc9c472d64623.png'
+import image2 from '../assets/Images/241a87d3c95d570455dff9d1c11647f97b6babf8.png'
+import image3 from '../assets/Images/3153823c1f81f2fe586e4b9dae485b114e674bd4.png'
+import image4 from '../assets/Images/a704b8a182e131059a12b4ffc0d55fffe2bb89fc.png'
+import image5 from '../assets/Images/e1fcda19a8fe9d543f6856742ce60adb78c78b42.jpg'
+import messageIcon from '../assets/Images/SVG.png'
+import Header from "./Header";
+
+
 
 const stockData = [
   {
@@ -85,6 +76,18 @@ const stockData = [
     symbol: "HEROMOTOCO",
     price: "₹2544.00",
     change: "-48.9 (1.13%)",
+    negative: false,
+  },
+  {
+    symbol: "COALINDIA",
+    price: "₹372.80",
+    change: "-5.60 (1.48%)",
+    negative: true,
+  },
+  {
+    symbol: "ASHIANIHSG",
+    price: "₹234.00",
+    change: "37.11 (18.8%)",
     negative: false,
   },
   {
@@ -295,6 +298,38 @@ const queries = [
     date: "24-Aug-2023",
   },
 ];
+const benchmarks = [
+  {
+    name: "Nifty Bees TRI",
+    return1y: "+16.22",
+    return3y: "+31.56",
+    return5y: "+31.56",
+  },
+  {
+    name: "S&P BSE Quality TRI",
+    return1y: "+8.22",
+    return3y: "+20.00",
+    return5y: "+31.56",
+  },
+  {
+    name: "Nifty Bees TRI",
+    return1y: "+16.22",
+    return3y: "+31.56",
+    return5y: "+31.56",
+  },
+  {
+    name: "Nifty Bees TRI",
+    return1y: "+16.22",
+    return3y: "+31.56",
+    return5y: "+31.56",
+  },
+  {
+    name: "Nifty Bees TRI",
+    return1y: "+16.22",
+    return3y: "+31.56",
+    return5y: "+31.56",
+  },
+];
 
 // Distributor Services Data
 const services = [
@@ -399,27 +434,19 @@ const brands = [
   { name: "HSBC Asset Management", logo: brand6 },
 ];
 
-const StockTicker = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % stockData.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+const StockTicker = ({ stockData = [] }) => {
+  if (!stockData || stockData.length === 0) return null;
 
   return (
-    <div className="px-2 sm:px-3 py-3 overflow-x-auto">
-      <div className="flex space-x-2 sm:space-x-3 min-w-max">
-        {stockData.map((stock, index) => (
+    <div className="overflow-hidden w-full py-3">
+      <div className="flex animate-marquee space-x-4 min-w-max">
+        {stockData.concat(stockData).map((stock, index) => (
           <div
             key={index}
-            className={`flex items-center space-x-2 sm:space-x-4 px-2 sm:px-3 py-2 sm:py-3 rounded-full text-xs sm:text-sm ${
-              stock.negative
+            className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs sm:text-sm ${stock.negative
                 ? "bg-[#FFF4F4] text-red-600"
                 : "bg-[#F5FFEE] text-green-600"
-            }`}
+              }`}
           >
             <span className="font-semibold text-[#444444]">{stock.symbol}</span>
             <span className="text-[#444444]">{stock.price}</span>
@@ -427,89 +454,42 @@ const StockTicker = () => {
           </div>
         ))}
       </div>
+
+      {/* Tailwind + inline CSS animation */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-marquee {
+          display: flex;
+          animation: marquee 20s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  return (
-    <div className="bg-white">
-      <div className="bg-white py-4 sm:py-6 px-4 sm:px-6 flex items-center justify-between">
-        <img
-          src={logo}
-          alt="advisorkhoj logo"
-          className="w-24 sm:w-32 h-6 sm:h-8 object-contain"
-        />
-        <button onClick={toggleMenu} className="sm:hidden text-gray-600">
-          {isMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
-        </button>
-      </div>
 
-      <nav
-        className={`bg-[#163164] py-4 px-4 sm:px-6 ${
-          isMenuOpen ? "block" : "hidden sm:block"
-        }`}
-      >
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-8">
-            <a
-              href="#"
-              className="text-white hover:text-blue-200 py-2 sm:py-0 flex items-center text-sm sm:text-base"
-            >
-              <Menu className="w-4 h-4 mr-2" />
-              Home
-            </a>
-            {[
-              "MF Research",
-              "Articles",
-              "Services",
-              "Mutual Funds",
-              "ETFs",
-              "Calculators",
-              "Interviews",
-              "AMCs",
-            ].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-white hover:text-blue-200 py-2 sm:py-0 text-sm sm:text-base"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-          <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-            <Search className="text-white w-5 h-5" />
-            <button className="bg-[#096FFA] text-white px-4 py-1 rounded hover:bg-blue-700 text-sm">
-              Login
-            </button>
-            <button className="bg-[#FFA901] text-white px-4 py-1 rounded hover:bg-orange-600 text-sm">
-              Register
-            </button>
-          </div>
-        </div>
-      </nav>
-      <StockTicker />
-    </div>
-  );
-};
-
-const NewsCard = ({ title, subtitle, readTime, image, isVideo = false }) => (
+const NewsCard = ({ title, subtitle, msgcount, readTime, image, isVideo = false }) => (
   <div className="bg-white">
     <div className="relative">
       <img src={image} alt={title} className="w-full h-[220px] object-cover" />
       {isVideo && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-[#096FFA] text-white p-3 rounded-full hover:bg-blue-700 cursor-pointer">
-            <Play className="w-5 sm:w-6 h-5 sm:h-6" />
+          <div className="bg-[#096FFA] hover:bg-blue-700 p-3 h-[40px] w-[40px] rounded-full flex items-center justify-center shadow-lg">
+            <img
+              src={playIcon}
+              alt="Play"
+              className="h-[15px] w-[12px]"
+            />
           </div>
         </div>
       )}
@@ -523,32 +503,38 @@ const NewsCard = ({ title, subtitle, readTime, image, isVideo = false }) => (
         <p className="text-xs sm:text-sm text-gray-600 mb-2 py-2">{subtitle}</p>
       )}
 
-      <div className="flex items-center space-x-2  text-xs text-gray-500">
+      <div className="flex items-center space-x-2 text-xs text-gray-500">
         <button
           className={`text-xs sm:text-sm px-3 py-1 rounded-sm transition 
-      ${
-        isVideo
-          ? "bg-[#096FFA] text-white hover:bg-blue-700"
-          : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
-      }`}
+            ${isVideo
+              ? "bg-[#096FFA] text-white hover:bg-blue-700"
+              : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
+            }`}
         >
           {isVideo ? "Watch the video" : "Read the story"}
         </button>
         <span className="flex items-center">
-          <Clock className="w-3 h-3 mr-1" />
+          <button className="">
+            <img
+              src={messageIcon}
+              alt="Message"
+              className="w-4 h-4 mr-1"
+            />
+
+          </button>
+          {msgcount}
+        </span>
+        <span className="flex items-center">
+          <Clock className="w-4 h-4 mr-1" />
           {readTime}
         </span>
         <div className="flex space-x-2">
-          <button className="hover:text-blue-600">
-            <Eye className="w-4 h-4" />
-          </button>
-          <button className="hover:text-blue-600">
-            <MessageCircle className="w-4 h-4" />
-          </button>
+
+
         </div>
       </div>
     </div>
-  </div>
+  </div >
 );
 
 const FundCard = ({ title, description, readTime }) => (
@@ -627,15 +613,16 @@ const PerformanceTable = () => (
               <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-gray-800 text-xs sm:text-sm">
                 {fund.name}
               </td>
-              <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 font-semibold text-xs sm:text-sm">
+              <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-[#098941] font-normal text-[13px] leading-[18px] align-middle font-[Arial]">
                 {fund.return1y}
               </td>
-              <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 font-semibold text-xs sm:text-sm">
+              <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-[#098941] font-normal text-[13px] leading-[18px] align-middle font-[Arial]">
                 {fund.return3y}
               </td>
-              <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 font-semibold text-xs sm:text-sm">
+              <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-[#098941] font-normal text-[13px] leading-[18px] align-middle font-[Arial]">
                 {fund.return5y}
               </td>
+
             </tr>
           ))}
         </tbody>
@@ -652,7 +639,7 @@ const AdvisorCard = ({ name, role, company, image, featured = false }) => (
     </div>
 
     {/* Text content */}
-    <div className="p-3 sm:p-4">
+    <div className="pt-6">
       <h3 className="font-merriweather font-bold text-[16px] leading-[28px] tracking-[0%] align-middle text-gray-800 mb-1 sm:text-base">
         {name}
       </h3>
@@ -661,10 +648,8 @@ const AdvisorCard = ({ name, role, company, image, featured = false }) => (
       </h3>
       <p className="text-xs sm:text-sm text-gray-500">{company}</p>
 
-      {/* Featured description */}
 
-      {/* Buttons */}
-      <div className="flex items-center justify-between mt-3">
+      <div className="flex items-center justify-between mt-5">
         <div className="flex space-x-2">
           <button className="bg-white text-[#111111] font-bold text-[11px] leading-[12px] tracking-[1px] align-middle px-3 sm:px-4 py-1 sm:py-2 rounded border border-black">
             View Interview
@@ -679,17 +664,38 @@ const AdvisorCard = ({ name, role, company, image, featured = false }) => (
         </div>
       </div>
 
-      {/* Read time */}
     </div>
   </div>
 );
 
 const App = () => {
+  const [activeTab, setActiveTab] = useState("For Distributors");
+
+  const tabs = [
+    "For Distributors",
+    "For Investors",
+    "For AMCs",
+    "For Dummy Tab",
+  ];
+  const [fundactiveTab, setfundActiveTab] = useState("Large & Mid");
+
+  const fundtabs = [
+    "Large & Mid",
+    "Large Cap",
+    "Mid Cap",
+    "ELSS",
+    "Hybrid: Aggressive",
+    "Debt: Low Duration",
+  ];
+  const [termactiveTab, settermActiveTab] = useState("Long Term");
+
+  const termtabs = ["Long Term", "Short Term"];
+
   return (
     <div className="min-h-screen ">
       <Header />
-
-      <div className="container mx-auto px-4 sm:px-8 py-6 sm:py-8">
+      <StockTicker stockData={stockData} />
+      <div className=" mx-auto px-4 sm:px-8 py-6 sm:py-8">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 sm:gap-8">
           <div className="sm:col-span-7">
             <div className="mb-6 sm:mb-8">
@@ -697,9 +703,17 @@ const App = () => {
                 <h2 className="text-lg sm:text-xl font-semibold text-[#000000]">
                   Latest From AdvisorKhoj
                 </h2>
-                <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                  MORE {arrow}
+                <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                  MORE
+                  <img
+                    src={arrow}
+                    alt="arrow"
+                    className="w-[13px] h-[13px] object-contain invert"
+                  />
+
+
                 </button>
+
               </div>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
               <p className="text-[#D99828] font-arial font-bold text-[10px] leading-[24px] tracking-[0.6px] uppercase py-1 inline-block">
@@ -714,15 +728,18 @@ const App = () => {
                     title="SBI Mutual Fund offers Unidiverse: Four funds, four investment styles, one investment solution"
                     subtitle="Diversification refers to building a portfolio with multiple assets to reduce the risk associated with a single asset. For example, a diversified equity fund invests in a portfolio of stocks across different industry sectors and market capitalization segments."
                     readTime="4 min read"
-                    image="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    image={image1}
+                    msgcount="0"
                   />
                   <br />
                   <NewsCard
                     title="How badly will the Indian stock market crash affect your investments?"
                     subtitle="Diversification refers to building a portfolio with multiple assets to reduce the risk associated with a single asset. For example, a diversified equity fund invests in a portfolio of stocks across different industry sectors and market capitalization segments."
                     readTime="5 min read"
-                    image="https://images.pexels.com/photos/7567456/pexels-photo-7567456.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    image={image2}
                     isVideo={true}
+                    msgcount="0"
+
                   />
                 </div>
 
@@ -809,21 +826,30 @@ const App = () => {
               </div>
             </div>
 
-            <div className="mt-6 sm:mt-8 ">
+            <div className="mt-6 sm:mt-8">
               <h2 className="font-sans font-bold text-[16px] leading-[19px] tracking-[1px] align-middle text-gray-800 mb-4">
                 Benchmark Monitor
               </h2>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
 
-              <div className="flex space-x-3 sm:space-x-4 mb-4">
-                <button className="text-blue-600 border-b-2 border-blue-600 pb-2 whitespace-nowrap font-sans font-bold text-[13px] leading-[21px] tracking-normal align-middle">
-                  Long Term
-                </button>
-
-                <button className="text-gray-600 hover:text-blue-600 pb-2 whitespace-nowrap font-sans font-bold text-[13px] leading-[21px] tracking-normal align-middle">
-                  Short Term
-                </button>
+              {/* Tabs */}
+              <div className="flex space-x-3 sm:space-x-4 mb-4 border-b border-[#DCEAEC] overflow-x-auto">
+                {termtabs.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => settermActiveTab(tab)}
+                    className={`whitespace-nowrap pb-2 font-sans font-bold text-[13px] leading-[21px] tracking-normal align-middle border-b-2 transition-colors
+              ${termactiveTab === tab
+                        ? "font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] align-middle border-blue-600"
+                        : "text-gray-600 border-transparent hover:text-blue-600"
+                      }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
               </div>
+
+              {/* Table */}
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gray-50">
@@ -843,76 +869,23 @@ const App = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b">
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-xs sm:text-sm">
-                        Nifty Bees TRI
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +16.22
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-xs sm:text-sm">
-                        S&P BSE Quality TRI
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +8.22
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +20.00
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-xs sm:text-sm">
-                        Nifty Bees TRI
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +16.22
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-xs sm:text-sm">
-                        Nifty Bees TRI
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +16.22
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-xs sm:text-sm">
-                        Nifty Bees TRI
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +16.22
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 text-xs sm:text-sm">
-                        +31.56
-                      </td>
-                    </tr>
+                    {benchmarks.map((fund, index) => (
+                      <tr key={index} className="border-b">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 font-medium text-xs sm:text-sm">
+                          {fund.name}
+                        </td>
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 font-normal text-[13px] leading-[18px] align-middle font-[Arial]">
+                          {fund.return1y}
+                        </td>
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 font-normal text-[13px] leading-[18px] align-middle font-[Arial]">
+                          {fund.return3y}
+                        </td>
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-center text-green-600 font-normal text-[13px] leading-[18px] align-middle font-[Arial]">
+                          {fund.return5y}
+                        </td>
+
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -926,19 +899,26 @@ const App = () => {
               </h2>
 
               <div className="w-full h-[1px] bg-[#111111] mb-4"></div>
-              <div className="flex space-x-2 sm:space-x-4 mb-4 sm:mb-6 text-xs sm:text-sm overflow-x-auto">
-                <button className="text-blue-600 border-b-2 border-blue-600 pb-2 whitespace-nowrap">
-                  For Distributors
-                </button>
-                <button className="text-gray-600 hover:text-blue-600 pb-2 whitespace-nowrap">
-                  For Investors
-                </button>
-                <button className="text-gray-600 hover:text-blue-600 pb-2 whitespace-nowrap">
-                  For AMCs
-                </button>
-                <button className="text-gray-600 hover:text-blue-600 pb-2 whitespace-nowrap">
-                  For Dummy Tab
-                </button>
+              <div className="overflow-x-auto">
+                <div >
+                  {/* Tab Buttons */}
+                  <div className="flex space-x-2 sm:space-x-4 mb-4 sm:mb-6 text-xs sm:text-sm overflow-x-auto border-b border-[#DCEAEC]">
+                    {tabs.map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${activeTab === tab
+                            ? "font-[Arial] font-bold text-[13px] leading-[21px] border-blue-600"
+                            : "text-gray-600 border-transparent hover:text-blue-600"
+                          }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </div>
+
+
+                </div>
               </div>
 
               <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] h-[250px] relative p-6 sm:p-10">
@@ -995,16 +975,16 @@ const App = () => {
               </div>
             </div>
 
-            <div className="p-6 mb-6 sm:mb-8">
+            <div className="p-6">
               <h2 className="font-arial font-bold text-[16px] leading-[19px] tracking-[1px] text-gray-800 mb-4">
                 Stories from Advisors
               </h2>
               <div className="w-full h-[1px] bg-[#111111] mb-4"></div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-4 ">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8  ">
                 <div>
                   <img
-                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src={image3}
                     alt="Advisor"
                     className="w-full h-28 sm:h-32 object-cover  mb-2"
                   />
@@ -1021,7 +1001,7 @@ const App = () => {
                 </div>
                 <div>
                   <img
-                    src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src={image4}
                     alt="Advisor"
                     className="w-full h-28 sm:h-32 object-cover mb-2"
                   />
@@ -1047,12 +1027,12 @@ const App = () => {
                 name="Mr. Gautam Bhupal - Fund Manager"
                 role="HSBC Asset Management, India"
                 company="Consumption Funds Can be Core of An Investors Portfolio."
-                image="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400"
+                image={image5}
                 featured={true}
               />
             </div>
 
-            <div className="relative bg-white m-6 p-6 sm:p-10 overflow-hidden ">
+            <div className="relative bg-white m-6 p-6 sm:p-10 sm:h-[500px] overflow-hidden ">
               {/* Decorative flower images */}
               <img
                 src={vector2}
@@ -1066,7 +1046,7 @@ const App = () => {
               />
 
               {/* Heading */}
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 ">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 pt-6">
                 Your search for investment
               </h2>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-800  mb-6">
@@ -1074,7 +1054,7 @@ const App = () => {
               </h2>
 
               {/* Advisor Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 pt-2">
                 <div className="text-center">
                   <img
                     src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=200"
@@ -1207,97 +1187,103 @@ const App = () => {
         </div>
       </div>
 
-     <div className="mx-auto p-4">
-  {/* Fund News Section */}
-  <div className="grid grid-cols-12  md:gap-12 px-4 sm:px-6 md:px-8 mb-6">
-    {/* Fund News (col-span-7) */}
-    <div className="col-span-12 md:col-span-7 pr-0 md:pr-4">
-      <div className="mb-2 flex justify-between items-center">
-        <h2
-          className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+      <div className="mx-auto p-4">
+        {/* Fund News Section */}
+        <div className="grid grid-cols-12  md:gap-12 px-4 sm:px-6 md:px-8 mb-6">
+          {/* Fund News (col-span-7) */}
+          <div className="col-span-12 md:col-span-7 pr-0 md:pr-4">
+            <div className="mb-2 flex justify-between items-center">
+              <h2
+                className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle"
-        >
-          Fund News
-        </h2>
+              >
+                Fund News
+              </h2>
 
-        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-          MORE <ArrowRight className="w-4 h-4 ml-1" />
-        </button>
-      </div>
-      <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+              <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                MORE
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-[13px] h-[13px] object-contain invert"
+                />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div>
-          <p
-            className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
-            style={{ fontFamily: "Merriweather" }}
-          >
-            Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae
-            Asset Multicap Fund NFO
-          </p>
-          <p className="text-gray-500 text-xs">24-Aug-2023</p>
-        </div>
-        <div>
-          <p
-            className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
-            style={{ fontFamily: "Merriweather" }}
-          >
-            WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund
-          </p>
-          <p className="text-gray-500 text-xs">24-Aug-2023</p>
-        </div>
-        <div>
-          <p
-            className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
-            style={{ fontFamily: "Merriweather" }}
-          >
-            Quant Mutual Fund launches Quant Teck Fund
-          </p>
-          <p className="text-gray-500 text-xs">22-Aug-2023</p>
-        </div>
-      </div>
-    </div>
+              </button>
+            </div>
+            <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
 
-    {/* Advisors Forum (col-span-5) */}
-    <div className="col-span-12 md:col-span-5">
-      <h2
-        className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle"
-      >
-        Advisors Forum
-      </h2>
-      <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div>
+                <p
+                  className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+                  style={{ fontFamily: "Merriweather" }}
+                >
+                  Mirae Asset Mutual Fund garners more than Rs. 1,393 crore in Mirae
+                  Asset Multicap Fund NFO
+                </p>
+                <p className="text-gray-500 text-xs">24-Aug-2023</p>
+              </div>
+              <div>
+                <p
+                  className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+                  style={{ fontFamily: "Merriweather" }}
+                >
+                  WhiteOak Capital Mutual Fund launches WhiteOak Capital Multi Cap Fund
+                </p>
+                <p className="text-gray-500 text-xs">24-Aug-2023</p>
+              </div>
+              <div>
+                <p
+                  className="font-serif font-bold text-[16px] leading-[28px] tracking-[0%]"
+                  style={{ fontFamily: "Merriweather" }}
+                >
+                  Quant Mutual Fund launches Quant Teck Fund
+                </p>
+                <p className="text-gray-500 text-xs">22-Aug-2023</p>
+              </div>
+            </div>
+          </div>
 
-      <div className="bg-yellow-50 p-6 rounded-lg flex flex-col md:flex-row items-center justify-between h-auto md:h-[220px]">
-        {/* Left Section - Text + Button */}
-        <div className="flex flex-col md:w-1/2 text-center md:text-left">
-          <p className="font-['Merriweather'] font-bold text-[16px] md:text-[20px] leading-[28px] text-gray-900 mb-4">
-            Start a discussion or Ask us a question.
-          </p>
+          {/* Advisors Forum (col-span-5) */}
+          <div className="col-span-12 md:col-span-5">
+            <h2
+              className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle mb-2"
+            >
+              Advisors Forum
+            </h2>
+            <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
 
-          <button
-            className="bg-[#096FFA] text-white px-6 py-3 rounded font-['Arial'] font-bold 
+            <div className="bg-yellow-50 p-6 rounded-lg flex flex-col md:flex-row items-center justify-between h-auto md:h-[220px]">
+              {/* Left Section - Text + Button */}
+              <div className="flex flex-col md:w-1/2 text-center md:text-left">
+                <p className="font-['Merriweather'] font-bold text-[16px] md:text-[20px] leading-[28px] text-gray-900 mb-4">
+                  Start a discussion or Ask us a question.
+                </p>
+
+                <button
+                  className="bg-[#096FFA] text-white px-6 py-3 rounded font-['Arial'] font-bold 
                        text-[11px] md:text-[13px] leading-[12px] tracking-[1px] w-max mx-auto md:mx-0"
-          >
-            Join the community
-          </button>
-        </div>
+                >
+                  Join the community
+                </button>
+              </div>
 
-        {/* Right Section - Single Combined Image */}
-        <div className="relative flex justify-center items-center mt-6 md:mt-0 md:w-1/2">
-          <img
-            src="/profiles-design.png"
-            alt="community profiles"
-            className="w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] h-auto object-contain"
-          />
+              {/* Right Section - Single Combined Image */}
+              <div className="relative flex justify-center items-center mt-6 md:mt-0 md:w-1/2">
+                <img
+                  src={groupicon}
+                  alt="community profiles"
+                  className="w-[180px] sm:w-[205px] md:w-[260px] lg:w-[300px] h-[120px] object-contain"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
-      <div className=" mx-auto px-4 sm:px-8 lg:px-4">
-        <div className="mb-2 px-8">
+      <div className="">
+        <div className="ms-4 mr-4 mb-2 px-8">
           <section className="bg-white">
             <div className="flex justify-between items-center mb-2">
               <h2
@@ -1306,8 +1292,14 @@ const App = () => {
               >
                 Learn with us
               </h2>
-              <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                MORE <ArrowRight className="ml-1 h-4 w-4" />
+              <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                MORE
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-[13px] h-[13px] object-contain invert"
+                />
+
               </button>
             </div>
             <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -1317,41 +1309,54 @@ const App = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               {videos.map((video, index) => (
-                <div key={index} className="group cursor-pointer bg-[#F9F5E8]">
+                <div
+                  key={index}
+                  className="group cursor-pointer bg-[#F9F5E8] relative"
+                >
                   <div className="relative mb-3">
+                    {/* Thumbnail */}
                     <img
                       src={video.thumbnail}
                       alt={video.title}
-                      className="w-full h-32 object-cover group-hover:opacity-90 transition-opacity"
+                      className="w-full h-32 object-cover transition-opacity duration-300 group-hover:opacity-70"
                     />
+
+                    {/* Play button always visible */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-colors">
-                        <Play className="h-4 w-4" />
+                      <div className="bg-[#096FFA] hover:bg-blue-700 p-3 h-[40px] w-[40px] rounded-full flex items-center justify-center z-10">
+                        <img
+                          src={playIcon}
+                          alt="Play"
+                          className="h-[15px] w-[12px]"
+                        />
                       </div>
                     </div>
-                    {/* {video.category && (
-                      <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
-                        {video.category}
-                      </div>
-                    )} */}
+
+                    {/* Overlay with text (only on hover) */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                      <span className="text-white text-sm font-medium mt-[60px]">Play Video</span>
+                    </div>
                   </div>
 
-                  <h3 className="px-4 py-2 font-['Merriweather'] font-bold text-[14px] leading-[22px] text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                  {/* Title */}
+                  <h3 className="px-4 py-2 font-['Merriweather'] font-bold text-[14px] leading-[22px] text-gray-900 mb-2 line-clamp-2 transition-colors">
                     {video.title}
                   </h3>
 
+                  {/* Duration */}
                   <div className="pb-3 ps-4 flex items-center text-xs text-gray-500">
                     <Clock className="h-3 w-3 mr-1" />
                     {video.duration}
                   </div>
                 </div>
               ))}
+
             </div>
           </section>
         </div>
 
         {/* Must visit section */}
-        <div className="mb-12 px-8">
+        <div className="mb-12 ms-4 mr-4 px-8">
           <section className="bg-white">
             <div className="flex justify-between items-center mt-12 mb-2">
               <h2
@@ -1360,8 +1365,14 @@ const App = () => {
               >
                 Must visit on AdvisorKhoj
               </h2>
-              <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                MORE <ArrowRight className="ml-1 h-4 w-4" />
+              <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                MORE
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-[13px] h-[13px] object-contain invert"
+                />
+
               </button>
             </div>
             <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -1386,7 +1397,7 @@ const App = () => {
 
                   {/* Foreground Content */}
                   <div className="relative z-10">
-                    <h3 className="font-['Merriweather'] font-bold text-[14px] sm:text-[16px] leading-[20px] sm:leading-[22px] text-gray-900 mb-2 pr-12 px-3 pt-2">
+                    <h3 className="font-['Merriweather'] font-bold text-[14px] sm:text-[16px] leading-[20px] sm:leading-[22px] text-gray-900 mb-2 pr-16 px-3 pt-2">
                       {tool.title}
                     </h3>
 
@@ -1406,7 +1417,7 @@ const App = () => {
         </div>
 
         {/* Performance and Queries section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12 px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 ms-4 mr-4 mb-12 px-8">
           <div className="lg:col-span-7">
             {/* Performing Funds Section */}
             <section className="bg-white">
@@ -1418,8 +1429,14 @@ const App = () => {
                   Most Consistent Performing Funds
                 </h2>
 
-                <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                  MORE <ArrowRight className="ml-1 h-4 w-4" />
+                <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                  MORE
+                  <img
+                    src={arrow}
+                    alt="arrow"
+                    className="w-[13px] h-[13px] object-contain invert"
+                  />
+
                 </button>
               </div>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -1433,46 +1450,23 @@ const App = () => {
                 average returns.
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-2 border-b border[#DCEAEC]">
-                <button
-                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#111111] border-b-2 border-blue-600 pb-2 
-             whitespace-nowrap align-middle"
-                >
-                  Large & Mid
-                </button>
+              <div className="border-b border-[#DCEAEC] overflow-x-auto">
+                <div className="flex flex-nowrap gap-4">
+                  {fundtabs.map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setfundActiveTab(tab)}
+                      className={`font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] whitespace-nowrap align-middle pb-2 border-b-2 transition-colors
+              ${fundactiveTab === tab
+                          ? "text-[#111111] border-blue-600"
+                          : "text-[#848F91] border-transparent hover:text-blue-600"
+                        }`}
+                    >
+                      {tab}
+                    </button>
+                  ))}
+                </div>
 
-                <button
-                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
-                >
-                  Large Cap
-                </button>
-
-                <button
-                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
-                >
-                  Mid Cap
-                </button>
-                <button
-                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
-                >
-                  ELSS
-                </button>
-                <button
-                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
-                >
-                  Hybrid: Aggressive
-                </button>
-                <button
-                  className="font-[Arial] font-bold text-[13px] leading-[21px] tracking-[0] 
-             text-[#848F91] hover:text-blue-600 pb-2 whitespace-nowrap align-middle"
-                >
-                  Debt: Low Duration
-                </button>
               </div>
 
               <div className="overflow-x-auto">
@@ -1528,9 +1522,8 @@ const App = () => {
                     {funds.map((fund, index) => (
                       <tr
                         key={index}
-                        className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-                          index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                        }`}
+                        className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                          }`}
                       >
                         <td
                           className="py-3 pr-3 font-[Arial] font-bold text-[12px] leading-[18px] 
@@ -1602,7 +1595,7 @@ const App = () => {
                   >
                     <h3
                       className="font-['Merriweather'] font-bold text-[16px] leading-[28px] 
-             tracking-[0] text-gray-900 hover:text-blue-600 
+             tracking-[0] text-gray-900 
              cursor-pointer transition-colors align-middle mb-2"
                     >
                       {query.title}
@@ -1617,7 +1610,7 @@ const App = () => {
         </div>
 
         {/* Services and Tracker section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12 px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 ms-4 mr-4 mb-12 px-8">
           <div className="lg:col-span-7">
             {/* Distributor Services Section */}
             <section className="bg-white">
@@ -1628,8 +1621,14 @@ const App = () => {
                 >
                   Mutual Fund Distributor Services
                 </h2>
-                <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                  MORE <ArrowRight className="ml-1 h-4 w-4" />
+                <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                  MORE
+                  <img
+                    src={arrow}
+                    alt="arrow"
+                    className="w-[13px] h-[13px] object-contain invert"
+                  />
+
                 </button>
               </div>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -1701,21 +1700,21 @@ const App = () => {
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className="bg-[#E8F0FF] p-6 w-full sm:w-[360px] min-h-[367px] relative rounded-lg flex flex-col"
+                    className="bg-[#E8F0FF] p-6 w-full sm:w-[410px] min-h-[367px] relative  flex flex-col"
                   >
                     {/* Quote mark above profile image */}
                     <img
                       src={comma}
                       alt="quote"
-                      className="w-6 h-6 absolute top-[40px] left-[27px]"
+                      className="w-6 h-6 absolute top-[40px] left-[53px]"
                     />
 
                     {/* Top Section with Image + Name/Role */}
-                    <div className="flex items-center mb-4 mt-6">
+                    <div className="flex items-center mb-4 mt-6 px-6">
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] rounded-full object-cover"
+                        className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] rounded-full object-cover"
                       />
 
                       <div className="ml-4">
@@ -1729,7 +1728,7 @@ const App = () => {
                     </div>
 
                     {/* Quote Text */}
-                    <p className="font-[Merriweather] font-bold text-[14px] sm:text-[16px] leading-[22px] sm:leading-[24px] text-gray-700">
+                    <p className="font-[Merriweather] px-8 font-bold text-[14px] sm:text-[16px] leading-[22px] sm:leading-[24px] text-gray-700">
                       {testimonial.quote}
                     </p>
                   </div>
@@ -1795,7 +1794,7 @@ const App = () => {
                 </div>
               </div>
             </section>
-            <div className="bg-[#F8F9F9] rounded-lg p-8 mt-4 flex items-center relative">
+            <div className="bg-[#F8F9F9]  p-8 mt-4 flex items-center relative">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-6 w-full ">
                 {stats.map((stat, index) => (
                   <div key={index} className="">
@@ -1820,30 +1819,32 @@ const App = () => {
 
         {/* Brand Partners section */}
         <div>
-          <section className="bg-white">
+          <section className="bg-white ms-12 mr-12">
             <h2
               className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle mb-2 ms-8"
+             text-[#000000] align-middle mb-2 "
             >
               Brands we work with
             </h2>
             <div className="w-full h-[1px] bg-[#111111] "></div>
 
-            <div className="flex flex-wrap items-center justify-center p-6 md:justify-between gap-8 py-8 bg-[#F8F9F9]">
-              {brands.map((brand, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
-                >
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    className="w-[150px] h-[48px] mr-3 object-contain"
-                  />
-                </div>
-              ))}
-            </div>
+
           </section>
+          <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 sm:h-[125px] md:py-8 bg-[#F8F9F9]">
+            {brands.map((brand, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center  mx-8 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+              >
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="w-[100px] h-[36px] sm:w-[120px] sm:h-[40px] md:w-[150px] md:h-[48px] object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
 

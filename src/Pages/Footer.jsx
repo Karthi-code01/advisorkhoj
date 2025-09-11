@@ -115,21 +115,21 @@ const Footer = () => {
             <h4 className="font-merriweather font-bold text-[16px] leading-[22px] align-middle  mt-8 mb-2 px-8 pt-8 border-t border-[#24282D]">
               Investing Ideas in your email
             </h4>
-           <div className="flex flex-col sm:flex-row mb-4 py-3 px-4 sm:px-8">
-  <input
-    type="email"
-    placeholder="Your email"
-    className="w-full sm:w-[240px] h-[34px] border border-gray-300 rounded-[2px] px-[12px] sm:px-[15px] py-[8px] sm:py-[10px] text-gray-800
+            <div className="flex flex-col sm:flex-row mb-4 py-3 px-4 sm:px-8">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="w-full sm:w-[240px] h-[34px] border border-gray-300 rounded-[2px] px-[12px] sm:px-[15px] py-[8px] sm:py-[10px] text-gray-800
     placeholder:text-gray-400 placeholder:text-[12px] placeholder:font-light placeholder:leading-[100%] placeholder:font-inter"
-  />
+              />
 
-  <button
-    className="bg-[#096FFA] text-white px-4 py-2 sm:ms-2 mt-3 sm:mt-0 rounded hover:bg-blue-700 
+              <button
+                className="bg-[#096FFA] text-white px-4 py-2 sm:ms-2 mt-3 sm:mt-0 rounded hover:bg-blue-700 
     text-[11px] leading-[12px] tracking-[0.65px] font-bold font-[Arial] w-full sm:w-auto"
-  >
-    Subscribe Now
-  </button>
-</div>
+              >
+                Subscribe Now
+              </button>
+            </div>
 
 
 
@@ -192,16 +192,31 @@ const Footer = () => {
           {/* Right Section (col-span-5) */}
           <div className="md:col-span-5 grid grid-cols-1 md:grid-cols-2">
             <div className="px-6 py-6 border-r border-[#24282D]">
-              <h5 className="font-merriweather font-bold text-[16px] leading-[22px] align-middle mb-4">About Us</h5>
-              <div className="space-y-2 text-[#8D9BAE]">
-                <div>About Us</div>
-                <div>Contact Us</div>
-                <div>Meet our Team</div>
-                <div>Careers</div>
-                <div>Newsletters</div>
-                <div>Did You Know</div>
+              <h5 className="font-merriweather font-bold text-[16px] leading-[22px] align-middle mb-4">
+                About Us
+              </h5>
+
+              <div className="flex gap-8 text-[#8D9BAE]">
+                <div className="space-y-2">
+                  <div>About Us</div>
+                  <div>Contact Us</div>
+                  <div>Meet our Team</div>
+                  <div>Careers</div>
+                  <div>Newsletters</div>
+                  <div>Did You Know</div>
+                </div>
+
+                <div className="space-y-2">
+                  <div>About Us</div>
+                  <div>Contact Us</div>
+                  <div>Meet our Team</div>
+                  <div>Careers</div>
+                  <div>Newsletters</div>
+                  <div>Did You Know</div>
+                </div>
               </div>
             </div>
+
 
             <div className=" px-6 py-6">
               <img src={googleLogo} alt="Google" className="w-[96px] h-[32] mb-6 ms-24 " />
