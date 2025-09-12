@@ -4,125 +4,23 @@ import Header from "./Header";
 import Breadcrumbs from "./Breadcrumbs";
 import ArticlePagination from "./ArticlePagination";
 import Footer from "./Footer";
-
+import brand1 from "../assets/Images/ba54b87a00f0ca702bcc03ebbac1bb74ec8d941d.png";
+import brand2 from "../assets/Images/90393d78ceda1c1af1530fd6fa4a85f11c95226b.jpg";
+import brand3 from "../assets/Images/4945e85c4b05341f9f57272e2117814c25ee3458.png";
+import brand4 from "../assets/Images/c097f8caef30a358bb62300f1d9a79643025b68b.png";
+import brand5 from "../assets/Images/6805b5825f219d1fc614e6c3cf97fd8ade2c9e7c.jpg";
+import brand6 from "../assets/Images/a7543c32da9b90c37b71b290b3e64d8ab7be2dfd.png";
 
 const ArticlesPage = () => {
-    const articles = [
-        {
-            id: 1,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 2,
-            title:
-                "How Mutual Fund SIPs have created wealth over the last 15 years: Large Cap and Diversified Equity",
-            image:
-                "https://images.pexels.com/photos/163255/hot-air-balloon-ballooning-adventure-travel-163255.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 3,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 4,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 5,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 6,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 7,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-        {
-            id: 8,
-            title: "Key highlights of new Indian Budget",
-            image:
-                "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
-            category: "Category name",
-            readTime: "5 min read",
-            views: "12,32,431",
-            comments: 778,
-            author: "By Eddie Lobanovskiy",
-            date: "09 Nov 2023",
-            excerpt:
-                "Systematic Investment Plans (SIPs) were introduced in India almost ...",
-        },
-    ];
 
+const brands = [
+  { name: "Bandhan Mutual Fund", logo: brand1 },
+  { name: "IIFL Mutual Fund", logo: brand2 },
+  { name: "LIC Mutual Fund", logo: brand3 },
+  { name: "Nippon India Mutual Fund", logo: brand4 },
+  { name: "Mirae Asset Mutual Fund", logo: brand5 },
+  { name: "HSBC Asset Management", logo: brand6 },
+];
     const fundNews = [
         {
             id: 1,
@@ -174,45 +72,8 @@ const ArticlesPage = () => {
                 {/* Left: Articles */}
                 
                 <div className="lg:col-span-7 space-y-6">
-                    <ArticlePagination articles={articles}/>
-                    {/* {articles.map((article) => (
-                        <div
-                            key={article.id}
-                            className="bg-white rounded-lg shadow-sm p-4 sm:flex gap-4"
-                        >
-                            <div className="sm:w-1/3">
-                                <img
-                                    src={article.image}
-                                    alt={article.title}
-                                    className="w-full h-40 sm:h-32 object-cover rounded"
-                                />
-                                <span className="inline-block mt-2 px-3 py-1 text-xs bg-gray-100 rounded-full">
-                                    {article.category}
-                                </span>
-                            </div>
-                            <div className="sm:w-2/3 mt-3 sm:mt-0">
-                                <h3 className="font-semibold text-gray-900 text-sm sm:text-base mb-1">
-                                    {article.title}
-                                </h3>
-                                <p className="text-gray-600 text-xs sm:text-sm line-clamp-2 mb-2">
-                                    {article.excerpt}
-                                </p>
-                                <p className="text-gray-500 text-xs mb-1">{article.author}</p>
-                                <p className="text-gray-400 text-xs">{article.date}</p>
-                                <div className="flex items-center text-xs text-gray-500 mt-2 space-x-4">
-                                    <span className="flex items-center gap-1">
-                                        <Clock className="w-3 h-3" /> {article.readTime}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <Eye className="w-3 h-3" /> {article.views}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <MessageCircle className="w-3 h-3" /> {article.comments}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    ))} */}
+                    <ArticlePagination />
+                   
                 </div>
 
                 {/* Right: Sidebar */}
@@ -249,7 +110,34 @@ const ArticlesPage = () => {
                     </div>
                 </div>
             </div>
+              <div>
+          <section className=" ms-12 mr-12">
+            <h2
+              className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle mb-2 "
+            >
+              Brands we work with
+            </h2>
+            <div className="w-full h-[1px] bg-[#111111] "></div>
 
+
+          </section>
+          <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 sm:h-[125px] md:py-8 bg-[#F8F9F9]">
+            {brands.map((brand, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center  mx-8 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+              >
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="w-[100px] h-[36px] sm:w-[120px] sm:h-[40px] md:w-[150px] md:h-[48px] object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+        </div>
             <Footer/>
         </div>
     );

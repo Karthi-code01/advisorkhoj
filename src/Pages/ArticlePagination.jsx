@@ -366,7 +366,8 @@ function ArticlePagination() {
                     </div>
                 </div>
             </div>
-
+            <div className="w-[full] h-[1px] bg-[#111111] mb-6 mx-8"></div>
+            
             {/* Pagination Controls */}
             <div className="flex justify-center items-center gap-2 mt-6 text-sm">
                 {/* Prev */}
@@ -480,7 +481,7 @@ function ArticleCard({ article, large }) {
                             by {article.author}
                         </p>
 
-                        <p className="ml-2 pt-4 font-[Arial] font-normal text-[12px] leading-[100%] tracking-[-0.01em] align-middle text-[#999999]">
+                        <p className="ml-2 pt-2 font-[Arial] font-normal text-[12px] leading-[100%] tracking-[-0.01em] align-middle text-[#999999]">
                             {article.date}
                         </p>
                     </div>

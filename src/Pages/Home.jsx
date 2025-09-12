@@ -438,15 +438,16 @@ const StockTicker = ({ stockData = [] }) => {
   if (!stockData || stockData.length === 0) return null;
 
   return (
-    <div className="overflow-hidden w-full py-3">
-      <div className="flex animate-marquee space-x-4 min-w-max">
+    <div className="overflow-hidden w-full py-3 group">
+      <div className="flex animate-marquee space-x-4 min-w-max group-hover:pause-marquee">
         {stockData.concat(stockData).map((stock, index) => (
           <div
             key={index}
-            className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs sm:text-sm ${stock.negative
+            className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs sm:text-sm ${
+              stock.negative
                 ? "bg-[#FFF4F4] text-red-600"
                 : "bg-[#F5FFEE] text-green-600"
-              }`}
+            }`}
           >
             <span className="font-semibold text-[#444444]">{stock.symbol}</span>
             <span className="text-[#444444]">{stock.price}</span>
@@ -455,7 +456,6 @@ const StockTicker = ({ stockData = [] }) => {
         ))}
       </div>
 
-      {/* Tailwind + inline CSS animation */}
       <style jsx>{`
         @keyframes marquee {
           0% {
@@ -469,6 +469,11 @@ const StockTicker = ({ stockData = [] }) => {
         .animate-marquee {
           display: flex;
           animation: marquee 20s linear infinite;
+        }
+
+        /* Pause when parent (group) is hovered */
+        .group:hover .animate-marquee {
+          animation-play-state: paused;
         }
       `}</style>
     </div>
