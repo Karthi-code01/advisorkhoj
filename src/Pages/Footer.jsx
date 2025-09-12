@@ -207,12 +207,12 @@ const Footer = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <div>About Us</div>
-                  <div>Contact Us</div>
-                  <div>Meet our Team</div>
-                  <div>Careers</div>
-                  <div>Newsletters</div>
-                  <div>Did You Know</div>
+                  <div>Privacy policy</div>
+                  <div>Disclaimer</div>
+                  <div>Terms of use</div>
+                  <div>Investors FAQ</div>
+                  <div>Distributor FAQ</div>
+                  <div>Advertise with us</div>
                 </div>
               </div>
             </div>
