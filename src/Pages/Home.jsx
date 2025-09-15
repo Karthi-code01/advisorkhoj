@@ -1822,35 +1822,7 @@ const App = () => {
           </div>
         </div>
 
-        {/* Brand Partners section */}
-        <div>
-          <section className="bg-white ms-12 mr-12">
-            <h2
-              className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle mb-2 "
-            >
-              Brands we work with
-            </h2>
-            <div className="w-full h-[1px] bg-[#111111] "></div>
-
-
-          </section>
-          <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 sm:h-[125px] md:py-8 bg-[#F8F9F9]">
-            {brands.map((brand, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center  mx-8 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
-              >
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="w-[100px] h-[36px] sm:w-[120px] sm:h-[40px] md:w-[150px] md:h-[48px] object-contain"
-                />
-              </div>
-            ))}
-          </div>
-
-        </div>
+     
       </div>
 
       <Footer />

@@ -1,40 +1,69 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, Clock, Eye, MessageCircle, Search } from "lucide-react";
+import { ArrowRight, ChevronRight, Clock, Eye, MessageCircle, Search } from "lucide-react";
 import Header from "./Header";
 import Breadcrumbs from "./Breadcrumbs";
 import ArticlePagination from "./ArticlePagination";
 import Footer from "./Footer";
-import brand1 from "../assets/Images/ba54b87a00f0ca702bcc03ebbac1bb74ec8d941d.png";
-import brand2 from "../assets/Images/90393d78ceda1c1af1530fd6fa4a85f11c95226b.jpg";
-import brand3 from "../assets/Images/4945e85c4b05341f9f57272e2117814c25ee3458.png";
-import brand4 from "../assets/Images/c097f8caef30a358bb62300f1d9a79643025b68b.png";
-import brand5 from "../assets/Images/6805b5825f219d1fc614e6c3cf97fd8ade2c9e7c.jpg";
-import brand6 from "../assets/Images/a7543c32da9b90c37b71b290b3e64d8ab7be2dfd.png";
+
+import aimImage from "../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
+import tool1 from "../assets/Images/advisory tools.png"
+import tool2 from "../assets/Images/advisory tools (1).png"
+import tool3 from "../assets/Images/Union.png"
+import tool4 from "../assets/Images/advisory tools (2).png"
+import tool5 from "../assets/Images/Union (1).png"
+import tool6 from "../assets/Images/advisory tools (3).png"
+import tool7 from "../assets/Images/advisory tools (4).png"
+import tool8 from "../assets/Images/advisory tools (5).png"
+import tool9 from "../assets/Images/Union (2).png"
+import tool10 from "../assets/Images/Union (3).png"
+import tool11 from "../assets/Images/Union (4).png"
+import tool12 from "../assets/Images/advisory tools (6).png"
+import tool13 from "../assets/Images/advisory tools (7).png"
+import tool14 from "../assets/Images/advisory tools (8).png"
+import tool15 from "../assets/Images/advisory tools (9).png"
+import tool16 from "../assets/Images/advisory tools (10).png"
+
+
+
 
 const ArticlesPage = () => {
 
-const brands = [
-  { name: "Bandhan Mutual Fund", logo: brand1 },
-  { name: "IIFL Mutual Fund", logo: brand2 },
-  { name: "LIC Mutual Fund", logo: brand3 },
-  { name: "Nippon India Mutual Fund", logo: brand4 },
-  { name: "Mirae Asset Mutual Fund", logo: brand5 },
-  { name: "HSBC Asset Management", logo: brand6 },
-];
-    const fundNews = [
-        {
-            id: 1,
-            title:
-                "HDFC Mutual Fund launches HDFC Diversified Equity All Cap Active FOF",
-            date: "Aug 29, 2019",
-        },
+    const features = [
+        { id: 1, name: "Trailing Returns", icon: tool1 },
+        { id: 2, name: "Top SIP Funds", icon: tool2 },
+        { id: 3, name: "Dividend Paying Funds", icon: tool3 },
+        { id: 4, name: "SWP Returns", icon: tool4 },
+        { id: 5, name: "Consistent Mutual Funds", icon: tool5 },
+        { id: 6, name: "Rolling Return vs Category", icon: tool6 },
+        { id: 7, name: "Fund Category Returns", icon: tool7 },
+        { id: 8, name: "Quartile Ranking", icon: tool8 },
     ];
+       const features2 = [
+        { id: 1, name: "Crorepati Calculator", icon: tool9 },
+        { id: 2, name: "Risk Analyser", icon: tool10 },
+        { id: 3, name: "SIP Calculator", icon: tool11 },
+        { id: 4, name: "Asset Calculator", icon: tool12 },
+        { id: 5, name: "SIP Planner", icon: tool13 },
+        { id: 6, name: "Retirement Planning Calculator", icon: tool14 },
+        { id: 7, name: "Compounding Calculator", icon: tool15 },
+        { id: 8, name: "Lumpsum Calculator", icon: tool16 },
+    ];
+    const news = [
+
+        { id: 1, name: "HDFC Mutual Fund launches HDFC Diversified Equity All Cap Active FOF", date: "Aug 29, 2019" },
+        { id: 2, name: "Groww Mutual Fund launches Groww Multi Asset Allocation Fund", date: "Aug 29, 2019" },
+        { id: 3, name: "What we can learn from the masters: A Teacher's Day reflection", date: "Aug 29, 2019" },
+        { id: 4, name: "Bandhan Mutual Fund launches Bandhan BSE India Sector Leaders Index Fund", date: "Aug 29, 2019" },
+        { id: 5, name: "Baroda BNP Paribas Mutual Fund launches Baroda BNP Paribas Business Conglomerates Fund", date: "Aug 29, 2019" },
+
+
+    ]
 
     return (
         <div className="min-h-screen bg-[#f8f9f9]">
             {/* Breadcrumbs + Search */}
             <Header />
-            <div className="grid grid-cols-6 items-center gap-4 px-8 py-6 ">
+            <div className="grid grid-cols-6 items-center gap-4 px-12 py-6 ">
                 {/* Left side: Breadcrumbs */}
                 <div className="col-span-3 sm:col-span-3 md:col-span-2">
                     <Breadcrumbs />
@@ -63,82 +92,135 @@ const brands = [
                 </div>
 
             </div>
-            <div className="w-[full] h-[1px] bg-[#111111] mb-6 mx-8"></div>
+            <div className="w-[full] h-[1px] bg-[#111111] mb-6 mx-12"></div>
             {/* Filters */}
-            
+
 
             {/* Content grid */}
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* Left: Articles */}
-                
+
                 <div className="lg:col-span-7 space-y-6">
                     <ArticlePagination />
-                   
+
                 </div>
 
                 {/* Right: Sidebar */}
-                <div className="space-y-6 lg:col-span-5">
+                <div className=" lg:col-span-5 lg:mr-4">
                     {/* Banner */}
-                    <div className="bg-orange-100 p-4 rounded-lg text-center">
-                        <h4 className="text-gray-800 font-bold">
-                            Aim to achieve your{" "}
-                            <span className="text-blue-600">SHORT TERM GOALS</span>
-                        </h4>
+                    <div className="  overflow-hidden mb-6">
+                        <div className=" h-full flex items-center">
+                            <img
+                                src={aimImage}
+                                alt="Goals"
+                                className="w-full h-[200px] object-cover "
+                            />
+                        </div>
                     </div>
 
-                    {/* Fund News */}
-                    <div>
-                        <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-bold text-gray-900">Fund News</h4>
-                            <Link
-                                to="#"
-                                className="text-xs uppercase tracking-wide font-semibold hover:underline"
+                    <div className="flex justify-between items-center mt-2 mb-2">
+                        <h2
+                            className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                        >
+                            Mutual Fund Research
+                        </h2>
+                        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                            VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                        </button>
+                    </div>
+                    <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
+                        {features.map((item) => (
+                            <div
+                                key={item.id}
+                                className="flex items-center gap-3 p-3 bg-white"
                             >
-                                View All
-                            </Link>
+                                <img src={item.icon} alt={item.name} className="w-[24px] h-[24px]" />
+                                <span className="font-[Arial] font-normal text-[12px] leading-[150%] text-gray-700 align-middle">
+                                    {item.name}
+                                </span>
+
+                            </div>
+                        ))}
+                    </div>
+                    <div className="overflow-hidden mb-6 mt-6">
+                        <div className=" h-full flex items-center">
+                            <img
+                                src={aimImage}
+                                alt="Goals"
+                                className="w-full h-[130px] object-cover "
+                            />
                         </div>
-                        <div className="bg-white p-3 rounded shadow-sm space-y-2">
-                            {fundNews.map((news) => (
-                                <div key={news.id}>
-                                    <p className="font-medium text-sm text-gray-900">
-                                        {news.title}
-                                    </p>
-                                    <p className="text-xs text-gray-500">{news.date}</p>
-                                </div>
-                            ))}
+                    </div>
+                    <div className="flex justify-between items-center mt-2 mb-2">
+                        <h2
+                            className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                        >
+                            Fund News
+                        </h2>
+                        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                            VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                        </button>
+                    </div>
+                    <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+                    <div className="grid grid-cols-1 gap-3 max-w-3xl mx-auto mb-12">
+                        {news.map((item) => (
+                            <div
+                                key={item.id}
+                                className=" items-center gap-3 p-3 py-4 bg-white"
+                            >
+                                <h3 className="font-[Arial] font-bold text-[12px] leading-[150%] text-[#1D1D1D] align-middle">
+                                    {item.name}
+                                </h3>
+                                <p className="font-[Arial] font-normal pt-2 text-[12px] leading-[150%] tracking-normal align-middle text-[#848484]">
+                                    {item.date}
+                                </p>
+
+
+                            </div>
+                        ))}
+                    </div>
+                     <div className="overflow-hidden mb-6 mt-6">
+                        <div className=" h-full flex items-center">
+                            <img
+                                src={aimImage}
+                                alt="Goals"
+                                className="w-full h-[130px] object-cover "
+                            />
                         </div>
+                    </div>
+                     <div className="flex justify-between items-center mt-2 mb-2">
+                        <h2
+                            className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                        >
+                            Tools and Calculators
+                        </h2>
+                        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                            VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                        </button>
+                    </div>
+                    <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
+                        {features2.map((item) => (
+                            <div
+                                key={item.id}
+                                className="flex items-center gap-3 p-3 bg-white"
+                            >
+                                <img src={item.icon} alt={item.name} className="w-[24px] h-[24px]" />
+                                <span className="font-[Arial] font-normal text-[12px] leading-[150%] text-gray-700 align-middle">
+                                    {item.name}
+                                </span>
+
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
-              <div>
-          <section className=" ms-12 mr-12">
-            <h2
-              className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle mb-2 "
-            >
-              Brands we work with
-            </h2>
-            <div className="w-full h-[1px] bg-[#111111] "></div>
-
-
-          </section>
-          <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 sm:h-[125px] md:py-8 bg-[#F8F9F9]">
-            {brands.map((brand, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center  mx-8 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
-              >
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="w-[100px] h-[36px] sm:w-[120px] sm:h-[40px] md:w-[150px] md:h-[48px] object-contain"
-                />
-              </div>
-            ))}
-          </div>
-
-        </div>
-            <Footer/>
+           
+            <Footer />
         </div>
     );
 };

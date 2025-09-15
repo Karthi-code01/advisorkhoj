@@ -16,12 +16,12 @@ const articles = [
         comments: 778,
         author: "By Eddie Lobanovskiy",
         date: "09 Nov 2023",
-        excerpt: "Systematic Investment Plans (SIPs) were introduced in India almost ...",
+        excerpt: "The Companies Act 2013 passed by the Parliament received the assent of the President of India on 29th August...",
     },
     {
         id: 2,
         title: "How Mutual Fund SIPs have created wealth over the last 15 years",
-        image: "https://images.pexels.com/photos/163255/hot-air-balloon-ballooning-adventure-travel-163255.jpeg",
+        image: "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
         category: "Investment",
         readTime: "6 min read",
         views: "1,12,431",
@@ -76,7 +76,7 @@ const articles = [
         comments: 210,
         author: "By John Smith",
         date: "14 Nov 2023",
-        excerpt: "Invest wisely to save taxes. Here are five popular tax-saving instruments ...",
+        excerpt: "The Companies Act 2013 passed by the Parliament received the assent of the President of India on 29th August...",
     },
     {
         id: 7,
@@ -88,12 +88,12 @@ const articles = [
         comments: 432,
         author: "By Eddie Lobanovskiy",
         date: "15 Nov 2023",
-        excerpt: "The stock market can be intimidating for beginners. Learn the essential concepts ...",
+        excerpt: "The Companies Act 2013 passed by the Parliament received the assent of the President of India on 29th August...",
     },
     {
         id: 8,
         title: "Benefits of Investing in Gold in 2023",
-        image: "https://images.pexels.com/photos/1170972/pexels-photo-1170972.jpeg",
+        image: "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
         category: "Commodities",
         readTime: "4 min read",
         views: "67,890",
@@ -262,7 +262,7 @@ function ArticlePagination() {
     return (
         <div>
             {/* Filter Section */}
-            <div className="bg-[#FFFFFF] mx-8">
+            <div className="bg-[#FFFFFF] mx-4">
                 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap gap-4 justify-center text-xs sm:text-sm">
                     <div className="mx-2">
                         <span className="text-[#777777] mr-1 font-[Inter] text-[11px]">
@@ -293,7 +293,7 @@ function ArticlePagination() {
             </div>
 
             {/* Articles with Banner in between */}
-            <div className=" px-4 sm:px-6 lg:px-8 py-6">
+            <div className=" px-4 sm:px-6 lg:px-4 py-2">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Layout 1: Big left card + two stacked right */}
                     <div className="md:col-span-1">
@@ -312,7 +312,7 @@ function ArticlePagination() {
 
 
             {/* Layout 2: Two left stacked + one big right */}
-            <div className=" px-4 sm:px-6 lg:px-8 py-6">
+            <div className=" px-4 sm:px-6 lg:px-4 py-2">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="grid grid-cols-1 gap-6 md:col-span-2">
                         {currentArticles.slice(3, 5).map((article) => (
@@ -328,7 +328,7 @@ function ArticlePagination() {
             </div>
 
             {/* Banner */}
-            <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-2 flex flex-col sm:flex-row items-center sm:items-start p-4 sm:p-6 mx-8">
+            <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-2 flex flex-col sm:flex-row items-center sm:items-start mb-2 p-4 sm:p-6 mx-4">
                 <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6 w-full sm:w-[140px]">
                     <img
                         src={twoArrows}
@@ -352,7 +352,7 @@ function ArticlePagination() {
             </div>
 
             {/* Layout 3: Repeat same as first */}
-            <div className=" px-4 sm:px-6 lg:px-8 py-6">
+            <div className=" px-4 sm:px-6 lg:px-4 py-2">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="md:col-span-1">
                         {currentArticles.slice(6, 7).map((article) => (
@@ -366,8 +366,8 @@ function ArticlePagination() {
                     </div>
                 </div>
             </div>
-            <div className="w-[full] h-[1px] bg-[#111111] mb-6 mx-8"></div>
-            
+            <div className="w-[full] h-[1px] bg-[#111111] mb-6 mt-4 mx-4"></div>
+
             {/* Pagination Controls */}
             <div className="flex justify-center items-center gap-2 mt-6 text-sm">
                 {/* Prev */}
@@ -394,8 +394,8 @@ function ArticlePagination() {
                         key={idx}
                         onClick={() => setCurrentPage(idx + 1)}
                         className={`px-1 ${currentPage === idx + 1
-                                ? "text-blue-600 font-semibold"
-                                : "text-gray-600 hover:text-blue-600"
+                            ? "text-blue-600 font-semibold"
+                            : "text-gray-600 hover:text-blue-600"
                             }`}
                     >
                         {idx + 1}
@@ -428,7 +428,7 @@ function ArticlePagination() {
 function ArticleCard({ article, large }) {
     return (
         <div
-            className={`bg-[#FFFFFF] p-4 overflow-hidden flex ${large ? "flex-col" : "flex-row"
+            className={`bg-[#FFFFFF] p-4 overflow-hidden flex ${large ? "flex-col" : "flex-col  sm:flex-row"
                 }`}
         >
             {/* Image */}
@@ -464,24 +464,28 @@ function ArticleCard({ article, large }) {
 
             {/* Content */}
             <div
-                className={` pr-4 flex flex-col flex-grow ${!large ? "px-4" : " py-4"}`}>
+                className={` pr-4 flex flex-col flex-grow ${!large ? "px-0 sm:px-4 py-4 sm:py-0" : " py-4"}`}>
                 <h3 className="font-merriweather font-bold text-[14px] leading-[150%] text-gray-900 ">
                     {article.title}
                 </h3>
 
-                <p className="font-[Arial] py-4 font-normal text-[12px] leading-[150%] align-middle line-clamp-3">
+                <p
+                    className={`font-[Arial] py-4 font-normal text-[12px] leading-[150%] align-middle ${large ? "line-clamp-3" : "line-clamp-2"
+                        }`}
+                >
                     {article.excerpt}
                 </p>
+
 
 
                 <div className="mt-2 flex items-center justify-between text-[11px] text-gray-700">
                     {/* Author + Date (Left) */}
                     <div className=" items-center">
-                        <p className="font-[Arial] font-bold text-[13px] leading-[100%] tracking-[-0.01em] align-middle text-[#333333] px-1 rounded">
+                        <p className="font-[Arial] font-bold text-[13px] leading-[100%] tracking-[-0.01em] align-middle text-[#333333] rounded">
                             by {article.author}
                         </p>
 
-                        <p className="ml-2 pt-2 font-[Arial] font-normal text-[12px] leading-[100%] tracking-[-0.01em] align-middle text-[#999999]">
+                        <p className=" pt-2 font-[Arial] font-normal text-[12px] leading-[100%] tracking-[-0.01em] align-middle text-[#999999]">
                             {article.date}
                         </p>
                     </div>
