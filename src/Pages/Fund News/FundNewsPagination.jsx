@@ -12,6 +12,7 @@ function FundNewsPagination() {
         "NFO",
         "Advisorkhoj Team",
     ];
+
     const articles = Array.from({ length: 36 }, (_, i) => ({
         id: i + 1,
         title: "HDFC Mutual Fund launches HDFC Diversified Equity All Cap Active FOF",
@@ -33,14 +34,14 @@ function FundNewsPagination() {
 
     return (
         <div>
-            <h2
+            {/* <h2
                 className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle mb-2 px-4"
             >
                 Most Popular Saving, Investing & Mutual Fund Articles
             </h2>
-            <div className=" h-[1px] bg-[#111111] mx-4"></div>
-            <div className=" mt-4 bg-white p-3 mx-4 mb-4">
+            <div className=" h-[1px] bg-[#111111] mx-4"></div> */}
+            <div className="  bg-white p-3 mx-4 mb-4">
                 <div className="flex justify-between items-center gap-2 sm:gap-3 overflow-x-auto lg:overflow-visible no-scrollbar">
                     {categories.map((category) => (
                         <button
@@ -63,7 +64,7 @@ function FundNewsPagination() {
                         {/* Insert banner after 6th card */}
                         {index === 6 && (
                             <div className="col-span-1 sm:col-span-2 w-full">
-                                <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-2 flex flex-col sm:flex-row items-center sm:items-start mb-2 p-4 sm:p-6 rounded-md">
+                                <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-2 flex flex-col sm:flex-row items-center sm:items-start mb-2 ">
                                     <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6 w-full sm:w-[140px]">
                                         <img
                                             src={twoArrows}
@@ -80,7 +81,7 @@ function FundNewsPagination() {
                                         </p>
                                     </div>
                                     <div className="flex-shrink-0">
-                                        <button className="bg-[#096FFA] text-white px-4 sm:px-6 py-2 mt-10 sm:py-3 rounded-sm font-sans font-bold text-[11px] hover:bg-blue-700">
+                                        <button className="bg-[#096FFA] text-white mb-4 sm:mb-0 px-4 sm:px-6 py-2 mt-10 sm:py-3 mr-8 rounded-sm font-sans font-bold text-[11px] hover:bg-blue-700">
                                             Track Your Portfolio
                                         </button>
                                     </div>
@@ -117,7 +118,7 @@ function FundNewsPagination() {
                     </React.Fragment>
                 ))}
             </div>
-            <div className="w-full h-[1px] bg-[#111111] mt-8 mx-4"></div>
+            <div className=" h-[1px] bg-[#111111] mt-8 mx-4"></div>
 
             {/* Pagination */}
             <div className="flex justify-center items-center gap-2 mt-8 text-sm font-[Arial]">

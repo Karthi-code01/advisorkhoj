@@ -443,11 +443,10 @@ const StockTicker = ({ stockData = [] }) => {
         {stockData.concat(stockData).map((stock, index) => (
           <div
             key={index}
-            className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs sm:text-sm ${
-              stock.negative
+            className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs sm:text-sm ${stock.negative
                 ? "bg-[#FFF4F4] text-red-600"
                 : "bg-[#F5FFEE] text-green-600"
-            }`}
+              }`}
           >
             <span className="font-semibold text-[#444444]">{stock.symbol}</span>
             <span className="text-[#444444]">{stock.price}</span>
@@ -701,8 +700,8 @@ const App = () => {
       <Header />
       <StockTicker stockData={stockData} />
       <div className=" mx-auto px-4 sm:px-8 py-6 sm:py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 sm:gap-8">
-          <div className="sm:col-span-7">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          <div className="lg:col-span-7">
             <div className="mb-6 sm:mb-8">
               <div className="flex items-center justify-between mb-4 sm:mb-3">
                 <h2 className="text-lg sm:text-xl font-semibold text-[#000000]">
@@ -897,7 +896,7 @@ const App = () => {
             </div>
           </div>
 
-          <div className="sm:col-span-5 bg-[#F8F9F9]">
+          <div className="lg:col-span-5 bg-[#F8F9F9]">
             <div className="  p-4 sm:p-6 mb-4 sm:mb-4">
               <h2 className="font-arial font-bold text-[16px] leading-[19px] tracking-[1px] text-gray-800 mb-2">
                 What we do?
@@ -913,8 +912,8 @@ const App = () => {
                         key={tab}
                         onClick={() => setActiveTab(tab)}
                         className={`whitespace-nowrap pb-2 border-b-2 transition-colors ${activeTab === tab
-                            ? "font-[Arial] font-bold text-[13px] leading-[21px] border-blue-600"
-                            : "text-gray-600 border-transparent hover:text-blue-600"
+                          ? "font-[Arial] font-bold text-[13px] leading-[21px] border-blue-600"
+                          : "text-gray-600 border-transparent hover:text-blue-600"
                           }`}
                       >
                         {tab}
@@ -987,7 +986,7 @@ const App = () => {
               <div className="w-full h-[1px] bg-[#111111] mb-4"></div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8  ">
-                <div>
+                <div className="bg-white">
                   <img
                     src={image3}
                     alt="Advisor"
@@ -1004,7 +1003,7 @@ const App = () => {
                     Rajiv Singh | Mumbai
                   </p>
                 </div>
-                <div>
+                <div className="bg-white">
                   <img
                     src={image4}
                     alt="Advisor"
@@ -1695,8 +1694,12 @@ const App = () => {
                 >
                   Hear from the people who love us
                 </h2>
-                <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                  VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                <button className="flex items-center font-[Arial] gap-1 font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                  VIEW ALL   <img
+                    src={arrow}
+                    alt="arrow"
+                    className="w-[13px] h-[13px] object-contain invert"
+                  />
                 </button>
               </div>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -1752,8 +1755,12 @@ const App = () => {
                 >
                   Fund Performance Tracker of AMCs
                 </h2>
-                <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                  VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                <button className="flex items-center gap-1 font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                  VIEW ALL   <img
+                    src={arrow}
+                    alt="arrow"
+                    className="w-[13px] h-[13px] object-contain invert"
+                  />
                 </button>
               </div>
               <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -1822,7 +1829,7 @@ const App = () => {
           </div>
         </div>
 
-     
+
       </div>
 
       <Footer />

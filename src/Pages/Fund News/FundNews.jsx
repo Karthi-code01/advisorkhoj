@@ -15,6 +15,9 @@ import tool13 from "../../assets/Images/advisory tools (7).png"
 import tool14 from "../../assets/Images/advisory tools (8).png"
 import tool15 from "../../assets/Images/advisory tools (9).png"
 import tool16 from "../../assets/Images/advisory tools (10).png"
+import clock from '../../assets/Images/famicons_time-outline.png'
+import eye from '../../assets/Images/eye.png'
+import arrow from "../../assets/Images/Icon.png";
 
 function FundNews() {
     const features2 = [
@@ -27,6 +30,32 @@ function FundNews() {
         { id: 7, name: "Compounding Calculator", icon: tool15 },
         { id: 8, name: "Lumpsum Calculator", icon: tool16 },
     ];
+    const article = [
+        {
+            id: 1,
+            title: "How Mutual Fund SIPs have created wealth over the last 15 years: Large Cap and Diversified Equity",
+            image: "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
+            category: "Finance",
+            readTime: "5 min read",
+            views: "12,32,431",
+            comments: 778,
+            author: "By Eddie Lobanovskiy",
+            date: "09 Nov 2023",
+            excerpt: "The Companies Act 2013 passed by the Parliament received the assent of the President of India on 29th August...",
+        },
+        {
+            id: 2,
+            title: "Key highlights of new Indian Companies Act 2013",
+            image: "https://images.pexels.com/photos/356830/pexels-photo-356830.jpeg",
+            category: "Investment",
+            readTime: "6 min read",
+            views: "1,12,431",
+            comments: 512,
+            author: "By Jane Doe",
+            date: "10 Nov 2023",
+            excerpt: "Mutual Fund SIPs have helped investors accumulate wealth over long-term ...",
+        },
+    ]
     return (
         <div className="min-h-screen bg-[#f8f9f9]">
             {/* Breadcrumbs + Search */}
@@ -60,7 +89,7 @@ function FundNews() {
                 </div>
 
             </div>
-            <div className="w-[full] h-[1px] bg-[#111111] mb-6 mx-12"></div>
+            <div className="w-[full] h-[1px] bg-[#111111] mb-4 mx-12"></div>
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* Left: Articles */}
 
@@ -80,14 +109,14 @@ function FundNews() {
                             />
                         </div>
                     </div>
-                    <div className="p-6">
+                    <div className="">
                         <h2 className="font-arial font-bold text-[16px] leading-[19px] tracking-[1px] text-gray-800 mb-4">
                             Stories from Advisors
                         </h2>
                         <div className="w-full h-[1px] bg-[#111111] mb-4"></div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8  ">
-                            <div>
+                            <div className='bg-white'>
                                 <img
                                     src={image3}
                                     alt="Advisor"
@@ -104,7 +133,7 @@ function FundNews() {
                                     Rajiv Singh | Mumbai
                                 </p>
                             </div>
-                            <div>
+                            <div className='bg-white'>
                                 <img
                                     src={image4}
                                     alt="Advisor"
@@ -122,15 +151,19 @@ function FundNews() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex justify-between items-center mt-2 mb-2">
+                    <div className="flex justify-between items-center mt-6 mb-2">
                         <h2
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle"
                         >
                             Tools and Calculators
                         </h2>
-                        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                            VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                        <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                            VIEW ALL   <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-[13px] h-[13px] object-contain invert"
+                />
                         </button>
                     </div>
                     <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -157,18 +190,82 @@ function FundNews() {
                             />
                         </div>
                     </div>
-                     <div className="flex justify-between items-center mt-2 mb-2">
+                    <div className="flex justify-between items-center mt-2 mb-2">
                         <h2
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle"
                         >
                             Top Articles
                         </h2>
-                        <button className="flex items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
-                            VIEW ALL <ArrowRight className="ml-1 h-4 w-4" />
+                        <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                            VIEW ALL   <img
+                  src={arrow}
+                  alt="arrow"
+                  className="w-[13px] h-[13px] object-contain invert"
+                />
                         </button>
                     </div>
                     <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+                    <div>
+                        {/* Grid Wrapper */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {article.map((item, index) => (
+                                <div key={index} className="bg-[#FFFFFF] overflow-hidden flex flex-col">
+                                    <div className="relative p-4">
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                            className="object-cover w-full h-[160px] "
+                                        />
+                                        <p className="pt-4 font-[Arial] font-normal text-[12px] tracking-[-0.01em] text-[#999999]">
+                                            {item.date}
+                                        </p>
+
+                                        {/* Meta Info */}
+
+
+                                        {/* Category Badge */}
+                                        <span className="absolute top-6 left-6 bg-white text-gray-700 text-xs px-2 py-1 rounded">
+                                            {item.category}
+                                        </span>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="pr-4 flex flex-col flex-grow px-4 ">
+                                        <h3 className="font-merriweather font-bold text-[14px] leading-[150%] text-gray-900">
+                                            {item.title}
+                                        </h3>
+
+
+
+                                        <div className="mt-2 pb-4 flex items-center flex  flex-grow text-[11px] text-gray-700">
+                                            {/* Author + Date */}
+                                            <div className="flex items-center gap-2 text-[10px] font-inter font-normal mt-4 leading-[120%] text-gray-600">
+                                                <span className="flex items-center gap-1">
+                                                    <img src={clock} alt="clock" className="w-3 h-3" />
+                                                    {item.readTime}
+                                                </span>
+                                                <span className="flex items-center gap-1">
+                                                    <img src={eye} alt="views" className="w-3 h-3" />
+                                                    {item.views}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="overflow-hidden mb-6 mt-8">
+                        <div className=" h-full flex items-center">
+                            <img
+                                src={aimImage}
+                                alt="Goals"
+                                className="w-full h-[130px] object-cover "
+                            />
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

@@ -51,8 +51,9 @@ const Header = () => {
               { name: "Mutual Funds", path: "/mutual-funds" },
               { name: "ETFs", path: "/etfs" },
               { name: "Calculators", path: "/calculators" },
-              { name: "Interviews", path: "/interviews" },
+              { name: "Interviews", path: "/interviewsss" },
               { name: "AMCs", path: "/amcs" },
+              { name:  "Fund News", path:"/fundnews"}
             ].map((item) => (
               <Link
                 key={item.name}

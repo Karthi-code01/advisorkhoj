@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Clock, Eye, Heart, Share2 } from "lucide-react";
 import twoArrows from "../assets/Images/Vector (1).png";
 import clock from '../assets/Images/famicons_time-outline.png'
 import eye from '../assets/Images/eye.png'
@@ -328,7 +327,7 @@ function ArticlePagination() {
             </div>
 
             {/* Banner */}
-            <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-2 flex flex-col sm:flex-row items-center sm:items-start mb-2 p-4 sm:p-6 mx-4">
+            <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6 sm:mt-2 flex flex-col sm:flex-row items-center sm:items-start mb-2 mx-4">
                 <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6 w-full sm:w-[140px]">
                     <img
                         src={twoArrows}
@@ -345,7 +344,7 @@ function ArticlePagination() {
                     </p>
                 </div>
                 <div className="flex-shrink-0">
-                    <button className="bg-[#096FFA] text-white px-4 sm:px-6 py-2 mt-10 sm:py-3 rounded-sm font-sans font-bold text-[11px] hover:bg-blue-700">
+                    <button className="bg-[#096FFA] text-white mb-4 sm:mb-0 px-4 sm:px-6 py-2 mt-10 sm:py-3 mr-8 rounded-sm font-sans font-bold text-[11px] hover:bg-blue-700">
                         Track Your Portfolio
                     </button>
                 </div>

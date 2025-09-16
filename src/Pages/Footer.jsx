@@ -66,7 +66,7 @@ const Footer = () => {
                 AdvisorKhoj
               </h3>
               <div className="w-full h-[1px] bg-[#24282D] mb-6"></div>
-              <div className=" border-r border-[#24282D] px-12">
+              <div className=" border-r border-[#24282D] px-12 h-full">
                 <div>
                   <h4 className="font-merriweather font-bold text-[16px] leading-[22px] align-middle mb-2">
                     AMCs
