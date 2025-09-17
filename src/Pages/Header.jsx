@@ -30,9 +30,8 @@ const Header = () => {
 
       {/* Navigation */}
       <nav
-        className={`bg-[#163164] py-4 px-4 lg:px-6 ${
-          isMenuOpen ? "block" : "hidden lg:block"
-        }`}
+        className={`bg-[#163164] py-4 px-4 lg:px-6 ${isMenuOpen ? "block" : "hidden lg:block"
+          }`}
       >
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           {/* Left Menu */}
@@ -51,9 +50,9 @@ const Header = () => {
               { name: "Mutual Funds", path: "/mutual-funds" },
               { name: "ETFs", path: "/etfs" },
               { name: "Calculators", path: "/calculators" },
-              { name: "Interviews", path: "/interviewsss" },
+              { name: "Interviews", path: "/interviews" },
               { name: "AMCs", path: "/amcs" },
-              { name:  "Fund News", path:"/fundnews"}
+              { name: "Fund News", path: "/fundnews" }
             ].map((item) => (
               <Link
                 key={item.name}

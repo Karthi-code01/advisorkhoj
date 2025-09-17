@@ -3,6 +3,7 @@ import Header from './Header'
 import Breadcrumbs from './Breadcrumbs'
 import { Search } from 'lucide-react'
 import Footer from './Footer'
+import shareicon from '../assets/Images/Frame 1427.png'
 
 function ArticleLandingpage() {
     return (
@@ -38,7 +39,60 @@ function ArticleLandingpage() {
 
             </div>
             <div className="w-[full] h-[1px] bg-[#111111] mb-6 mx-12"></div>
-            <Footer/>
+            <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div className="lg:col-span-7 px-4">
+                    <div className='bg-white p-4'>
+                        <div className="sm:flex items-center sm:justify-between text-[12px]  leading-[150%] tracking-[0] font-normal font-inter text-[#848484] mb-6">
+                            {/* Left Text */}
+                            <p>
+                                By <span className="font-semibold text-[#333333]">Advisorkhoj Research Team</span> | 25 Jan 2022
+                            </p>
+
+                            {/* Right Actions */}
+                            <div className="flex items-end gap-2 pt-2 sm:pt-0">
+                                <button className="bg-[#8D9BAE] text-white text-[10px] px-4 py-1 font-bold rounded">
+                                    BFSI Industry
+                                </button>
+                                <img src={shareicon} alt="share" className="w-[24px] h-[24px]" />
+                            </div>
+                        </div>
+
+
+                        {/* Title */}
+                        <h1 className="font-merriweather font-bold text-[24px] leading-[150%] tracking-[0] text-gray-900 mb-4">
+                            In Conversation with Mr Saurabh Jain Chief Marketing Officer with Union Mutual Fund
+                        </h1>
+
+
+                        <div className="w-full flex justify-center mb-6">
+                            <div className="w-full sm:w-1/2 h-[260px] bg-gray-200 overflow-hidden">
+                                <img
+                                    src="https://via.placeholder.com/600x350"
+                                    alt="Interview"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        </div>
+
+
+                        {/* Description */}
+                        <p className="text-sm text-gray-700 mb-6">
+                            Mr. Saurabh Jain is the Chief Marketing Officer at Union Asset Management Company Private
+                            Limited. Mr. Saurabh Jain is a B.Com and MBA. In his professional career of more than 24
+                            years, he has worked with IDFC Investment Advisors Ltd as Associate Director, Standard
+                            Chartered AMC Pvt. Ltd. as Assistant Vice President - Institutional Sales and Birla Sunlife
+                            Distribution Limited in their Institutional sales team.
+                        </p>
+
+                        {/* Other Interviews Section */}
+
+                    </div>
+                </div>
+                <div className=" lg:col-span-5 lg:mr-4">
+
+                </div>
+            </div>
+            <Footer />
         </div>
     )
 }

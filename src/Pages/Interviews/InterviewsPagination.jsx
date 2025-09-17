@@ -21,9 +21,13 @@ export default function InterviewsPagination() {
     const startIdx = (currentPage - 1) * cardsPerPage;
     const endIdx = startIdx + cardsPerPage;
     const currentCards = cards.slice(startIdx, endIdx);
-
     const handleClick = (item) => {
-        navigate("/landing", { state: item }); // passing the whole card object
+        navigate("/interviews/landing", {
+            state: {
+                item,
+                activeTab
+            }
+        });
     };
 
     // white bottom with diagonal cut

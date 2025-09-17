@@ -32,7 +32,7 @@ const Breadcrumbs = () => {
                             ) : (
                                 <Link
                                     to={routeTo}
-                                    className="font-['Inter'] font-normal text-[12px] leading-[16px] align-middle text-blue-600 hover:underline capitalize"
+                                    className="font-['Inter'] mt-1 font-normal text-[12px] leading-[16px] align-middle text-gray-900 hover:underline capitalize"
                                 >
                                     {name}
                                 </Link>

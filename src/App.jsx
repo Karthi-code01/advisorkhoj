@@ -3,6 +3,8 @@ import HomePage from './Pages/Home';
 import Article from './Pages/Article';
 import FundNews from './Pages/Fund News/FundNews';
 import Interviews from './Pages/Interviews/Interviews';
+import InterviewLandingPage from './Pages/Interviews/InterviewLandingPage';
+import ArticleLandingpage from './Pages/ArticleLandingpage';
 
 function App() {
   return (
@@ -10,8 +12,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/articles" element={<Article />} />
+        <Route path='/articles/landing' element={<ArticleLandingpage />} />
         <Route path="/fundnews" element={<FundNews />} />
-        <Route path='/interviews' element={<Interviews />}/>
+        <Route path='/interviews' element={<Interviews />} />
+        <Route path='/interviews/landing' element={<InterviewLandingPage />} />
       </Routes>
     </>
   );
