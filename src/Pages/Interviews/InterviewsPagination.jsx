@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import arrow from "../../assets/Images/arrow.png";
 import twoArrows from "../../assets/Images/Vector (1).png";
+import { useNavigate } from "react-router-dom";
 
 const cards = Array.from({ length: 30 }, (_, i) => ({
     id: i + 1,
@@ -14,17 +15,21 @@ const cards = Array.from({ length: 30 }, (_, i) => ({
 export default function InterviewsPagination() {
     const [activeTab, setActiveTab] = useState("financial");
     const [currentPage, setCurrentPage] = useState(1);
+    const navigate = useNavigate();
 
     const cardsPerPage = 15;
     const startIdx = (currentPage - 1) * cardsPerPage;
     const endIdx = startIdx + cardsPerPage;
     const currentCards = cards.slice(startIdx, endIdx);
 
+    const handleClick = (item) => {
+        navigate("/landing", { state: item }); // passing the whole card object
+    };
+
     // white bottom with diagonal cut
     const bottomClip = "polygon(0 0, 88% 0, 100% 100%, 0% 100%)";
-
     const Card = ({ item }) => (
-        <article className="relative h-[300px] shadow  overflow-hidden">
+        <article onClick={() => handleClick(item)} className="relative h-[300px] overflow-hidden cursor-pointer">
             {/* full background image */}
             <img
                 src={item.image}
@@ -32,12 +37,18 @@ export default function InterviewsPagination() {
                 className="absolute inset-0 w-full h-[300px] object-cover"
             />
 
-            {/* dark overlay */}
-            <div className="absolute inset-0 bg-black/40"></div>
+            {/* gradient for quote area */}
+            <div
+                className="absolute bottom-0 left-0 right-0 h-[160px] z-10"
+                style={{
+                    background:
+                        "linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.75) 51.44%, #111111 100%)",
+                }}
+            ></div>
 
             {/* quote */}
             <p
-                className={`absolute bottom-20 left-4 right-4 text-white font-merriweather font-bold text-[14px] leading-[150%] z-20 ${activeTab === "bfsi" ? "pr-12" : ""
+                className={`absolute bottom-20 left-4 right-4 text-white font-[Arial] font-bold text-[14px] leading-[150%] z-20 ${activeTab === "bfsi" ? "pr-12" : ""
                     }`}
             >
                 “{item.quote}”
@@ -52,10 +63,9 @@ export default function InterviewsPagination() {
 
             {/* white info bar with diagonal cut */}
             <div
-                className="absolute bottom-0 left-0 w-full bg-white p-4"
+                className="absolute bottom-0 left-0 w-full bg-white p-4 z-30"
                 style={{ clipPath: bottomClip, WebkitClipPath: bottomClip }}
             >
-
                 <p className="font-[Arial] font-bold text-[12px] text-[#111111]">
                     {item.name}
                 </p>
@@ -65,6 +75,9 @@ export default function InterviewsPagination() {
             </div>
         </article>
     );
+
+
+
 
     return (
         <div className="max-w-screen-xl mx-auto px-4">
@@ -134,33 +147,56 @@ export default function InterviewsPagination() {
             <div className=" h-[1px] bg-[#111111] mb-6 mt-12"></div>
 
             {/* Pagination */}
-            <div className="flex justify-center mt-8 gap-2 items-center">
-                {/* Prev Button */}
+            <div className="flex justify-between mt-8 items-center text-sm">
+                {/* Prev Button (Left) */}
                 <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((p) => p - 1)}
-                    className="px-3 py-1 border rounded disabled:opacity-50"
+                    className={`text-gray-500 underline disabled:opacity-40 disabled:hover:no-underline`}
                 >
                     Prev
                 </button>
 
-                {/* Page Numbers */}
-                {Array.from({ length: Math.ceil(cards.length / cardsPerPage) }, (_, i) => i + 1).map((page) => (
+                {/* Center Pagination (Arrows + Numbers) */}
+                <div className="flex items-center gap-2">
+                    {/* Left Arrow */}
                     <button
-                        key={page}
-                        onClick={() => setCurrentPage(page)}
-                        className={`px-3 py-1 border rounded ${currentPage === page ? "bg-blue-500 text-white" : "hover:bg-gray-200"
-                            }`}
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage((p) => p - 1)}
+                        className="px-1 text-gray-600 disabled:opacity-40"
                     >
-                        {page}
+                        ‹
                     </button>
-                ))}
 
-                {/* Next Button */}
+                    {/* Page Numbers */}
+                    {Array.from({ length: Math.ceil(cards.length / cardsPerPage) }, (_, i) => i + 1).map((page) => (
+                        <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`px-2 ${currentPage === page
+                                ? "text-blue-600 font-semibold underline"
+                                : "text-gray-600 hover:underline"
+                                }`}
+                        >
+                            {page}
+                        </button>
+                    ))}
+
+                    {/* Right Arrow */}
+                    <button
+                        disabled={currentPage === Math.ceil(cards.length / cardsPerPage)}
+                        onClick={() => setCurrentPage((p) => p + 1)}
+                        className="px-1 text-gray-600 disabled:opacity-40"
+                    >
+                        ›
+                    </button>
+                </div>
+
+                {/* Next Button (Right) */}
                 <button
                     disabled={currentPage === Math.ceil(cards.length / cardsPerPage)}
                     onClick={() => setCurrentPage((p) => p + 1)}
-                    className="px-3 py-1 border rounded disabled:opacity-50"
+                    className={`text-blue-600 underline disabled:opacity-40 disabled:hover:no-underline`}
                 >
                     Next
                 </button>

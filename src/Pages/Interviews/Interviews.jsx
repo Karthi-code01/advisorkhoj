@@ -1,8 +1,7 @@
-import React, { useState } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import Breadcrumbs from "../Breadcrumbs";
-import { ArrowRight, Search } from "lucide-react";
+import {  Search } from "lucide-react";
 import InterviewsPagination from "./InterviewsPagination";
 import aimImage from "../../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
 import tool1 from "../../assets/Images/advisory tools.png"
@@ -14,8 +13,6 @@ import tool6 from "../../assets/Images/advisory tools (3).png"
 import tool7 from "../../assets/Images/advisory tools (4).png"
 import tool8 from "../../assets/Images/advisory tools (5).png"
 import arrow from "../../assets/Images/Icon.png";
-
-// Dummy data (replace with API data)
 
 
 function Interviews() {
@@ -56,7 +53,7 @@ function Interviews() {
                         <input
                             type="text"
                             placeholder="Search a keyword"
-                            className="w-full h-[34px] pr-10 pl-3 
+                            className="w-full py-1 pr-10 pl-3 
                 border border-gray-300 bg-white text-gray-800 rounded-[12px]
                 placeholder:font-bold placeholder:text-[11px] placeholder:text-[#4A4A4A] 
                 placeholder:leading-[100%] placeholder:tracking-[0.01em] 
