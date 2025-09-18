@@ -194,7 +194,7 @@ function InterviewLandingPage() {
                             <img
                                 src={aimImage}
                                 alt="Goals"
-                                className="w-full h-[200px] object-cover "
+                                className="w-full h-[200px] object-fill "
                             />
                         </div>
                     </div>

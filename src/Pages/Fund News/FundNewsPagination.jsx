@@ -41,15 +41,9 @@ function FundNewsPagination() {
 
     return (
         <div>
-            {/* <h2
-                className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
-             text-[#000000] align-middle mb-2 px-4"
-            >
-                Most Popular Saving, Investing & Mutual Fund Articles
-            </h2>
-            <div className=" h-[1px] bg-[#111111] mx-4"></div> */}
+
             <div className="  bg-white p-3 mx-4 mb-4">
-                <div className="flex justify-between items-center gap-2 sm:gap-3 overflow-x-auto lg:overflow-visible no-scrollbar">
+                <div className="flex justify-between items-center gap-2 sm:gap-2 overflow-x-auto 2xl:overflow-visible no-scrollbar">
                     {categories.map((category) => (
                         <button
                             key={category}

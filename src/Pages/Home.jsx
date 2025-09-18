@@ -1722,7 +1722,7 @@ const App = () => {
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] rounded-full object-cover"
+                        className="w-[100px] h-[100px] rounded-full object-cover"
                       />
 
                       <div className="ml-4">

@@ -30,8 +30,8 @@ const Footer = () => {
     <>
       <div>
         <section className=" ms-12 mr-12">
-         
- <h2
+
+          <h2
             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle mb-2 "
           >
@@ -40,7 +40,7 @@ const Footer = () => {
           <div className="w-full h-[1px] bg-[#111111] "></div>
 
         </section>
-        <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 lg:h-[125px] md:py-8 bg-[#F8F9F9]">
+        <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 2xl:h-[125px] md:py-8 bg-[#F8F9F9]">
           {brands.map((brand, index) => (
             <div
               key={index}
@@ -49,7 +49,7 @@ const Footer = () => {
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="w-[100px] h-[36px] sm:w-[120px] sm:h-[40px] md:w-[150px] md:h-[48px] object-contain"
+                className="w-[150px] h-[36px] sm:w-[120px] sm:h-[40px] md:w-[150px] md:h-[48px] object-contain mt-4 lg:mt-0"
               />
             </div>
           ))}
@@ -185,7 +185,7 @@ const Footer = () => {
             {/* Left Section (col-span-7) */}
             <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {/* Column 1 */}
-              <div className="px-6 py-6 ms-6">
+              <div className="px-6 py-6 lg:ms-6">
                 <h5 className="font-merriweather font-bold text-[16px]  leading-[22px] mb-4">Quick Links</h5>
                 <div className="space-y-2 text-[#8D9BAE]">
                   <div>Track your Investments</div>
@@ -234,7 +234,7 @@ const Footer = () => {
 
 
             {/* Right Section (col-span-5) */}
-            <div className="md:col-span-5 grid grid-cols-1 md:grid-cols-2">
+            <div className="md:col-span-5 grid grid-cols-1 lg:grid-cols-2">
               <div className="px-6 py-6 border-r border-[#24282D]">
                 <h5 className="font-merriweather font-bold text-[16px] leading-[22px] align-middle mb-4">
                   About Us
