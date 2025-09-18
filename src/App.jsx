@@ -4,7 +4,7 @@ import Article from './Pages/Article';
 import FundNews from './Pages/Fund News/FundNews';
 import Interviews from './Pages/Interviews/Interviews';
 import InterviewLandingPage from './Pages/Interviews/InterviewLandingPage';
-import ArticleLandingpage from './Pages/ArticleLandingpage';
+import FundNewsLandingpage from './Pages/Fund News/FundNewsLandingpage';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/articles" element={<Article />} />
-        <Route path='/articles/landing' element={<ArticleLandingpage />} />
         <Route path="/fundnews" element={<FundNews />} />
+        <Route path='/fundnews/landing' element={<FundNewsLandingpage />} />
         <Route path='/interviews' element={<Interviews />} />
         <Route path='/interviews/landing' element={<InterviewLandingPage />} />
       </Routes>

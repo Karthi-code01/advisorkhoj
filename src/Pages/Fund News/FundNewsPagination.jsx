@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import twoArrows from "../../assets/Images/Vector (1).png";
+import { useNavigate } from 'react-router-dom';
 
 function FundNewsPagination() {
     const categories = [
@@ -23,6 +24,8 @@ function FundNewsPagination() {
     }));
     const [active, setActive] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
+    const navigate = useNavigate();
+
     const ITEMS_PER_PAGE = 12;
 
     // Pagination logic
@@ -31,6 +34,10 @@ function FundNewsPagination() {
     const currentItems = articles.slice(startIndex, endIndex);
 
     const totalPages = Math.ceil(articles.length / ITEMS_PER_PAGE);
+
+    const handleclick = () => {
+        navigate("/fundnews/landing")
+    }
 
     return (
         <div>
@@ -109,7 +116,7 @@ function FundNewsPagination() {
                                         {item.date}
                                     </p>
                                 </div>
-                                <button className="px-3 py-1.5 mt-2 bg-[#096FFA] text-white font-[Arial] font-bold text-[10px] leading-[12px] tracking-[1px] rounded hover:bg-blue-700 transition">
+                                <button onClick={() => handleclick()} className="px-3 py-1.5 mt-2 bg-[#096FFA] text-white font-[Arial] font-bold text-[10px] leading-[12px] tracking-[1px] rounded hover:bg-blue-700 transition">
                                     Read Now
                                 </button>
 

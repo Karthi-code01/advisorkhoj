@@ -444,8 +444,8 @@ const StockTicker = ({ stockData = [] }) => {
           <div
             key={index}
             className={`flex items-center space-x-2 px-3 py-2 rounded-full text-xs sm:text-sm ${stock.negative
-                ? "bg-[#FFF4F4] text-red-600"
-                : "bg-[#F5FFEE] text-green-600"
+              ? "bg-[#FFF4F4] text-red-600"
+              : "bg-[#F5FFEE] text-green-600"
               }`}
           >
             <span className="font-semibold text-[#444444]">{stock.symbol}</span>
@@ -939,25 +939,25 @@ const App = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-6 p-2">
                   <div className="flex items-start space-x-2">
                     <span className="w-6 h-5 rounded-full bg-white mt-1.5"></span>
-                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D]">
+                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D] pr-0 2xl:pr-8">
                       Websites for MF Distributors & Advisors
                     </p>
                   </div>
                   <div className="flex items-start space-x-2">
                     <span className="w-6 h-5 rounded-full bg-white mt-1.5"></span>
-                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D]">
+                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D] pr-0 2xl:pr-8">
                       Back-Office Software for MF Distributors
                     </p>
                   </div>
                   <div className="flex items-start space-x-2">
                     <span className="w-6 h-5 rounded-full bg-white mt-1.5"></span>
-                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D]">
+                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D] pr-0 2xl:pr-8">
                       Mobile App Development for MF Distributors
                     </p>
                   </div>
                   <div className="flex items-start space-x-2">
                     <span className="w-6 h-5 rounded-full bg-white mt-1.5"></span>
-                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D]">
+                    <p className="font-merriweather font-bold text-[12px] leading-[20px] text-[#1D1D1D] pr-0 2xl:pr-8">
                       MF Tools & Resources for MF Distributors
                     </p>
                   </div>

@@ -431,13 +431,15 @@ function ArticleCard({ article, large }) {
                 }`}
         >
             {/* Image */}
-            <div className="relative">
-                <img
-                    src={article.image}
-                    alt={article.title}
-                    className={`object-cover ${large ? "w-[270px] h-[200px] " : "w-[270px] h-[150px]"
-                        }`}
-                />
+            <div className="relative ">
+                <div>
+                    <img
+                        src={article.image}
+                        alt={article.title}
+                        className={`object-cover ${large ? "w-full h-[200px] " : "w-full sm:w-[200px] h-[150px]"
+                            }`}
+                    />
+                </div>
                 <div className="flex items-center gap-2 text-[10px] font-inter font-normal mt-4 leading-[120%] text-gray-600">
                     <span className="flex items-center gap-1 align-middle">
                         <img src={clock} alt="clock" className="w-3 h-3" />
@@ -477,7 +479,7 @@ function ArticleCard({ article, large }) {
 
 
 
-                <div className="mt-2 flex items-center justify-between text-[11px] text-gray-700">
+                <div className="mt-2 flex flex-grow items-center justify-between text-[11px] text-gray-700">
                     {/* Author + Date (Left) */}
                     <div className=" items-center">
                         <p className="font-[Arial] font-bold text-[13px] leading-[100%] tracking-[-0.01em] align-middle text-[#333333] rounded">

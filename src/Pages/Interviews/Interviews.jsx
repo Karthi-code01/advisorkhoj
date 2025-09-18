@@ -1,7 +1,7 @@
 import Header from "../Header";
 import Footer from "../Footer";
 import Breadcrumbs from "../Breadcrumbs";
-import {  Search } from "lucide-react";
+import { Search } from "lucide-react";
 import InterviewsPagination from "./InterviewsPagination";
 import aimImage from "../../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
 import tool1 from "../../assets/Images/advisory tools.png"
@@ -70,7 +70,7 @@ function Interviews() {
 
             {/* Divider */}
             <div className=" h-[1px] bg-[#111111] mb-6 mx-12"></div>
-            <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
                 {/* Left: Articles */}
 
                 <div className="lg:col-span-7 ">
@@ -126,7 +126,7 @@ function Interviews() {
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle"
                         >
-                            Fund News
+                            Recent Fund News
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             VIEW ALL   <img

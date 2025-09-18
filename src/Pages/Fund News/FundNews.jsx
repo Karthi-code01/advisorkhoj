@@ -90,7 +90,7 @@ function FundNews() {
 
             </div>
             <div className="w-[full] h-[1px] bg-[#111111] mb-4 mx-12"></div>
-            <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
                 {/* Left: Articles */}
 
                 <div className="lg:col-span-7 ">
@@ -160,10 +160,10 @@ function FundNews() {
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             VIEW ALL   <img
-                  src={arrow}
-                  alt="arrow"
-                  className="w-[13px] h-[13px] object-contain invert"
-                />
+                                src={arrow}
+                                alt="arrow"
+                                className="w-[13px] h-[13px] object-contain invert"
+                            />
                         </button>
                     </div>
                     <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
@@ -199,10 +199,10 @@ function FundNews() {
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             VIEW ALL   <img
-                  src={arrow}
-                  alt="arrow"
-                  className="w-[13px] h-[13px] object-contain invert"
-                />
+                                src={arrow}
+                                alt="arrow"
+                                className="w-[13px] h-[13px] object-contain invert"
+                            />
                         </button>
                     </div>
                     <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
