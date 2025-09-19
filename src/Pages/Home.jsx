@@ -1643,7 +1643,7 @@ const App = () => {
                   return (
                     <div
                       key={index}
-                      className={`${service.color} p-6 rounded-lg hover:shadow-md transition-shadow`}
+                      className={`${service.color} p-6`}
                     >
                       <div className="relative w-[60px] h-[60px]">
                         {/* Background Image */}

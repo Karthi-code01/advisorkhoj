@@ -36,7 +36,7 @@ function FundNewsPagination() {
     const totalPages = Math.ceil(articles.length / ITEMS_PER_PAGE);
 
     const handleclick = () => {
-        navigate("/fundnews/landing")
+        navigate("/fundnews/Bandan-Mutual-Fund")
     }
 
     return (

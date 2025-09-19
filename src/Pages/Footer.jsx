@@ -30,8 +30,8 @@ const Footer = () => {
     <>
       <div>
         <section className=" ms-12 mr-12">
-         
- <h2
+
+          <h2
             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
              text-[#000000] align-middle mb-2 "
           >
@@ -40,7 +40,7 @@ const Footer = () => {
           <div className="w-full h-[1px] bg-[#111111] "></div>
 
         </section>
-        <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 lg:h-[125px] md:py-8 bg-[#F8F9F9]">
+        <div className="flex flex-wrap items-center justify-center ps-4 md:justify-between gap-4 md:gap-6 py-6 2xl:h-[125px] md:py-8 bg-[#F8F9F9]">
           {brands.map((brand, index) => (
             <div
               key={index}

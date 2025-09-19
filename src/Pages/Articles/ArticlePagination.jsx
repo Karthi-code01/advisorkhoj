@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import twoArrows from "../assets/Images/Vector (1).png";
-import clock from '../assets/Images/famicons_time-outline.png'
-import eye from '../assets/Images/eye.png'
-import download from '../assets/Images/mynaui_download.png'
-import share from '../assets/Images/Frame 1392 (1).png'
+import twoArrows from "../../assets/Images/Vector (1).png";
+import clock from '../../assets/Images/famicons_time-outline.png'
+import eye from '../../assets/Images/eye.png'
+import download from '../../assets/Images/mynaui_download.png'
+import share from '../../assets/Images/Frame 1392 (1).png'
+import { useNavigate } from "react-router-dom";
 const articles = [
     {
         id: 1,
@@ -248,6 +249,7 @@ const articles = [
 ];
 
 
+
 function ArticlePagination() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 9;
@@ -257,6 +259,7 @@ function ArticlePagination() {
     // Slice 9 items for current page
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentArticles = articles.slice(startIndex, startIndex + itemsPerPage);
+
 
     return (
         <div>
@@ -425,9 +428,14 @@ function ArticlePagination() {
 }
 
 function ArticleCard({ article, large }) {
+    const navigate = useNavigate();
+    const handleclick = () => {
+        navigate("/articles/Bandan-Mutual-Fund")
+    }
     return (
         <div
-            className={`bg-[#FFFFFF] p-4 overflow-hidden flex ${large ? "flex-col" : "flex-col  sm:flex-row"
+            onClick={() => handleclick()}
+            className={`bg-[#FFFFFF] p-4 overflow-hidden flex cursor-pointer ${large ? "flex-col" : "flex-col  sm:flex-row"
                 }`}
         >
             {/* Image */}

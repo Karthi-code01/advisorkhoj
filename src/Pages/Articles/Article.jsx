@@ -1,27 +1,27 @@
 import { ArrowRight, Search } from "lucide-react";
-import Header from "./Header";
-import Breadcrumbs from "./Breadcrumbs";
+import Header from "../Header";
+import Breadcrumbs from "../Breadcrumbs";
 import ArticlePagination from "./ArticlePagination";
-import Footer from "./Footer";
+import Footer from "../Footer";
 
-import aimImage from "../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
-import tool1 from "../assets/Images/advisory tools.png"
-import tool2 from "../assets/Images/advisory tools (1).png"
-import tool3 from "../assets/Images/Union.png"
-import tool4 from "../assets/Images/advisory tools (2).png"
-import tool5 from "../assets/Images/Union (1).png"
-import tool6 from "../assets/Images/advisory tools (3).png"
-import tool7 from "../assets/Images/advisory tools (4).png"
-import tool8 from "../assets/Images/advisory tools (5).png"
-import tool9 from "../assets/Images/Union (2).png"
-import tool10 from "../assets/Images/Union (3).png"
-import tool11 from "../assets/Images/Union (4).png"
-import tool12 from "../assets/Images/advisory tools (6).png"
-import tool13 from "../assets/Images/advisory tools (7).png"
-import tool14 from "../assets/Images/advisory tools (8).png"
-import tool15 from "../assets/Images/advisory tools (9).png"
-import tool16 from "../assets/Images/advisory tools (10).png"
-import arrow from "../assets/Images/Icon.png";
+import aimImage from "../../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
+import tool1 from "../../assets/Images/advisory tools.png"
+import tool2 from "../../assets/Images/advisory tools (1).png"
+import tool3 from "../../assets/Images/Union.png"
+import tool4 from "../../assets/Images/advisory tools (2).png"
+import tool5 from "../../assets/Images/Union (1).png"
+import tool6 from "../../assets/Images/advisory tools (3).png"
+import tool7 from "../../assets/Images/advisory tools (4).png"
+import tool8 from "../../assets/Images/advisory tools (5).png"
+import tool9 from "../../assets/Images/Union (2).png"
+import tool10 from "../../assets/Images/Union (3).png"
+import tool11 from "../../assets/Images/Union (4).png"
+import tool12 from "../../assets/Images/advisory tools (6).png"
+import tool13 from "../../assets/Images/advisory tools (7).png"
+import tool14 from "../../assets/Images/advisory tools (8).png"
+import tool15 from "../../assets/Images/advisory tools (9).png"
+import tool16 from "../../assets/Images/advisory tools (10).png"
+import arrow from "../../assets/Images/Icon.png";
 
 
 
