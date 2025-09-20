@@ -7,6 +7,16 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import downloadicon from '../../assets/Images/Frame 1426.png'
 import messageicon from '../../assets/Images/Frame 1427 (1).png'
 import arrow from "../../assets/Images/Icon.png";
+import twoArrows from "../../assets/Images/Vector (1).png";
+import aimImage from "../../assets/Images/6418fd258e033e4afc684202f0875f873e862988.png";
+import tool9 from "../../assets/Images/Union (2).png"
+import tool10 from "../../assets/Images/Union (3).png"
+import tool11 from "../../assets/Images/Union (4).png"
+import tool12 from "../../assets/Images/advisory tools (6).png"
+import tool13 from "../../assets/Images/advisory tools (7).png"
+import tool14 from "../../assets/Images/advisory tools (8).png"
+import tool15 from "../../assets/Images/advisory tools (9).png"
+import tool16 from "../../assets/Images/advisory tools (10).png"
 import Footer from '../Footer';
 
 
@@ -71,6 +81,17 @@ const faqs = [
         ),
     },
 ];
+const features2 = [
+    { id: 1, name: "Crorepati Calculator", icon: tool9 },
+    { id: 2, name: "Risk Analyser", icon: tool10 },
+    { id: 3, name: "SIP Calculator", icon: tool11 },
+    { id: 4, name: "Asset Calculator", icon: tool12 },
+    { id: 5, name: "SIP Planner", icon: tool13 },
+    { id: 6, name: "Retirement Planning Calculator", icon: tool14 },
+    { id: 7, name: "Compounding Calculator", icon: tool15 },
+    { id: 8, name: "Lumpsum Calculator", icon: tool16 },
+];
+
 function CrorepatiCalculator() {
     const [wealthTarget, setWealthTarget] = useState(5);
     const [currentAge, setCurrentAge] = useState(25);
@@ -189,7 +210,7 @@ function CrorepatiCalculator() {
                     <h1 className="font-merriweather font-bold text-[20px] sm:text-[24px] leading-[150%] text-gray-900 mb-2 sm:mb-4">
                         Become A Crorepati Calculator
                     </h1>
-                    <p className="font-[Arial] text-[12px] sm:text-[14px] leading-[150%] tracking-[0.5px] text-gray-700 max-w-xl">
+                    <p className="font-[Arial] text-[12px] sm:text-[14px] leading-[150%] tracking-[0.5px] text-gray-700 max-w-5xl">
                         Become a Crorepati Calculator helps you calculate how much money you need to save monthly to become a crorepati.
                         Check out the{" "}
                         <a
@@ -321,7 +342,7 @@ function CrorepatiCalculator() {
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
                                  text-[#000000] align-middle"
                         >
-                            About Become a Crorepati Calculkator
+                            About Become a Crorepati Calculator
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             See More   <img
@@ -336,7 +357,7 @@ function CrorepatiCalculator() {
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className={`bg-white p-4 cursor-pointer transition-all ${openIndex === index ? "border-l-4 border-blue-500" : "border border-gray-100"
+                                className={`bg-white p-4 cursor-pointer  ${openIndex === index ? "border-l-4 border-blue-500" : "border border-gray-100"
                                     }`}
                                 onClick={() => toggleFaq(index)}
                             >
@@ -359,8 +380,69 @@ function CrorepatiCalculator() {
                             </div>
                         ))}
                     </div>
+                    <div className="bg-[linear-gradient(114.55deg,#ECD3BA_15.37%,#CAE5FF_75.11%)] mt-6  flex flex-col sm:flex-row items-center sm:items-start mb-6 ">
+                        <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-6 w-full sm:w-[140px]">
+                            <img
+                                src={twoArrows}
+                                alt="Double Up Arrow"
+                                className="w-full h-auto object-contain"
+                            />
+                        </div>
+                        <div className="flex-1 text-center sm:text-left mb-4 sm:mb-0">
+                            <h3 className="font-serif font-bold text-[16px] pt-8 leading-[28px] text-gray-800 mb-1">
+                                Portfolio Tracking Simplified
+                            </h3>
+                            <p className="font-sans text-[13px] leading-[18px] text-gray-700">
+                                Track your wealth with the Ultimate Investment Portfolio Tracker
+                            </p>
+                        </div>
+                        <div className="flex-shrink-0">
+                            <button className="bg-[#096FFA] text-white mb-4 sm:mb-0 px-4 sm:px-6 py-2 mt-10 sm:py-3 mr-8 rounded-sm font-sans font-bold text-[11px] hover:bg-blue-700">
+                                Track Your Portfolio
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div className=" lg:col-span-5 lg:mr-4">
+                    <div className="overflow-hidden mb-6 mt-6">
+                        <div className=" h-full flex items-center">
+                            <img
+                                src={aimImage}
+                                alt="Goals"
+                                className="w-full h-[130px] object-cover "
+                            />
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center mt-10 mb-2">
+                        <h2
+                            className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
+             text-[#000000] align-middle"
+                        >
+                            Explore More Calculators
+                        </h2>
+                        <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
+                            VIEW ALL   <img
+                                src={arrow}
+                                alt="arrow"
+                                className="w-[13px] h-[13px] object-contain invert"
+                            />
+                        </button>
+                    </div>
+                    <div className="w-full h-[1px] bg-[#111111] mb-6"></div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
+                        {features2.map((item) => (
+                            <div
+                                key={item.id}
+                                className="flex items-center gap-3 p-3 bg-white"
+                            >
+                                <img src={item.icon} alt={item.name} className="w-[24px] h-[24px]" />
+                                <span className="font-[Arial] font-normal text-[12px] leading-[150%] text-gray-700 align-middle">
+                                    {item.name}
+                                </span>
+
+                            </div>
+                        ))}
+                    </div>
 
                 </div>
             </div>
