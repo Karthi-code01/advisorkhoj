@@ -65,14 +65,14 @@ function InterviewLandingPage() {
             <Header />
 
             {/* Top Section: Breadcrumbs + Search */}
-            <div className="grid grid-cols-6 items-center gap-4 px-12 py-6">
+            <div className="grid grid-cols-6 items-center gap-4 px-4 sm:px-8 md:px-12 py-4 sm:py-6">
                 {/* Breadcrumbs */}
-                <div className="col-span-3 sm:col-span-3 md:col-span-2">
+                <div className="col-span-6 md:col-span-2">
                     <Breadcrumbs />
                 </div>
 
                 {/* Search */}
-                <div className="col-span-3 sm:col-span-3 md:col-span-2 md:col-start-5 flex justify-end">
+                <div className="col-span-6 md:col-span-2 md:col-start-5 flex justify-end">
                     <div className="relative w-full sm:w-[200px] md:w-[254px]">
                         <input
                             type="text"
@@ -91,9 +91,7 @@ function InterviewLandingPage() {
                     </div>
                 </div>
             </div>
-
-            {/* Divider */}
-            <div className=" h-[1px] bg-[#111111] mb-6 mx-12"></div>
+            <div className=" h-[1px] bg-[#111111] mb-6 mx-4 sm:mx-8 md:mx-12"></div>
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-12 ">
                 {/* Left: Articles */}
 

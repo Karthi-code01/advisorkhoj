@@ -7,6 +7,7 @@ import InterviewLandingPage from './Pages/Interviews/InterviewLandingPage';
 import FundNewsLandingpage from './Pages/Fund News/FundNewsLandingpage';
 import ArticleLandingPage from './Pages/Articles/ArticleLandingPage';
 import CrorepatiCalculator from './Pages/Calculators/CrorepatiCalculator';
+import { CalculatorRoutes } from './Pages/Calculators/CalculatorRoutes';
 
 function App() {
   return (
@@ -19,7 +20,11 @@ function App() {
         <Route path='/fundnews/Bandan-Mutual-Fund' element={<FundNewsLandingpage />} />
         <Route path='/interviews' element={<Interviews />} />
         <Route path='/interviews/-' element={<InterviewLandingPage />} />
-        <Route path='/calculators' element={<CrorepatiCalculator />} />
+        <Route path="/calculator">
+          {CalculatorRoutes.map(({ path, element }, index) => (
+            <Route key={index} path={path} element={element} />
+          ))}
+        </Route>
       </Routes>
     </>
   );
