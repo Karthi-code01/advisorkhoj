@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Header from '../Header'
 import Breadcrumbs from '../Breadcrumbs'
 import { ChevronDown, ChevronUp, Search } from 'lucide-react'
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import downloadicon from '../../assets/Images/Frame 1426.png'
 import messageicon from '../../assets/Images/Frame 1427 (1).png'
 import arrow from "../../assets/Images/Icon.png";
@@ -18,9 +16,13 @@ import tool14 from "../../assets/Images/advisory tools (8).png"
 import tool15 from "../../assets/Images/advisory tools (9).png"
 import tool16 from "../../assets/Images/advisory tools (10).png"
 import Footer from '../Footer';
+import line from "../../assets/Images/Line 25 (1).png"
+import { Chart as ChartJS, ArcElement, Title, Tooltip, Legend, CategoryScale, LineElement, PointElement, LinearScale, BarElement } from "chart.js";
+import { Doughnut, Bar } from "react-chartjs-2";
+import tik from "../../assets/Images/tik.png"
 
-
-ChartJS.register(ArcElement, Tooltip, Legend);
+// ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend);
 const faqs = [
     {
         question: "How can an advisor help me with my investment goals?",
@@ -93,78 +95,33 @@ const features2 = [
 ];
 
 function CompoundingCalculator() {
-    const [wealthTarget, setWealthTarget] = useState(5);
-    const [currentAge, setCurrentAge] = useState(25);
-    const [targetAge, setTargetAge] = useState(75);
-    const [inflation, setInflation] = useState(5);
-    const [sipReturn, setSipReturn] = useState(12.5);
-    const [currentSavings, setCurrentSavings] = useState(500000);
+    const [sipAmount, setSipAmount] = useState(25000);
+    const [sipDuration, setSipDuration] = useState(12.5);
+    const [sipReturn, setSipReturn] = useState(12);
     const [openIndex, setOpenIndex] = useState(null);
+    const [frequency, setFrequency] = useState("yearly");
 
-    const inputs = [
-        {
-            id: "wealthTarget",
-            label: "Your wealth target (in crores)",
-            min: 1, max: 20, step: 1,
-            value: wealthTarget, setValue: setWealthTarget,
-            unit: " Crore",
-        },
-        {
-            id: "currentAge",
-            label: "Your current age (in years)",
-            min: 18, max: 60, step: 1,
-            value: currentAge, setValue: setCurrentAge,
-            unit: "",
-        },
-        {
-            id: "targetAge",
-            label: "Target age for becoming a crorepati",
-            min: 30, max: 80, step: 1,
-            value: targetAge, setValue: setTargetAge,
-            unit: "",
-        },
-        {
-            id: "inflation",
-            label: "Expected Inflation Rate (% per annum)",
-            min: 1, max: 15, step: 0.5,
-            value: inflation, setValue: setInflation,
-            unit: "%",
-        },
-        {
-            id: "sipReturn",
-            label: "Expected SIP Return (% per annum)",
-            min: 5, max: 20, step: 0.5,
-            value: sipReturn, setValue: setSipReturn,
-            unit: "%",
-        },
-        {
-            id: "currentSavings",
-            label: "Current Savings (₹)",
-            min: 100000, max: 10000000, step: 100000,
-            value: currentSavings, setValue: setCurrentSavings,
-            unit: "₹",
-            format: (v) => `₹ ${v.toLocaleString()}`,
-        },
-    ];
+    // Basic dummy calculations
+    const totalSipInvestment = sipAmount * sipDuration * 12; // total invested
+    const growth = totalSipInvestment * (sipReturn / 100); // dummy growth
+    const totalFutureValue = totalSipInvestment + growth;
 
-    const years = targetAge - currentAge;
-    const growthOfSavings = currentSavings * Math.pow(1 + sipReturn / 100, years);
-    const inflationAdjusted = wealthTarget * 10000000 * Math.pow(1 + inflation / 100, years / 10);
-    const finalTarget = inflationAdjusted - growthOfSavings;
-    const requiredSip = Math.round(finalTarget / (years * 12));
-    const totalSipInvestment = requiredSip * 12 * years;
-    const totalGrowthAmount = finalTarget;
-
-    const chartData = {
-        labels: ["Amount Invested", "Total Growth"],
+    // Doughnut chart (Gauge style)
+    const doughnutData = {
+        labels: ["SIP Investment", "Growth"],
         datasets: [
             {
-                data: [totalSipInvestment, totalGrowthAmount],
+                data: [totalSipInvestment, growth],
                 backgroundColor: ["#098941", "#FFA901"],
                 borderWidth: 0,
+                cutout: "50%",
+                rotation: -90,
+                circumference: 180,
             },
         ],
     };
+
+
     const toggleFaq = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -220,28 +177,23 @@ function CompoundingCalculator() {
                 </div>
             </div>
 
-            {/* Main Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 p-4 sm:p-6 md:p-8 bg-white mx-4 sm:mx-8 md:mx-12 mt-6 sm:mt-8 rounded-lg shadow-sm">
-                {/* Inputs */}
-                <div className="space-y-6 md:pr-8 border-b md:border-b-0 md:border-r">
-                    {inputs.map((input) => (
-                        <div key={input.id}>
-                            <div className="flex flex-col sm:flex-row mt-8 items-start sm:items-center justify-between  gap-2 sm:gap-4">
-                                <label className="font-[Inter] font-bold text-[13px]  sm:text-[14px] leading-[150%]">
-                                    {input.label}
-                                </label>
-                                <p className="text-right font-semibold px-4 py-2 bg-[#F9F9F9] border-b border-[#096FFA] text-sm">
-                                    {input.format ? input.format(input.value) : `${input.value}${input.unit}`}
-                                </p>
+            <div className='bg-white mx-8'>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 p-4 sm:p-6 md:p-8 mx-4 sm:mx-8 md:mx-12 mt-6 sm:mt-8 ">
+                    {/* Inputs */}
+                    <div className="space-y-6 md:pr-8  md:border-r">
+                        {/* SIP Amount */}
+                        <div>
+                            <div className="flex justify-between mb-2 text-sm font-semibold">
+                                <label className="font-[Inter] font-bold text-[13px]  sm:text-[14px] leading-[150%]">Principal Amount (Rs)</label>
+                                <span className="text-right font-semibold px-4 py-2 bg-[#F9F9F9] border-b border-[#096FFA] text-sm">{sipAmount.toLocaleString()}</span>
                             </div>
                             <input
                                 type="range"
-                                className='mt-6'
-                                min={input.min}
-                                max={input.max}
-                                step={input.step}
-                                value={input.value}
-                                onChange={(e) => input.setValue(Number(e.target.value))}
+                                min={1000}
+                                max={100000}
+                                step={5000}
+                                value={sipAmount}
+                                onChange={(e) => setSipAmount(Number(e.target.value))}
                                 style={{
                                     WebkitAppearance: "none",
                                     width: "100%",
@@ -249,83 +201,177 @@ function CompoundingCalculator() {
                                     borderRadius: "8px",
                                     cursor: "pointer",
                                     background: `linear-gradient(
-                    to right,
-                    #B1D2FF,
-                    #2C85FD ${((input.value - input.min) / (input.max - input.min)) * 100}%,
-                    #E5E7EB ${((input.value - input.min) / (input.max - input.min)) * 100}%
-                  )`,
+          to right,
+          #B1D2FF,
+          #2C85FD ${((sipAmount - 1000) / (100000 - 1000)) * 100}%,
+          #E5E7EB ${((sipAmount - 1000) / (100000 - 1000)) * 100}%
+        )`,
                                 }}
                             />
                         </div>
-                    ))}
-                </div>
 
-                {/* Results + Chart */}
-                <div className="">
-                    {/* Chart */}
-                    <div className="flex justify-center">
-                        <div className="w-[220px] sm:w-[260px] md:w-[300px] lg:w-[350px] h-[240px]">
+                        {/* SIP Duration */}
+                        <div>
+                            <div className="flex justify-between mb-2 text-sm font-semibold">
+                                <label className="font-[Inter] font-bold text-[13px]  sm:text-[14px] leading-[150%]">Period (in Years)</label>
+                                <span className="text-right font-semibold px-4 py-2 bg-[#F9F9F9] border-b border-[#096FFA] text-sm">{sipDuration}</span>
+                            </div>
+                            <input
+                                type="range"
+                                min={5}
+                                max={20}
+                                step={0.5}
+                                value={sipDuration}
+                                onChange={(e) => setSipDuration(Number(e.target.value))}
+                                style={{
+                                    WebkitAppearance: "none",
+                                    width: "100%",
+                                    height: "8px",
+                                    borderRadius: "8px",
+                                    cursor: "pointer",
+                                    background: `linear-gradient(
+          to right,
+          #B1D2FF,
+          #2C85FD ${((sipDuration - 5) / (20 - 5)) * 100}%,
+          #E5E7EB ${((sipDuration - 5) / (20 - 5)) * 100}%
+        )`,
+                                }}
+                            />
+                        </div>
+
+                        {/* Rate of Return */}
+                        <div>
+                            <div className="flex justify-between mb-2 text-sm font-semibold">
+                                <label className="font-[Inter] font-bold text-[13px]  sm:text-[14px] leading-[150%]">Interest Rate (% per annum)</label>
+                                <span className="text-right font-semibold px-4 py-2 bg-[#F9F9F9]  border-b border-[#096FFA] text-sm">{sipReturn}%</span>
+                            </div>
+                            <input
+                                type="range"
+                                min={5}
+                                max={20}
+                                step={0.5}
+                                value={sipReturn}
+                                onChange={(e) => setSipReturn(Number(e.target.value))}
+                                style={{
+                                    WebkitAppearance: "none",
+                                    width: "100%",
+                                    height: "8px",
+                                    borderRadius: "8px",
+                                    cursor: "pointer",
+                                    background: `linear-gradient(
+          to right,
+          #B1D2FF,
+          #2C85FD ${((sipReturn - 5) / (20 - 5)) * 100}%,
+          #E5E7EB ${((sipReturn - 5) / (20 - 5)) * 100}%
+        )`,
+                                }}
+                            />
+                        </div>
+                        {/* Compounding Frequency */}
+                        <div className="mt-6">
+                            <div className="flex flex-col  lg:flex-row gap-2 lg:gap-4">
+                                {["yearly", "half-yearly", "quarterly", "monthly"].map((item) => (
+                                    <label key={item} className="flex items-center gap-1 cursor-pointer">
+                                        <div
+                                            className={`w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center relative transition-colors duration-200 ${frequency === item ? "bg-[#096FFA]" : "bg-white"
+                                                }`}
+                                        >
+                                            <input
+                                                type="radio"
+                                                name="frequency"
+                                                value={item}
+                                                checked={frequency === item}
+                                                onChange={(e) => setFrequency(e.target.value)}
+                                                className="absolute w-full h-full opacity-0 cursor-pointer"
+                                            />
+                                            {frequency === item && (
+                                                <img src={tik} alt="tick" className="w-2 h-2" />
+                                            )}
+                                        </div>
+                                        <span className="text-sm font-medium capitalize">{item.replace("-", " ")}</span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                    {/* Results & Doughnut */}
+                    <div className="flex flex-col items-center">
+                        {/* Chart container */}
+                        <div className="w-[220px] h-[200px] sm:w-[260px] sm:h-[220px] md:w-[300px] md:h-[240px] lg:w-[300px] lg:h-[200px]">
                             <Doughnut
-                                data={chartData}
+                                data={doughnutData}
                                 options={{
                                     responsive: true,
-                                    maintainAspectRatio: true,
-                                    cutout: "50%",
-                                    radius: "100%",
+                                    maintainAspectRatio: false,
+                                    cutout: 180,
                                     rotation: -90,
                                     circumference: 180,
-                                    layout: {
-                                        padding: {
-                                            top: 0,
-                                            bottom: 30
-                                        }
-                                    },
-                                    plugins: {
-                                        legend: {
-                                            display: true,
-                                            position: "bottom",
-                                            labels: {
-                                                usePointStyle: true,
-                                                pointStyle: "rect",
-                                                padding: 8,
-                                                font: { size: 12 },
-                                            },
-                                        },
-                                    },
+                                    plugins: { legend: { display: false } },
                                 }}
                             />
+                        </div>
 
+                        {/* Stats section */}
+                        <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start w-full text-center gap-6 lg:gap-4 mt-6">
+                            {/* Left: Total SIP */}
+                            <div>
 
+                                <div className="border py-3 px-4 rounded border-[3px] border-[#098941]">
+                                    <p className="font-bold text-[#333333]">
+                                        Rs. {totalSipInvestment.toLocaleString()}
+                                    </p>
+                                </div>
+                                <p className="text-xs font-merriweather text-[#444444] mt-8 font-normal leading-[100%]">
+                                    Current Cost
+                                </p>
+                            </div>
+
+                            {/* Middle: Future Value */}
+                            <div>
+                                <p className="text-[12px] mt-2 font-merriweather text-[#444444] mb-1 font-normal leading-[100%]">
+                                    10 Years
+                                </p>
+
+                                <img src={line} className="hidden lg:block w-full h-[10px]" />
+                                <p className="text-[12px] mt-2 font-merriweather text-[#444444] mb-1 font-normal leading-[100%]">
+                                    6 %
+                                </p>
+                                <div className=" py-3 px-4 mt-3  sm:w-full ">
+                                    <p className="text-[12px] mt-2 font-merriweather text-[#444444] mb-1 font-normal leading-[100%]">
+                                        Interest Rate / Year
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Right: Growth */}
+                            <div>
+
+                                <div className="border py-3 px-4 border-[3px] rounded border-[#FFA901]">
+                                    <p className="font-bold text-[#333333]">
+                                        Rs. {growth.toLocaleString()}
+                                    </p>
+                                </div>
+                                <p className="text-xs font-merriweather text-[#444444] mt-8 font-normal leading-[100%]">
+                                    Future Cost
+                                </p>
+                            </div>
                         </div>
                     </div>
 
 
-                    {/* Results Table */}
-                    <div className="text-sm">
-                        {[
-                            { label: "Target Wealth (Inflation-Adjusted)", value: `Rs. ${inflationAdjusted.toLocaleString()}` },
-                            { label: `Growth of Savings (${sipReturn}% p.a.)`, value: `Rs. ${growthOfSavings.toLocaleString()}` },
-                            { label: "Final Target (Net of Savings Growth)", value: `Rs. ${finalTarget.toLocaleString()}` },
-                            { label: "Time to Reach Goal", value: `${years} Years` },
-                            { label: "Required Monthly SIP", value: `Rs. ${requiredSip.toLocaleString()}`, highlight: true },
-                            { label: `Total SIP Investment (${years} Years)`, value: `Rs. ${totalSipInvestment.toLocaleString()}` },
-                            { label: "Total Growth Amount", value: `Rs. ${totalGrowthAmount.toLocaleString()}` },
-                        ].map((row, i) => (
-                            <div
-                                key={i}
-                                className={`grid grid-cols-2 gap-2 py-3 sm:py-4 ${i % 2 === 0 ? "bg-[#F9F9F9]" : ""}`}
-                            >
-                                <span className="px-4 sm:px-6 md:px-8 text-right font-[Merriweather] font-normal text-[12px] text-[#777777] leading-[180%]">
-                                    {row.label}
-                                </span>
-                                <span className={`font-bold ${row.highlight ? "text-blue-600" : ""}`}>
-                                    {row.value}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
                 </div>
+
+
+
             </div>
+
+
 
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-12 ">
                 <div className="lg:col-span-7 px-4">
@@ -334,7 +380,7 @@ function CompoundingCalculator() {
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
                                  text-[#000000] align-middle"
                         >
-                            About Become a Crorepati Calculator
+                            About Composite Financial Goal Planner Calculator
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             See More   <img

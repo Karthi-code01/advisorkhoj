@@ -16,8 +16,11 @@ import tool14 from "../../assets/Images/advisory tools (8).png"
 import tool15 from "../../assets/Images/advisory tools (9).png"
 import tool16 from "../../assets/Images/advisory tools (10).png"
 import Footer from '../Footer';
+import line from "../../assets/Images/Line 25.png"
 import { Chart as ChartJS, ArcElement, Title, Tooltip, Legend, CategoryScale, LineElement, PointElement, LinearScale, BarElement } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
 // ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend);
@@ -108,9 +111,9 @@ function SIPCalculator() {
         datasets: [
             {
                 data: [totalSipInvestment, growth],
-                backgroundColor: ["#2ecc71", "#f39c12"],
+                backgroundColor: ["#098941", "#FFA901"],
                 borderWidth: 0,
-                cutout: "70%",
+                cutout: "50%",
                 rotation: -90,
                 circumference: 180,
             },
@@ -119,75 +122,163 @@ function SIPCalculator() {
 
     const barLabels = Array.from({ length: 10 }, (_, i) => 2025 + i);
 
-    const investValues = barLabels.map(() => totalSipInvestment);
-    const growthValues = barLabels.map(() => growth);
+    // cumulative invest each year
+    const investValues = barLabels.map((_, i) => totalSipInvestment * (i + 1));
 
-    const barData = {
-        labels: barLabels,
-        datasets: [
+    // growth each year, e.g. 12% of invested
+    const annualRate = 0.12;
+    const growthValues = investValues.map((inv) => Math.round(inv * annualRate));
+    const getPointWidth = () => {
+        if (window.innerWidth < 540) return 10;
+        if (window.innerWidth < 640) return 30;  // mobile
+        if (window.innerWidth < 768) return 25;  // small tablet
+        if (window.innerWidth < 1024) return 30; // medium desktop
+        return 40;                               // large desktop
+    };
+    const pointWidth = getPointWidth();
+    const isMobile = window.innerWidth < 540;
+
+    const chartOptions = {
+        chart: {
+            type: 'column',
+            height: 400,
+            events: {
+                render: function () {
+                    const chart = this;
+                    const xAxis = chart.xAxis[0];
+                    const yAxis = chart.yAxis[0];
+
+                    // Remove old custom elements
+                    if (chart.customElements) chart.customElements.forEach(el => el.destroy());
+                    chart.customElements = [];
+
+                    // ❌ Skip drawing gray background if on mobile
+                    if (isMobile) return;
+
+                    barLabels.forEach((cat, i) => {
+                        const total = growthValues[i] + investValues[i];
+                        const barWidth = 40;
+                        const bgPadding = 15;
+                        const extraHeight = 10;
+
+                        const barTopY = yAxis.toPixels(total);
+                        const barBottomY = yAxis.toPixels(0);
+
+                        // Gray background rectangle
+                        const bgHeight = barBottomY - barTopY;
+                        const bg = chart.renderer
+                            .rect(
+                                xAxis.toPixels(i) - barWidth / 2 - bgPadding / 2,
+                                barTopY - extraHeight / 2,
+                                barWidth + bgPadding,
+                                bgHeight + extraHeight / 2,
+                                5
+                            )
+                            .attr({ fill: '#F7F7F7', zIndex: 0 })
+                            .add();
+
+                        chart.customElements.push(bg);
+                    });
+                },
+            },
+        },
+        title: { text: null },
+        subtitle: { text: null },
+
+        xAxis: {
+            categories: barLabels,
+            title: { text: 'Year' },
+            crosshair: false,
+            gridLineWidth: 0,
+            minPadding: 0.2,
+            maxPadding: 0.2,
+        },
+        yAxis: [
             {
-                label: "Invested",
-                data: investValues,
-                backgroundColor: "#2ecc71",
-                borderRadius: 5,
-                barPercentage: 0.9,       // wider bar
-                categoryPercentage: 0.8,  // controls spacing between categories
-                stack: "stack1",
+                min: 0,
+                max: Math.max(...growthValues.map((v, i) => v + investValues[i])) * 1.2,
+                title: { text: 'Total SIP Value' },
+                lineWidth: 1,
+                gridLineWidth: 0,
+                labels: { formatter: function () { return (this.value / 1000000) + 'M'; } },
+                stackLabels: {
+                    enabled: !isMobile,
+                    formatter: function () { return '₹' + this.total.toLocaleString(); },
+                    style: { fontWeight: 'bold', color: '#000' },
+                },
             },
             {
-                label: "Growth",
-                data: growthValues,
-                backgroundColor: "#f39c12",
-                borderRadius: 5,
-                barPercentage: 0.9,
-                categoryPercentage: 0.8,
-                stack: "stack1",
+                min: 0,
+                title: { text: 'SIP Investment' },
+                labels: { formatter: function () { return (this.value / 1000000) + 'M'; } },
+                opposite: true,
+                linkedTo: 0,
+                lineWidth: 1,
+                gridLineWidth: 0,
             },
         ],
+        tooltip: {
+            shared: true,
+            useHTML: true,
+            formatter: function () {
+                let total = 0;
+
+                this.points.forEach(point => {
+                    total += point.y;
+                });
+
+                // ✅ Start with total at the top
+                let s = `<b>Total SIP Value: ₹${total.toLocaleString()}</b><br/>`;
+
+                // ✅ Then list each series
+                this.points.forEach(point => {
+                    s += `
+        <span style="color:${point.series.color}; font-size:12px; margin-right:6px;">●</span>
+        ${point.series.name}: ₹${point.y.toLocaleString()}<br/>
+      `;
+                });
+
+                return s;
+            }
+        },
+
+
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                borderRadius: 5,
+                threshold: 0,
+                borderWidth: 0,
+                groupPadding: 0.2,
+                pointPadding: 0.05,
+            },
+            series: { dataLabels: { enabled: false } },
+        },
+        series: [
+            {
+                name: 'Growth',
+                data: growthValues.map(v => v * 0.95),
+                color: '#FFA901',
+                borderRadius: 0,
+                pointWidth: pointWidth,
+                zIndex: 1,
+            },
+            {
+                name: 'Invested',
+                data: investValues,
+                color: '#098941',
+                borderRadius: 5,
+                pointWidth: pointWidth,
+                zIndex: 1,
+            },
+        ],
+        legend: { enabled: true },
+        credits: { enabled: false },
     };
 
-    const barOptions = {
-        responsive: true,
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                callbacks: {
-                    label: (tooltipItem) => {
-                        const val = tooltipItem.raw;
-                        return tooltipItem.dataset.label + ": ₹" + val.toLocaleString();
-                    },
-                },
-            },
-            datalabels: {
-                anchor: "end",
-                align: "end",
-                formatter: (val, ctx) => {
-                    if (ctx.datasetIndex === ctx.chart.data.datasets.length - 1) {
-                        // only show on top dataset (Growth)
-                        const total =
-                            ctx.chart.data.datasets[0].data[ctx.dataIndex] +
-                            ctx.chart.data.datasets[1].data[ctx.dataIndex];
-                        return "₹" + total.toLocaleString();
-                    }
-                    return null;
-                },
-                font: { weight: "bold" },
-                color: "#000",
-            },
-        },
-        scales: {
-            x: { grid: { display: false } },
-            y: {
-                grid: { display: false },
-                ticks: { callback: (val) => `${val / 1000000} M` },
-            },
-            y1: {
-                position: "right",
-                grid: { display: false },
-                ticks: { callback: (val) => `${val / 1000000} M` },
-            },
-        },
-    };
+
+
+
 
 
 
@@ -249,7 +340,7 @@ function SIPCalculator() {
             </div>
 
             <div className='bg-white mx-8'>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 p-4 sm:p-6 md:p-8 mx-4 sm:mx-8 md:mx-12 mt-6 sm:mt-8 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 p-4 sm:p-6 md:p-8 mx-4 sm:mx-8 md:mx-12 mt-6 sm:mt-8 border-b">
                     {/* Inputs */}
                     <div className="space-y-6 md:pr-8 border-b md:border-b-0 md:border-r">
                         {/* SIP Amount */}
@@ -343,61 +434,96 @@ function SIPCalculator() {
 
                     {/* Results & Doughnut */}
                     <div className="flex flex-col items-center">
-                        <div className="w-[220px] sm:w-[260px] md:w-[300px] lg:w-[350px] h-[240px]">
-                            <div className="w-[300px] h-[240px]">
-                                <Doughnut
-                                    data={doughnutData}
-                                    options={{
-                                        responsive: true,
-                                        maintainAspectRatio: false, // allow exact container size
-                                        cutout: 180,              // still relative, but container is fixed
-                                        rotation: -90,
-                                        circumference: 180,
-                                        plugins: { legend: { display: false } },
-                                    }}
-                                />
-                            </div>
-
-
+                        {/* Chart container */}
+                        <div className="w-[220px] h-[200px] sm:w-[260px] sm:h-[220px] md:w-[300px] md:h-[240px] lg:w-[300px] lg:h-[200px]">
+                            <Doughnut
+                                data={doughnutData}
+                                options={{
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    cutout: 180,
+                                    rotation: -90,
+                                    circumference: 180,
+                                    plugins: { legend: { display: false } },
+                                }}
+                            />
                         </div>
 
-                        <div className="flex justify-between w-full mt-6 text-center">
-                            <div className="border p-2 rounded w-1/3">
-                                <p className="text-xs">Total SIP Amount Invested</p>
-                                <p className="font-bold text-green-600">₹ {totalSipInvestment.toLocaleString()}</p>
+                        {/* Stats section */}
+                        <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start w-full text-center gap-6 lg:gap-4 mt-6">
+                            {/* Left: Total SIP */}
+                            <div>
+                                <p className="text-xs font-merriweather text-[#444444] mb-2 font-normal leading-[100%]">
+                                    Total SIP Amount Invested
+                                </p>
+                                <div className="border py-3 px-4 rounded border-[3px] border-[#098941]">
+                                    <p className="font-bold text-[#333333]">
+                                        Rs. {totalSipInvestment.toLocaleString()}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="border p-2 rounded w-1/3">
-                                <p className="text-xs">Total Future Value</p>
-                                <p className="font-bold text-blue-600">₹ {totalFutureValue.toLocaleString()}</p>
+
+                            {/* Middle: Future Value */}
+                            <div>
+                                <p className="text-[12px] mt-2 font-merriweather text-[#444444] mb-1 font-normal leading-[100%]">
+                                    Total Future Value
+                                </p>
+                                <p className="text-[10px] font-merriweather text-[#444444] mb-2 font-normal leading-[100%]">
+                                    (SIP Investment Amount + Growth)
+                                </p>
+                                <img src={line} className="hidden lg:block w-full h-[60px]" />
+                                <div className="border py-3 px-4 mt-3  sm:w-full bg-[#096FFA] rounded">
+                                    <p className="font-bold text-white">
+                                        Rs. {totalFutureValue.toLocaleString()}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="border p-2 rounded w-1/3">
-                                <p className="text-xs">Total Growth</p>
-                                <p className="font-bold text-orange-500">₹ {growth.toLocaleString()}</p>
+
+                            {/* Right: Growth */}
+                            <div>
+                                <p className="text-xs font-merriweather text-[#444444] mb-2 font-normal leading-[100%]">
+                                    Total Growth
+                                </p>
+                                <div className="border py-3 px-4 border-[3px] rounded border-[#FFA901]">
+                                    <p className="font-bold text-[#333333]">
+                                        Rs. {growth.toLocaleString()}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
+
                 </div>
+
+
                 <div>
-                    <h2 className="text-center font-semibold mb-4">Systematic Investment Plan (SIP) Growth Chart</h2>
-                    <div className='flex justify-center w-full mx-2'>
-                        <Bar
-                            data={barData}
-                            options={{
-                                ...barOptions,
-                                maintainAspectRatio: false, // 👈 let container control height
-                            }}
-                            height={300} // 👈 only affects height now
+                    <h2 className="text-center mb-4 font-bold mt-6 font-[Arial] text-[16px] leading-[19px] tracking-[1px] align-middle">
+                        Systematic Investment Plan (SIP) Growth Chart
+                    </h2>
+
+
+                    <div
+                        className="
+      w-[280px]       /* Mobile: <640px */
+      sm:w-[480px] /* Small screens: 640px - 768px */
+      md:w-[600px] /* Medium screens: 768px - 1024px */
+      lg:w-[900px]   /* Large screens: 1024px - 1280px */
+      xl:w-[1200px]  /* Extra large screens: 1280px+ */
+      mx-auto
+    "
+                    >
+                        <HighchartsReact
+                            highcharts={Highcharts}
+                            options={chartOptions}
                         />
-
                     </div>
-
                 </div>
-            </div>
-            {/* Divider */}
-            <div className="border-t my-8"></div>
 
-            {/* Bar Chart */}
+
+
+            </div>
+
 
 
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-12 ">
@@ -407,7 +533,7 @@ function SIPCalculator() {
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
                                  text-[#000000] align-middle"
                         >
-                            About Become a Crorepati Calculator
+                            About Systematic Investment Plan Calculator
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             See More   <img
