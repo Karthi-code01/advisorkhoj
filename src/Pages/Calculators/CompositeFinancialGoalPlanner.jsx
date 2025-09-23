@@ -103,13 +103,60 @@ function CompositeFinancialGoalPlanner() {
     const tabs = ["Education", "Wealth", "Expense"];
 
 
-    // Example result values (replace with real calculations)
-    const goalData = {
-        education: { invested: 2500000, interest: 10309628 - 2500000, total: 10309628 },
-        expense: { invested: 1500000, interest: 11632433 - 1500000, total: 11632433 },
-        wealth: { invested: 5000000, interest: 62844352 - 5000000, total: 62844352 }
+    // Goal calculation
+    const calculateGoalData = (education, expense, wealth) => {
+        const returnRate = 0.125; // 12.5% expected return
+        const years = { education: 20, expense: 30, wealth: 35 }; // years to achieve goals
+
+        const calcGoalTarget = (amount, y) => Math.round(amount * Math.pow(1 + returnRate, y));
+
+        const educationGoal = calcGoalTarget(education, years.education);
+        const expenseGoal = calcGoalTarget(expense, years.expense);
+        const wealthGoal = calcGoalTarget(wealth, years.wealth);
+
+        const currentSavings = {
+            education: Math.round(education * 0.055),
+            expense: Math.round(expense * 0.055),
+            wealth: Math.round(wealth * 0.055)
+        };
+
+        const monthlySavings = {
+            education: Math.round((educationGoal - currentSavings.education) / (years.education * 12)),
+            expense: Math.round((expenseGoal - currentSavings.expense) / (years.expense * 12)),
+            wealth: Math.round((wealthGoal - currentSavings.wealth) / (years.wealth * 12))
+        };
+
+        return {
+            education: {
+                invested: education,
+                interest: educationGoal - education,
+                total: educationGoal,
+                currentSavings: currentSavings.education,
+                monthlySavings: monthlySavings.education,
+                years: years.education
+            },
+            expense: {
+                invested: expense,
+                interest: expenseGoal - expense,
+                total: expenseGoal,
+                currentSavings: currentSavings.expense,
+                monthlySavings: monthlySavings.expense,
+                years: years.expense
+            },
+            wealth: {
+                invested: wealth,
+                interest: wealthGoal - wealth,
+                total: wealthGoal,
+                currentSavings: currentSavings.wealth,
+                monthlySavings: monthlySavings.wealth,
+                years: years.wealth
+            }
+        };
     };
 
+    const goalData = calculateGoalData(education, expense, wealth);
+
+    // Chart options
     const chartOptions = {
         chart: {
             type: "column",
@@ -133,12 +180,7 @@ function CompositeFinancialGoalPlanner() {
             },
             gridLineDashStyle: "Dash"
         },
-        legend: {
-            align: "center",
-            verticalAlign: "bottom",
-            layout: "horizontal",
-            symbolRadius: 6
-        },
+        legend: { align: "center", verticalAlign: "bottom", layout: "horizontal", symbolRadius: 6 },
         plotOptions: {
             column: {
                 stacking: "normal",
@@ -152,17 +194,20 @@ function CompositeFinancialGoalPlanner() {
             {
                 name: "Invested Amount",
                 data: [goalData.education.invested, goalData.expense.invested, goalData.wealth.invested],
-                color: "#FFA500" // Orange
+                color: "#FFA500"
             },
             {
                 name: "Interest",
-                data: [goalData.education.interest, goalData.expense.interest, goalData.wealth.interest],
-                color: "#008000" // Green
+                data: [
+                    Math.round(goalData.education.interest * 0.2), // scaled down to 20%
+                    Math.round(goalData.expense.interest * 0.2),
+                    Math.round(goalData.wealth.interest * 0.2)
+                ],
+                color: "#008000"
             }
         ],
         credits: { enabled: false }
     };
-
 
     const toggleFaq = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -185,7 +230,7 @@ function CompositeFinancialGoalPlanner() {
                         <input
                             type="text"
                             placeholder="Search a keyword"
-                            className="w-full py-1 pr-10 pl-3 
+                            className="w-full pb-1 pr-10 pl-3 
                 border border-gray-300 bg-white text-gray-800 rounded-[12px]
                 placeholder:font-bold placeholder:text-[11px] placeholder:text-[#4A4A4A] 
                 placeholder:leading-[100%] placeholder:tracking-[0.01em] 
@@ -220,7 +265,7 @@ function CompositeFinancialGoalPlanner() {
             </div>
             <div className="bg-white mx-12 mt-4 p-6 md:p-10">
                 {/* Top Tabs */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-12">
                     <div className="flex border-b border-gray-200 gap-x-6">
                         {tabs.map((tab) => (
                             <button
@@ -239,7 +284,7 @@ function CompositeFinancialGoalPlanner() {
 
 
                 {/* Sliders */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 ">
                     {[{ label: "Education", value: education, setValue: setEducation, min: 1000000, max: 5000000 },
                     { label: "Wealth", value: wealth, setValue: setWealth, min: 1000000, max: 10000000 },
                     { label: "Expense", value: expense, setValue: setExpense, min: 500000, max: 3000000 }
@@ -275,75 +320,74 @@ function CompositeFinancialGoalPlanner() {
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-center mb-8">
-                    <button className="bg-blue-600 text-white px-6 py-2 rounded">Submit</button>
+                <div className="flex justify-center pb-8 border-b border-[#DDDDDD]">
+                    <button className="bg-[#096FFA] text-white px-6 py-3 rounded text-[11px] font-bold tracking-[1px] leading-[12px] align-middle font-[Arial]">
+                        Submit
+                    </button>
+
                 </div>
 
-                {/* Chart */}
-                <div className="flex justify-center mb-8">
-                    <div className="w-full md:w-3/4">
+                <div className="flex flex-col md:flex-row gap-6 mb-8 mt-8">
+                    {/* Chart */}
+                    <div className="w-full md:w-1/3 flex justify-center">
                         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+                    </div>
+
+                    {/* Results Table */}
+                    <div className="w-full md:w-2/3 overflow-x-auto">
+                        <table className="w-full border text-sm text-left">
+                            <thead className="bg-gray-100">
+                                <tr>
+                                    <th className="p-3"></th>
+                                    <th className="p-3">Education</th>
+                                    <th className="p-3">Wealth</th>
+                                    <th className="p-3">Expense</th>
+                                    <th className="p-3">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className="p-3">Amount at today’s prices</td>
+                                    <td className="p-3">₹ {goalData.education.invested.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.wealth.invested.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.expense.invested.toLocaleString("en-IN")}</td>
+                                    <td className="p-3 text-blue-600">₹ {(goalData.education.invested + goalData.wealth.invested + goalData.expense.invested).toLocaleString("en-IN")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3">No. of years to achieve your goals</td>
+                                    <td className="p-3">{goalData.education.years} years</td>
+                                    <td className="p-3">{goalData.wealth.years} years</td>
+                                    <td className="p-3">{goalData.expense.years} years</td>
+                                    <td className="p-3">-</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3">Goal target (Inflation adjusted)</td>
+                                    <td className="p-3">₹ {goalData.education.total.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.wealth.total.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.expense.total.toLocaleString("en-IN")}</td>
+                                    <td className="p-3 text-blue-600">₹ {(goalData.education.total + goalData.wealth.total + goalData.expense.total).toLocaleString("en-IN")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3">Current savings amount</td>
+                                    <td className="p-3">₹ {goalData.education.currentSavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.wealth.currentSavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.expense.currentSavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-3 text-blue-600">₹ {(goalData.education.currentSavings + goalData.wealth.currentSavings + goalData.expense.currentSavings).toLocaleString("en-IN")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-3">Monthly Savings required</td>
+                                    <td className="p-3">₹ {goalData.education.monthlySavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.wealth.monthlySavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-3">₹ {goalData.expense.monthlySavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-3 text-blue-600">₹ {(goalData.education.monthlySavings + goalData.wealth.monthlySavings + goalData.expense.monthlySavings).toLocaleString("en-IN")}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
 
-                {/* Results Table */}
-                <div className="overflow-x-auto">
-                    <table className="w-full border text-sm text-left">
-                        <thead className="bg-gray-100">
-                            <tr>
-                                <th className="p-3"></th>
-                                <th className="p-3">Education</th>
-                                <th className="p-3">Wealth</th>
-                                <th className="p-3">Expense</th>
-                                <th className="p-3">TOTAL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="p-3">Amount at today’s prices</td>
-                                <td className="p-3">₹ 25,00,000</td>
-                                <td className="p-3">₹ 50,00,000</td>
-                                <td className="p-3">₹ 15,00,000</td>
-                                <td className="p-3 text-blue-600">₹ 90,00,000</td>
-                            </tr>
-                            <tr>
-                                <td className="p-3">No. of years to achieve your goals</td>
-                                <td className="p-3">20 years</td>
-                                <td className="p-3">35 years</td>
-                                <td className="p-3">30 years</td>
-                                <td className="p-3">-</td>
-                            </tr>
-                            <tr>
-                                <td className="p-3">Expected return rate (% p.a.)</td>
-                                <td className="p-3">12.50 %</td>
-                                <td className="p-3">12.50 %</td>
-                                <td className="p-3">12.50 %</td>
-                                <td className="p-3">-</td>
-                            </tr>
-                            <tr>
-                                <td className="p-3">Goal target (Inflation adjusted)</td>
-                                <td className="p-3">₹ 1,06,09,628</td>
-                                <td className="p-3">₹ 6,28,44,352</td>
-                                <td className="p-3">₹ 1,31,32,433</td>
-                                <td className="p-3 text-blue-600">₹ 8,65,96,413</td>
-                            </tr>
-                            <tr>
-                                <td className="p-3">Current savings amount</td>
-                                <td className="p-3">₹ 1,38,888</td>
-                                <td className="p-3">₹ 2,77,777</td>
-                                <td className="p-3">₹ 83,333</td>
-                                <td className="p-3 text-blue-600">₹ 5,00,000</td>
-                            </tr>
-                            <tr>
-                                <td className="p-3">Monthly Savings required</td>
-                                <td className="p-3">₹ 10,263</td>
-                                <td className="p-3">₹ 9,549</td>
-                                <td className="p-3">₹ 3,644</td>
-                                <td className="p-3 text-blue-600">₹ 23,456</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
             </div>
 
             <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-12 ">
@@ -353,7 +397,7 @@ function CompositeFinancialGoalPlanner() {
                             className="font-[Arial] font-bold text-[16px] leading-[19px] tracking-[1px] 
                                  text-[#000000] align-middle"
                         >
-                            About Asset Allocation Calculator
+                            About Composite Financial Goal Planner Calculator
                         </h2>
                         <button className="flex gap-1 items-center font-[Arial] font-bold text-[11px] leading-[13px] tracking-[1.36px] uppercase text-[#000000] hover:text-blue-800 transition-colors">
                             See More   <img

@@ -186,7 +186,7 @@ function CrorepatiCalculator() {
                         <input
                             type="text"
                             placeholder="Search a keyword"
-                            className="w-full py-1 pr-10 pl-3 
+                            className="w-full pb-1 pr-10 pl-3 
                 border border-gray-300 bg-white text-gray-800 rounded-[12px]
                 placeholder:font-bold placeholder:text-[11px] placeholder:text-[#4A4A4A] 
                 placeholder:leading-[100%] placeholder:tracking-[0.01em] 
