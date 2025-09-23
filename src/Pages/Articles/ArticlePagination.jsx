@@ -371,47 +371,50 @@ function ArticlePagination() {
             <div className="w-[full] h-[1px] bg-[#111111] mb-6 mt-4 mx-4"></div>
 
             {/* Pagination Controls */}
-            <div className="flex justify-center items-center gap-2 mt-6 text-sm">
+            <div className="flex justify-between items-center mt-6 mx-4 text-sm">
                 {/* Prev */}
                 <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((p) => p - 1)}
-                    className="text-gray-500 hover:underline disabled:opacity-50 disabled:hover:no-underline"
+                    className=" hover:underline disabled:opacity-50 disabled:hover:no-underline"
                 >
                     Prev
                 </button>
 
-                {/* Left Chevron */}
-                <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage((p) => p - 1)}
-                    className="text-gray-600 disabled:opacity-40"
-                >
-                    ‹
-                </button>
-
-                {/* Page Numbers */}
-                {[...Array(totalPages)].map((_, idx) => (
+                {/* Centered pagination */}
+                <div className="flex items-center gap-2">
+                    {/* Left Chevron */}
                     <button
-                        key={idx}
-                        onClick={() => setCurrentPage(idx + 1)}
-                        className={`px-1 ${currentPage === idx + 1
-                            ? "text-blue-600 font-semibold"
-                            : "text-gray-600 hover:text-blue-600"
-                            }`}
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage((p) => p - 1)}
+                        className="text-gray-600 disabled:opacity-40"
                     >
-                        {idx + 1}
+                        ‹
                     </button>
-                ))}
 
-                {/* Right Chevron */}
-                <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage((p) => p + 1)}
-                    className="text-gray-600 disabled:opacity-40"
-                >
-                    ›
-                </button>
+                    {/* Page Numbers */}
+                    {[...Array(totalPages)].map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setCurrentPage(idx + 1)}
+                            className={`px-1 ${currentPage === idx + 1
+                                ? "text-blue-600 font-semibold"
+                                : "text-gray-600 hover:text-blue-600"
+                                }`}
+                        >
+                            {idx + 1}
+                        </button>
+                    ))}
+
+                    {/* Right Chevron */}
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage((p) => p + 1)}
+                        className="text-gray-600 disabled:opacity-40"
+                    >
+                        ›
+                    </button>
+                </div>
 
                 {/* Next */}
                 <button
@@ -422,6 +425,7 @@ function ArticlePagination() {
                     Next
                 </button>
             </div>
+
 
         </div>
     );
