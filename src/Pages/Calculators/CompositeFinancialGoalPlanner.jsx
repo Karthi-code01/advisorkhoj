@@ -191,11 +191,7 @@ function CompositeFinancialGoalPlanner() {
             }
         },
         series: [
-            {
-                name: "Invested Amount",
-                data: [goalData.education.invested, goalData.expense.invested, goalData.wealth.invested],
-                color: "#FFA500"
-            },
+
             {
                 name: "Interest",
                 data: [
@@ -204,7 +200,12 @@ function CompositeFinancialGoalPlanner() {
                     Math.round(goalData.wealth.interest * 0.2)
                 ],
                 color: "#008000"
-            }
+            },
+            {
+                name: "Invested Amount",
+                data: [goalData.education.invested, goalData.expense.invested, goalData.wealth.invested],
+                color: "#FFA500"
+            },
         ],
         credits: { enabled: false }
     };
@@ -263,7 +264,7 @@ function CompositeFinancialGoalPlanner() {
                     <img src={downloadicon} alt="download" className="w-8 h-8" />
                 </div>
             </div>
-            <div className="bg-white mx-12 mt-4 p-6 md:p-10">
+            <div className="bg-white mx-2 lg:mx-12 mt-4 p-6 md:p-10">
                 {/* Top Tabs */}
                 <div className="flex justify-center mb-12">
                     <div className="flex border-b border-gray-200 gap-x-6">
@@ -334,57 +335,82 @@ function CompositeFinancialGoalPlanner() {
                     </div>
 
                     {/* Results Table */}
-                    <div className="w-full md:w-2/3 overflow-x-auto">
-                        <table className="w-full border text-sm text-left">
-                            <thead className="bg-gray-100">
+                    <div className="w-full md:w-2/3 overflow-x-auto lg:ms-6 text-sm">
+                        <table className="w-full text-left">
+                            <thead className="bg-[#F5F5F5]">
                                 <tr>
-                                    <th className="p-3"></th>
-                                    <th className="p-3">Education</th>
-                                    <th className="p-3">Wealth</th>
-                                    <th className="p-3">Expense</th>
-                                    <th className="p-3">TOTAL</th>
+                                    <th className="p-4"></th>
+                                    <th className="p-4">Education</th>
+                                    <th className="p-4">Wealth</th>
+                                    <th className="p-4">Expense</th>
+                                    <th className="p-4">TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td className="p-3">Amount at today’s prices</td>
-                                    <td className="p-3">₹ {goalData.education.invested.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.wealth.invested.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.expense.invested.toLocaleString("en-IN")}</td>
-                                    <td className="p-3 text-blue-600">₹ {(goalData.education.invested + goalData.wealth.invested + goalData.expense.invested).toLocaleString("en-IN")}</td>
+                                <tr >
+                                    <td className="p-4">Amount at today’s prices</td>
+                                    <td className="p-4">₹ {goalData.education.invested.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.wealth.invested.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.expense.invested.toLocaleString("en-IN")}</td>
+                                    <td className="p-4 text-blue-600">
+                                        ₹ {(goalData.education.invested + goalData.wealth.invested + goalData.expense.invested).toLocaleString("en-IN")}
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td className="p-3">No. of years to achieve your goals</td>
-                                    <td className="p-3">{goalData.education.years} years</td>
-                                    <td className="p-3">{goalData.wealth.years} years</td>
-                                    <td className="p-3">{goalData.expense.years} years</td>
-                                    <td className="p-3">-</td>
+
+                                <tr className="bg-[#F9F9F9]">
+                                    <td className="p-4">No. of years to achieve your goals</td>
+                                    <td className="p-4">{goalData.education.years} years</td>
+                                    <td className="p-4">{goalData.wealth.years} years</td>
+                                    <td className="p-4">{goalData.expense.years} years</td>
+                                    <td className="p-4">-</td>
                                 </tr>
-                                <tr>
-                                    <td className="p-3">Goal target (Inflation adjusted)</td>
-                                    <td className="p-3">₹ {goalData.education.total.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.wealth.total.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.expense.total.toLocaleString("en-IN")}</td>
-                                    <td className="p-3 text-blue-600">₹ {(goalData.education.total + goalData.wealth.total + goalData.expense.total).toLocaleString("en-IN")}</td>
+                                <tr >
+                                    <td className="p-4">Expected Return Rate (%)</td>
+                                    <td className="p-4">{goalData.education.expectedReturn}%</td>
+                                    <td className="p-4">{goalData.wealth.expectedReturn}%</td>
+                                    <td className="p-4">{goalData.expense.expectedReturn}%</td>
+                                    <td className="p-4 text-blue-600">
+                                        {(
+                                            (goalData.education.expectedReturn +
+                                                goalData.wealth.expectedReturn +
+                                                goalData.expense.expectedReturn) / 4
+                                        ).toFixed(2)}%
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td className="p-3">Current savings amount</td>
-                                    <td className="p-3">₹ {goalData.education.currentSavings.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.wealth.currentSavings.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.expense.currentSavings.toLocaleString("en-IN")}</td>
-                                    <td className="p-3 text-blue-600">₹ {(goalData.education.currentSavings + goalData.wealth.currentSavings + goalData.expense.currentSavings).toLocaleString("en-IN")}</td>
+                                <tr className="bg-[#F9F9F9]">
+                                    <td className="p-4">Goal target (Inflation adjusted)</td>
+                                    <td className="p-4">₹ {goalData.education.total.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.wealth.total.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.expense.total.toLocaleString("en-IN")}</td>
+                                    <td className="p-4 text-blue-600">
+                                        ₹ {(goalData.education.total + goalData.wealth.total + goalData.expense.total).toLocaleString("en-IN")}
+                                    </td>
                                 </tr>
+
                                 <tr>
-                                    <td className="p-3">Monthly Savings required</td>
-                                    <td className="p-3">₹ {goalData.education.monthlySavings.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.wealth.monthlySavings.toLocaleString("en-IN")}</td>
-                                    <td className="p-3">₹ {goalData.expense.monthlySavings.toLocaleString("en-IN")}</td>
-                                    <td className="p-3 text-blue-600">₹ {(goalData.education.monthlySavings + goalData.wealth.monthlySavings + goalData.expense.monthlySavings).toLocaleString("en-IN")}</td>
+                                    <td className="p-4">Current savings amount</td>
+                                    <td className="p-4">₹ {goalData.education.currentSavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.wealth.currentSavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.expense.currentSavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-4 text-blue-600">
+                                        ₹ {(goalData.education.currentSavings + goalData.wealth.currentSavings + goalData.expense.currentSavings).toLocaleString("en-IN")}
+                                    </td>
+                                </tr>
+
+                                <tr className="bg-[#F9F9F9]">
+                                    <td className="p-4">Monthly Savings required</td>
+                                    <td className="p-4">₹ {goalData.education.monthlySavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.wealth.monthlySavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-4">₹ {goalData.expense.monthlySavings.toLocaleString("en-IN")}</td>
+                                    <td className="p-4 text-blue-600">
+                                        ₹ {(goalData.education.monthlySavings + goalData.wealth.monthlySavings + goalData.expense.monthlySavings).toLocaleString("en-IN")}
+                                    </td>
                                 </tr>
                             </tbody>
-
                         </table>
                     </div>
+
+
                 </div>
 
 
